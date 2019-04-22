@@ -1,0 +1,14 @@
+MANIFEST.in
+README.rst
+requirements.txt
+setup.cfg
+setup.py
+google_images_download/__init__.py
+google_images_download/__main__.py
+google_images_download/google_images_download.py
+google_images_download.egg-info/PKG-INFO
+google_images_download.egg-info/SOURCES.txt
+google_images_download.egg-info/dependency_links.txt
+google_images_download.egg-info/entry_points.txt
+google_images_download.egg-info/requires.txt
+google_images_download.egg-info/top_level.txt

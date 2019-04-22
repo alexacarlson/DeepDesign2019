@@ -1,0 +1,17 @@
+## weird files
+.keras
+.config
+.nv
+.vim
+.cupy
+.chainer
+.bash_history
+.DS_Store
+._.DS_Store
+.cache
+## potentially too big
+*.pyc
+*.mat
+*.h5
+#imagenet-vgg-verydeep-19.mat
+/build
