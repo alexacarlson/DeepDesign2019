@@ -228,6 +228,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--gpu", type=str, help="specify which gpu to use default=[0]")
 parser.add_argument("--dream_image", type=str, default='noise', help="specifcy the image(s) to dream on, takes in a folder path, or image path or noise (to dream on a noise image) [default: noise]")
 parser.add_argument("--dream_class", type=str, default='dome', help="specifcy the class you which to optimize within the input image, dependent upon vgg model used [default: dome]")
+parser.add_argument("--dream_results_dir", type=str, default='dreaming_results', help="path location of results folder/where to save the dreamed image  [default: dreaming_results]")
 parser.add_argument("--vgg_model", type=str, default='imagenet', help="specify the vgg model path to the location of the json arch file \n and \
                                                                         h5 weights file. If training a network, this specifies the location to save the model.\n Default is to load pretrained imagenet default=[imagenet]")
 parser.add_argument("--image_h", type=int, default=224, help="specify image height default=[224]")
@@ -252,10 +253,12 @@ num_epochs = args.train_epochs
 train_folder_path = args.train_dataset
 
 ## create the results directory to store the dreamed images in
-vgg16_model_id = os.path.split(os.path.splitext(vgg16_model)[0])[1]
-results_dir ='results_dreaming_with_%s'%(vgg16_model_id)
+#vgg16_model_id = os.path.split(os.path.splitext(vgg16_model)[0])[1]
+results_dir = args.dream_results_dir#'results_dreaming_with_%s'%(vgg16_model_id)
 if not os.path.exists(results_dir):
-    os.mkdir(results_dir)
+    #os.mkdir(results_dir)
+    os.makedirs(results_dir)
+
 
 ## --------------------------------------
 ## Train the model for class optimization
@@ -321,24 +324,9 @@ else:
     output_index = int(classes_dict[desired_class]) #all_classes_index_dict[desired_class]
     print("Loaded vgg16 model finetuned on custom dataset from disk")
     #
-pdb.set_trace()
 ## --------------------------------------
 ## Build the model for class optimization
 ## --------------------------------------
-
-## choose the desired imageNet class or custom class
-## image net classes
-#desired_class = 'dome'
-#
-## custom trained classes
-#desired_class = 'arch'
-#desired_class = 'bench'
-#desired_class = 'boulder'
-#desired_class = 'cinderblock'
-#desired_class = 'ditch'
-#desired_class = 'fountain'
-#desired_class = 'stairs'
-#desired_class = 'steppingstone'
 
 reg=0.01
 ## get the weights of the prediction layer
@@ -378,11 +366,6 @@ iterate = K.function([input_img], [loss, grads])
 crop_dream_input = False
 resize_dream_input = True
 
-## Choose if you want to dream on noise, a single image, or a directory of images
-#dream_input = 'noise'
-#dream_input = '/root/single_image.jpg'
-#dream_input = '/root/multi_images'
-
 if dream_input=='noise':
     ## we start from a gray image with some noise
     imh = input_shape[0]
@@ -406,7 +389,7 @@ elif os.path.isfile(dream_input):
         input_img_data = center_crop_image(input_img_data_full, new_shape=(input_shape[0],input_shape[1]))
         #
     img_list = [np.expand_dims(input_img_data.astype(float),axis=0)]
-    dream_input_ids = [os.path.split(os.path.splitext(imgf)[0])[1]]
+    dream_input_ids = [os.path.split(os.path.splitext(dream_input)[0])[1]]
     #
 elif os.path.isdir(dream_input):
     img_list = []
@@ -426,12 +409,13 @@ elif os.path.isdir(dream_input):
         dream_input_ids.append(os.path.split(os.path.splitext(imgf)[0])[1])
 else:
     print('Incorrect/bad path given for input image(s)')
+    import sys
+    sys.exit()
    
 
 ## -------------------------------
 ## Perform class optimization     
 ## -------------------------------  
-num_iters = 300   
 ## preprocess input data based upon vgg-16
 #input_img = preprocess_input(input_img_data)
 #

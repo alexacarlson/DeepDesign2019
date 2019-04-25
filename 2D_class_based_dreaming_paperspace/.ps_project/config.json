@@ -1,8 +1,8 @@
 {
-  "project": "2D_class_based_dreaming",
+  "project": "2D_class_based_dreaming_paperspace",
   "machineType": "P5000",
   "container": "acarlson32/visclass-tf:firstimage",
-  "command": "L3BhcGVyc3BhY2UvcnVuX2V2YWxfcGFwZXJzcGFjZS5zaA==",
+  "command": "L3BhcGVyc3BhY2UvcnVuX3RyYWluX3BhcGVyc3BhY2Uuc2g=",
   "workspace": "/home/alexandracarlson/Desktop/Robotics_Building_networks/RoboticsBuilding2019/2D_class_based_dreaming_paperspace",
-  "lastJobId": "j34jc855yyar"
+  "lastJobId": "jsq6ikth88g23m"
 }
