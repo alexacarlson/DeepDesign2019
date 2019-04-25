@@ -1,0 +1,8 @@
+{
+  "project": "fast-style-transfer",
+  "machineType": "K80",
+  "container": "Test-Container",
+  "command": "L3BhcGVyc3BhY2UvcnVuLnNo",
+  "workspace": "/home/alexandracarlson/Desktop/Robotics_Building_networks/RoboticsBuilding2019/fast-style-transfer",
+  "lastJobId": "j549wr17g0f38"
+}

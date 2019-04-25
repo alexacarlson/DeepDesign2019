@@ -1,0 +1,8 @@
+{
+  "project": "2D_to_2D_neural_style_transfer_paperspace",
+  "machineType": "P5000",
+  "container": "acarlson32/neuralstyle-tf:firstimage",
+  "command": "L3BhcGVyc3BhY2UvcnVuX3BhcGVyc3BhY2Uuc2g=",
+  "workspace": "/home/alexandracarlson/Desktop/Robotics_Building_networks/RoboticsBuilding2019/2D_to_2D_neural_style_transfer_paperspace",
+  "lastJobId": "jsws2xa26739p4"
+}

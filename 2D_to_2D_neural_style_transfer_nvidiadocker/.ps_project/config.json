@@ -1,0 +1,7 @@
+{
+  "project": "2D_to_2D_neural_style_transfer",
+  "machineType": "P5000",
+  "container": "acarlson32/neuralstyle-tf",
+  "command": "L3BhcGVyc3BhY2UvcnVuX3BhcGVyc3BhY2Uuc2g=",
+  "workspace": "/home/alexandracarlson/Desktop/Robotics_Building_networks/RoboticsBuilding2019/2D_to_2D_neural_style_transfer"
+}

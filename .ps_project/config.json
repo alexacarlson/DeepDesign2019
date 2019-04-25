@@ -1,0 +1,7 @@
+{
+  "project": "RoboticsBuilding2019",
+  "machineType": "K80",
+  "container": "acarlson32/neuralstyle-tf",
+  "command": "L3BhcGVyc3BhY2UvcnVuX3BhcGVyc3BhY2Uuc2g=",
+  "workspace": "/home/alexandracarlson/Desktop/Robotics_Building_networks/RoboticsBuilding2019"
+}
