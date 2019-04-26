@@ -49,7 +49,7 @@ NOTE: for all jobs, the results of the network are saved to the /artifact folder
 This means that any input paths used in your scripts need to have /artifacts as their parent directory. /artifacts exist temporarily, and should be retrieved right after the job has completed. Alternatively, you can save results to 
 /storage which persists across jobs and can be accessed by all notebooks/experiments.
 
-**2D Neural style transfer**
+### **2D Neural style transfer**
 
 First, need to create notebook via web GUI, upload vgg weights to /storage
 
@@ -77,7 +77,7 @@ A quick way to get the jobID of the most recent project/experiment is by running
 
 and copy the listed jobID
 
-**2D class-based deep dreaming**
+### **2D class-based deep dreaming**
 
 When using a pertained network, you first need to upload the custom_weights folder to /storage using the notebook tool in the web GUI.
 
