@@ -12,13 +12,14 @@ A Job consists of:
 	— a container (with code dependencies and packages pre-installed)
 	— a command to execute (i.e. python main.py or nvidia-smi)
 
-## SETTING UP PAPERSPACE:
+## INSTALLING/SETTING UP PAPERSPACE:
 
 The following describes the installation process for the paperspace CLI (command line interface) using paperspace-node. 
 More detailed installation instructions can be found at: (https://www.npmjs.com/package/paperspace-node)
 
-**Step 1:** Install npm
-For windows installation steps: (https://www.guru99.com/download-install-node-js.html) 
+**Step 1:** Install npm and node.js on your local machine/computer
+This is a package manager that we will use to install paperspace-node.
+For detailed windows installation steps: (https://www.guru99.com/download-install-node-js.html) 
 
 **Step 2:** Make a Paperspace account 
 This is done via the website (https://www.paperspace.com). You need a credit card on file to use any machine.
@@ -26,16 +27,18 @@ NOTE: Sign up for gradient1 to access the paperspace computing machines (otherwi
 
 **Step 3:** Install Paperspace-node via npm locally on your computer
 Paperspace-node is a way you can use the paperspace command line interface locally.
-npm install -g paperspace-node
+`npm install -g paperspace-node`
+Note that the `-g` flag installs paperspace-node globally on your computer, which means you can access it from any directory on your filesystem.
 
 **Step 4:** Store your paperspace API Key as an environment variable to make login easier
-export PAPERSPACE_API_KEY
+`export PAPERSPACE_API_KEY`
+By setting the apiKey as an environment variable, you do not have to use teh `--apiKey` flag during login 
 
-**Step 5:** Login to Paperspace from the command line
-paperspace login
+**Step 5:** Login to Paperspace from the command line on your local machine/computer
+`paperspace login --apiKey`
 
 Note that you can log out of paperspace using
-paperspace logout
+`paperspace logout`
 
 
 ## RUNNING A JOB THROUGH PAPERSPACE CLI:
