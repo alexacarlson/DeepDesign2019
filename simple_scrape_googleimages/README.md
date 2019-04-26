@@ -14,5 +14,7 @@ Chromedriver [Windows](https://sites.google.com/a/chromium.org/chromedriver/down
 The path looks like this: "path/to/chromedriver". In windows it will be "C:\path\to\chromedriver.exe"
 
 ## USAGE
-In a terminal or cmd prompt, navigate to this folder and run"
+In a terminal or cmd prompt, navigate to this folder and run
+```
 python generate_architecture_dataset.py --chromedriver_path `pwd`/chromedriver --classes_file_path classes.txt
+```
