@@ -55,7 +55,7 @@ First, need to create notebook via web GUI, upload vgg weights to /storage
 
 In terminal on local computer:
 
-`cd 2D_to_2D_neural_style_transfer_paperspace`
+`cd 2D_to_2D_neural_style_transfer`
 
 To initialize paperspace project, in terminal:
 
@@ -63,7 +63,7 @@ To initialize paperspace project, in terminal:
 
 To run job for this project, in terminal:
 
-`paperspace jobs create --container acarlson32/neuralstyle-tf:firstimage --machineType P5000 --command "/paperspace/run_paperspace.sh" —-ignoreFiles “imagenet-vgg-verydeep-19.mat”`
+`paperspace jobs create --container acarlson32/neuralstyle-tf:firstimage --machineType P5000 --command "/paperspace/run_paperspace.sh" —-ignoreFiles "imagenet-vgg-verydeep-19.mat"`
 
 To get the output style image from job (i.e., to  copy output files/folders from paperspace into your local directory), in terminal:
 
@@ -89,15 +89,15 @@ A few things to keep in mind:
 
 In terminal on local computer:
 
-`cd 2D_class_based_dreaming_paperspace`
+`cd 2D_class_based_dreaming`
 
 To initialize paperspace project, in terminal:
 
 `paperspace project init`
 
-To run job for this project, in terminal:
+To run a job for this project, in terminal:
 
-`paperspace jobs create --container acarlson32/visclass-tf:firstimage --machineType P5000 --command "/paperspace/run_eval_paperspace.sh" --ignoreFiles “custom_weights”`
+`paperspace jobs create --container acarlson32/visclass-tf:firstimage --machineType P5000 --command "/paperspace/run_eval_paperspace.sh" --ignoreFiles "custom_weights"`
 
 To get the output style image from job, in terminal:
 
@@ -111,3 +111,42 @@ To train a vgg16 network, follow the same steps but use the command:
 
 `paperspace jobs create --container acarlson32/visclass-tf:firstimage --machineType P5000 --command "/paperspace/run_train_paperspace.sh" --ignoreFiles “custom_weights”`
 
+### **2D to 3D Neural style transfer, 2D to 3D vertex optimization, and 3D deep dreaming**
+
+This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. 
+It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
+
+Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace `/storage` space. Add each 3D model to `/storage/3Dmodels` and any 2D models (i.e., images) to `/storage/2Dmodels`.
+You will also need to modify the appropriate bash file with the path locations (and other script parameters) before creating your job.
+
+In terminal on local computer:
+
+`cd 2D_3D_style_dream_neural_renderer`
+
+To initialize paperspace project, in terminal:
+
+`paperspace project init`
+
+**To run a job for 2D to 3D style transfer, in terminal:**
+
+`paperspace jobs create --container acarlson32/2d3d_neuralrenderer:firstimage --machineType P5000 --command "/paperspace/run_2d_to_3d_styletransfer.sh" —-ignoreFiles "results"`
+
+**To run a job for 2D to 3D vertex optimization, in terminal:**
+
+`paperspace jobs create --container acarlson32/2d3d_neuralrenderer:firstimage --machineType P5000 --command "/paperspace/run_2d_to_3d_vertexoptimization.sh" —-ignoreFiles "results"`
+
+**To run a job for 3D deep dreaming, in terminal:**
+
+`paperspace jobs create --container acarlson32/2d3d_neuralrenderer:firstimage --machineType P5000 --command "/paperspace/run_3d_deepdream.sh" —-ignoreFiles "results"`
+
+To get the output style image from job (i.e., to  copy output files/folders from paperspace into your local directory), in terminal:
+
+`paperspace jobs artifactsGet --jobID ps4r8vaor`
+
+Note that `ps4r8vaor` is a jobID that is unique to the job you just ran. You need to get jobID from web gui job page.
+
+A quick way to get the jobID of the most recent project/experiment is by running: 
+
+`paperspace project show`
+
+and copy the listed jobID

@@ -55,32 +55,37 @@ with open(classes_file_path,'r') as ff:
 for classname in class_list:
 	if not os.path.exists(os.path.join(dataset_location, classname)):
 		os.mkdir(os.path.join(dataset_location, classname))
-
+#
+languages = ['Arabic','Chinese (Simplified)','Chinese (Traditional)','English','French','German','Greek','Hungarian','Icelandic','Italian','Japanese','Korean','Russian','Spanish','Swedish']
 #
 for class_name in class_list:
-	print "downloading images for class %s"%(class_name)
-	response = google_images_download.googleimagesdownload()
-	Arguments = {"keywords":class_name, 
-				"limit":num_images_per_class, 
-				"type": 'photo',
-				"output_directory":dataset_location,
-				"image_directory":class_name,
-				"no_numbering":True,
-				"delay":0.5,
-				"chromedriver":args.chromedriver_path}
-	absolute_image_paths = response.download(Arguments)
-	##
-	badfile_counter=0
-	for filename in absolute_image_paths[class_name]:
-		#print filename
-		try:
-			## load in image filename
-			img = Image.open(filename)
-			img.verify()
-			del img
-		except:
-			os.remove(filename)
-			badfile_counter+=1
+	for which_language in languages:
+		print "downloading images for class %s"%(class_name)
+		response = google_images_download.googleimagesdownload()
+		Arguments = {"keywords":class_name, 
+					"limit":num_images_per_class, 
+					"type": 'photo',
+					"output_directory":dataset_location,
+					"image_directory":class_name,
+					"no_numbering":True,
+					"delay":0.5,
+					"size":'>1024*768',
+					"language":which_language,
+					"chromedriver":args.chromedriver_path}
+		absolute_image_paths = response.download(Arguments)
+		##
+		badfile_counter=0
+		for filename in absolute_image_paths[class_name]:
+			#print filename
+			try:
+				## load in image filename
+				img = Image.open(filename)
+				img.verify()
+				del img
+			except:
+				if os.path.exists(filename):
+					os.remove(filename)
+				badfile_counter+=1
+			#pdb.set_trace()
+		print 'Found and removed %d corrupted files out of %d total'%(badfile_counter,len(absolute_image_paths))
 		#pdb.set_trace()
-	print 'Found and removed %d corrupted files out of %d total'%(badfile_counter,len(absolute_image_paths))
-	#pdb.set_trace()

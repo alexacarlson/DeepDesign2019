@@ -1,1 +1,0 @@
-{'boulder': 2, 'cinderblock': 3, 'stairs': 6, 'bench': 1, 'steppingstone': 7, 'fountain': 5, 'ditch': 4, 'arch': 0}

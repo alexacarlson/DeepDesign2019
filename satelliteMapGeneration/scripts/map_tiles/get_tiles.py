@@ -28,47 +28,48 @@ def download_map_sat(dir_out, t, lat, lng, zoom, out_w, out_h):
 	'''
 	Download images
 	'''
-	path_map = "%s/map/map%05d_%f,%f.%s"%(dir_out, t,lat,lng, 'jpg')
+	#path_map = "%s/map/map%05d_%f,%f.%s"%(dir_out, t,lat,lng, 'jpg')
 	path_sat = "%s/sat/sat%05d_%f,%f.%s"%(dir_out, t,lat,lng, 'jpg')
 	w, h = out_w, out_h
 	if args.augment:
 		w, h = min(1280, 1.5*out_w), min(1280, 1.5*out_h)
 	
-	url_map = get_style(args.style_map, (lat, lng), zoom, int(w), int(h), 'jpg')
+	#url_map = get_style(args.style_map, (lat, lng), zoom, int(w), int(h), 'jpg')
 	url_sat = get_style(args.style_sat, (lat, lng), zoom, int(w), int(h), 'jpg')
 	#urllib.urlretrieve(url_map, path_map)
-	#urllib.urlretrieve(url_sat, path_sat)
-	with open(path_map,'wb') as img:
-		img.write(requests.get(url_map).content)
-	with open(path_sat,'wb') as img:
-		img.write(requests.get(url_sat).content)
+	urllib.urlretrieve(url_sat, path_sat)
+	#with open(path_map,'wb') as img:
+	#	img.write(requests.get(url_map).content)
+	#with open(path_sat,'wb') as img:
+	#	img.write(requests.get(url_sat).content)
 	#pdb.set_trace()
 	
 	if args.augment:
-		img_map = Image.open(path_map)
+		#img_map = Image.open(path_map)
 		img_sat = Image.open(path_sat)
 		
 		ang = -19 + 38*random.random()
 		
-		img_map = img_map.rotate(ang, resample=Image.BICUBIC, expand=False)
+		#img_map = img_map.rotate(ang, resample=Image.BICUBIC, expand=False)
 		img_sat = img_sat.rotate(ang, resample=Image.BICUBIC, expand=False)
 		
-		x1, y1 = int((img_map.width-out_w)*0.5), int((img_map.height-out_h)*0.5)
+		#x1, y1 = int((img_map.width-out_w)*0.5), int((img_map.height-out_h)*0.5)
+		x1, y1 = int((img_sat.width-out_w)*0.5), int((img_sat.height-out_h)*0.5)
 		
-		img_map = img_map.crop((x1, y1, x1+out_w, y1+out_h))
+		#img_map = img_map.crop((x1, y1, x1+out_w, y1+out_h))
 		img_sat = img_sat.crop((x1, y1, x1+out_w, y1+out_h))
 
 		flipv = random.random() < 0.25
 		fliph = random.random() < 0.25
 
 		if flipv:
-			img_map = img_map.transpose(Image.FLIP_TOP_BOTTOM)
+			#img_map = img_map.transpose(Image.FLIP_TOP_BOTTOM)
 			img_sat = img_sat.transpose(Image.FLIP_TOP_BOTTOM)
 		if fliph:
-			img_map = img_map.transpose(Image.FLIP_LEFT_RIGHT)
+			#img_map = img_map.transpose(Image.FLIP_LEFT_RIGHT)
 			img_sat = img_sat.transpose(Image.FLIP_LEFT_RIGHT)
 
-		img_map.save(path_map)
+		#img_map.save(path_map)
 		img_sat.save(path_sat)
 
 def main():
