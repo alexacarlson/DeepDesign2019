@@ -1,6 +1,6 @@
 INPUT_OBJ_PATH='/storage/3Dmodels/TreeCartoon1_OBJ.obj'
-INPUT_2D_PATH='/storage/2Dmodels/tree1.jpg'
-OUTPUT_FILENAME='2Dgeo_3Dstairs'
+INPUT_2D_PATH='/storage/2Dmodels/new000524.png'
+OUTPUT_FILENAME='2Dgeo_3Dtree'
 OUTPUT_DIR='/artifacts/results_vertoptim'
 NUM_ITERS=250
 

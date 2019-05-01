@@ -1,5 +1,5 @@
-INPUT_OBJ_PATH='/storage/3Dmodels/190428_test_stairs_E.obj'
-OUTPUT_FILENAME=3Ddreamed_stairs.gif
+INPUT_OBJ_PATH='/storage/3Dmodels/bench.obj'
+OUTPUT_FILENAME=3Ddreamed_bench.gif
 OUTPUT_DIR=/artifacts/results_3D_dream
 NUM_ITER=300
 
