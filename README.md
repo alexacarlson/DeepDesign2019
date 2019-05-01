@@ -34,7 +34,7 @@ Note that the `-g` flag installs paperspace-node globally on your computer, whic
 
 **Step 4:** Store your paperspace API Key as an environment variable to make login easier
 `export PAPERSPACE_API_KEY`
-By setting the apiKey as an environment variable, you do not have to use teh `--apiKey` flag during login. 
+By setting the apiKey as an environment variable, you do not have to use the `--apiKey` flag during login. 
 
 **Step 5:** Login to Paperspace from the command line on your local machine/computer
 `paperspace login --apiKey {INSERT API KEY FROM WEBSITE HERE}`
