@@ -3,6 +3,7 @@ WEIGHTS_DIR='/storage/acadia_general_arch_styles_netweights'
 #RESULTS_DIR='/artifacts/test'
 RESULTS_DIR='/storage/test'
 NUM_ITERS=500
+DREAM_CLASS='gothic'
 
 #visclass-tf \
 python visualize_class.py \
@@ -11,5 +12,5 @@ python visualize_class.py \
     --dream_results_dir ${RESULTS_DIR} \
 	--image_h 720 \
 	--image_w 1280 \
-	--dream_class 'gothic' \
+	--dream_class ${DREAM_CLASS} \
 	--iterations ${NUM_ITERS}
