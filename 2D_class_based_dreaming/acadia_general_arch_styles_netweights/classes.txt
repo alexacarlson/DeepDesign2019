@@ -1,0 +1,1 @@
+{'rococo': 6, 'hejduk': 4, 'gropius': 3, 'gothic': 2, 'baroque': 0, 'corbusier': 1, 'mies': 5}

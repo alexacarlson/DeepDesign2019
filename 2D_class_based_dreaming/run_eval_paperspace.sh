@@ -1,14 +1,15 @@
-IMAGE_DATA='/storage/scene0_camloc_0_5_-20_rgb.png'
-#IMAGE_DATA='/home/alexandracarlson/Desktop/Robotics_Building_networks/3Dmodels/templeRing/images_rot'
-WEIGHTS_DIR='custom_weights_vgg16'
+IMAGE_DATA='/storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png'
+WEIGHTS_DIR='/storage/acadia_general_arch_styles_netweights'
 #RESULTS_DIR='/artifacts/test'
 RESULTS_DIR='/storage/test'
+NUM_ITERS=500
 
 #visclass-tf \
 python visualize_class.py \
-	--vgg_model /storage/${WEIGHTS_DIR} \
-  --dream_image ${IMAGE_DATA} \
-  --dream_results_dir ${RESULTS_DIR} \
-	--image_h 400 \
-	--image_w 600 \
-	--dream_class 'arch'
+	--vgg_model ${WEIGHTS_DIR} \
+    --dream_image ${IMAGE_DATA} \
+    --dream_results_dir ${RESULTS_DIR} \
+	--image_h 720 \
+	--image_w 1280 \
+	--dream_class 'gothic' \
+	--iterations ${NUM_ITERS}
