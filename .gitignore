@@ -12,5 +12,7 @@
 .cache
 ## potentially too big
 *.pyc
+*.mat
+*.h5
 #imagenet-vgg-verydeep-19.mat
 /build
