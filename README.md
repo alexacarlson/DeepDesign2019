@@ -63,7 +63,7 @@ To initialize paperspace project, in terminal:
 
 To run job for this project, in terminal:
 
-`paperspace jobs create --container acarlson32/neuralstyle-tf:firstimage --machineType P5000 --command "/paperspace/run_paperspace.sh" —-ignoreFiles "imagenet-vgg-verydeep-19.mat"`
+`paperspace jobs create --container acarlson32/neuralstyle-tf:firstimage --machineType P5000 --command "/paperspace/run_neural_style.sh" —-ignoreFiles "imagenet-vgg-verydeep-19.mat"`
 
 To get the output style image from job (i.e., to  copy output files/folders from paperspace into your local directory), in terminal:
 
