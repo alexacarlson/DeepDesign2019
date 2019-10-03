@@ -1,0 +1,62 @@
+
+Below is a list of papers that cover various aspects of what research has been done in the intersection of
+Architecture, Art, and Artificial Intelligence, specifically deep learning. The majority of the works 
+
+(1) *A Neural Algorithm of Artistic Style*
+   https://arxiv.org/abs/1508.06576
+   This is the original style transfer paper that the Google 'Deep Style' Algorithm is based upon.
+
+(2) *High-Resolution Network for Photorealistic Style Transfer*
+    https://arxiv.org/abs/1904.11617
+    
+(3) *Neural Style Transfer: A Review* 
+    https://ieeexplore.ieee.org/abstract/document/8732370
+
+(4) *Enhancing Image Quality via Style Transfer for Single Image Super-Resolution*
+    https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8290957&tag=1 
+    
+(5) *The Face of Art: Landmark Detection and Geometric Style in Portraits*
+    http://delivery.acm.org/10.1145/3330000/3322984/a60-yaniv.pdf?ip=35.2.12.89&id=3322984&acc=ACTIVE%20SERVICE&key=93447E3B54F7D979%2E0A17827594E6F2C8%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1570034535_55366eda4519228e460b07ef17455780
+    
+(6) *The Shape of Art History in the Eyes of the Machine*
+    https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16993/15929
+    
+(7) *The Art of Human Intelligence and the Technology of Artificial Intelligence: Artificial Intelligence Visual Art Research*
+    https://link.springer.com/chapter/10.1007/978-3-030-01313-4_15
+    
+(8) *Unsupervised Learning of Artistic Styles with Archetypal Style Analysis*
+    http://papers.nips.cc/paper/7893-unsupervised-learning-of-artistic-styles-with-archetypal-style-analysis.pdf
+    
+(9) *Can we teach computers to understand art? Domain adaptation for enhancing deep networks capacity to de-abstract art*
+    https://reader.elsevier.com/reader/sd/pii/S0262885618301057?token=D47FAAF1F42313384C97BC48FB44F1C159EB5C0A016E4B538038D0F70B384E2AD6C8EE66AC7310D350E1C110FD8737EF
+    
+(10) *Deep Learning Architect: Classification for Architectural Design Through the Eye of Artificial Intelligence*
+    https://link.springer.com/chapter/10.1007/978-3-030-19424-6_14
+    
+(11) *Finding Principal Semantics of Style in Art*
+    https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8334453&tag=1 
+    
+(12) *Enhancing Image Quality via Style Transfer for Single Image Super-Resolution*
+    https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8290957&tag=1
+
+(13) *Image Synthesis and Style Transfer*
+    https://arxiv.org/pdf/1901.04686.pdf
+    
+(14) *Autonomy, Authenticity, Authorship and Intention in Computer Generated Art*
+     https://link.springer.com/chapter/10.1007/978-3-030-16667-0_3
+     
+(15) *Understanding Art through Multi-Modal Retrieval in Paintings*
+     https://arxiv.org/pdf/1904.10615.pdf
+     
+(16) *Towards the Algorithmic Detection of Artistic Style*
+     https://www.researchgate.net/profile/Jeremiah_Johnson18/publication/330828467_Towards_the_Algorithmic_Detection_of_Artistic_Style/links/5c59a4f092851c48a9bbf322/Towards-the-Algorithmic-Detection-of-Artistic-Style.pdf
+     
+(17) *Deep Learning Concepts for Evolutionary Art*
+     https://link.springer.com/chapter/10.1007/978-3-030-16667-0_1
+     
+(18) *Feature Fusion from Multiple Paintings for Generalized Artistic Style Transfer*
+     https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3387817
+
+(19) *Discovering Visual Patterns in Art Collections with Spatially-consistent Feature Learning*
+     https://arxiv.org/abs/1903.02678
+     
