@@ -1,3 +1,6 @@
+The following is a series of course notes from Stanford. They provide tutorials on numpy/Python, as well as using google Cloud (which is another online/cloud server that allows you to access GPUs, which are computing nodes you will need if you would like to train your own neural networks; we provide a tutorial on how to use Paperspace, which is a different cloud server).
+It also provides tutorials/detailed explanations of how neural networks work for vision.
+http://cs231n.github.io/
 
 Below is a list of papers that cover various aspects of what research has been done in the intersection of
 Architecture, Art, and Artificial Intelligence, specifically deep learning. The majority of the works investigate how learned representations of neural networks can be used to edit and synthesize new images. 
