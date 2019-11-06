@@ -1,4 +1,4 @@
-# Welcome to the code repository for ARCH 662, the Deep Design Studio
+# Welcome to the code repository for ARCH 660 Fall 2019, the Deep Design Studio
 On this page you can find code that will allow you to explore different 2D-to-2D and 2D-to-3D image editing techniques, as well as collect simple datasets. 
 
 
