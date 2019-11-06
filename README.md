@@ -2,7 +2,7 @@
 On this page you can find code that will allow you to explore different 2D-to-2D and 2D-to-3D image editing techniques, as well as collect simple datasets. 
 
 
-It includes the following folders:
+It includes the following folders and files:
 
 + 2D_3D_style_dream_neural_renderer:
 This folder contains code that allows you to perform style transfer, deep dreaming, or vertex optimization on mesh objects. Note that for style transfer and vertex optimization, a 2D guide image is required. More information on how to run the code is provided below.
@@ -13,11 +13,20 @@ This folder contains code that allows you to perform the deep dreaming technique
 + 2D_to_2D_neural_style_transfer:
 This folder contains code that allows you to perform the 2D neural style transfer technique (used in Google's deep style editing GUI). However, with this code you can specify the input/output resolution. Note that the input would be a 2D 'content' image (i.e., the image whose spatial structure you wish to preserve) and a 2D 'style guide' image (i.e., an image whose style you wish to transfer onto the content image).
 
++ coding_tutorial_prt1:
+This folder contains code that introduces you to basic python concepts (for loop, if statement, etc) as well as basic image processing in python. It also includes the powerpoint that will be given in class. 
+
++ paperspace-code-examples:
+This folder provides two other deep learning examples that are designed to run on the paperspace cloud computing service: fast-style-transfer (which is a 'quick' version of the 2D to 2D neural style transfer above) and training/deploying pix2pix, which is a neural network architecure that performs domain transfer, ie, the network learns to transfer images from one dataset into the style of a separate dataset using generative adversarial network (GAN). To learn more about each project, tutorials are provided in the specific example project folders. 
+
 + simple_scrape_googleimages:
 This folder contains code that allows you to generate a classification dataset by scraping google images. It requires a textfile of desired classes, which it uses as search words to google images. 
 
 + satelliteMapGeneration:
 This is a code repository that allows you to download aerial/satellite maps given a latitude and logitude. This code is a bit tricky to use, and requires an account with maptiles. If you are interested in collecting a satellite dataset, please contact Sandra or Matias, and we can step you through the code. 
+
++ SuggestedReading.txt:
+This file contains a list of resources about deep learning and architecture. 
 
 ## THE BASICS OF PAPERSPACE:
 A Gradient Project is a collection of experiments, code, metrics, and artifacts. Projects can be created manually or automatically from a Job corresponding to the current working directory name.
