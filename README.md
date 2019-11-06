@@ -1,5 +1,5 @@
-# RoboticsBuilding2019
-The code repository for the garden design of the umich Robotics Building
+# Welcome to the code repository for ARCH 662
+On this page you can find code that will allow you to explore
 
 
 ## THE BASICS OF PAPERSPACE:
