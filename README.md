@@ -78,8 +78,6 @@ Note that you can log out of paperspace using
 
 ## UPLOADING YOUR DATA TO PAPERSPACE
 
-There are also multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
-[here]: https://docs.paperspace.com/gradient/data/public-datasets-repository
 
 ## RUNNING A JOB THROUGH PAPERSPACE CLI:
 
