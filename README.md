@@ -31,7 +31,11 @@ This file contains a list of resources about deep learning and architecture.
 The information provided below is a basic introduction into using Paperspace to run the different image editing techniques and paperspace examples. 
 
 ## THE BASICS OF PAPERSPACE:
-A Gradient Project is a collection of experiments, code, metrics, and artifacts. Projects can be created manually or automatically from a Job corresponding to the current working directory name.
+Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
+Each of the folders listed in the previous sections can be considered a Gradient Project. 
+A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as Models, code, and Model outputs), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the Gradient CLI). 
+
+Projects can be created manually or automatically from a Job corresponding to the current working directory name.
 Experiments are used to create and start either a single Job or multiple Jobs (eg for a hyperparameter search or distributed training).  
 Gradient Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure.
 Jobs are part of a larger suite of tools that work seamlessly with Gradient Notebooks, and our Core product, which together form a production-ready ML/AI pipeline.
@@ -40,7 +44,7 @@ A Job consists of:
 
 - a collection of files (code, resources, etc.) from your local computer or GitHub
 - a container (with code dependencies and packages pre-installed)
-- a command to execute (i.e. python main.py or nvidia-smi)
+- a command to execute (i.e. python main.py)
 
 ## INSTALLING/SETTING UP PAPERSPACE:
 
