@@ -1,5 +1,5 @@
 # Welcome to the code repository for ARCH 660 Fall 2019, the Deep Design Studio
-On this page you can find code that will allow you to explore different 2D-to-2D and 2D-to-3D image editing techniques, as well as collect simple datasets. 
+On this page you can find code that will allow you to explore different 2D-to-2D and 2D-to-3D image editing techniques, as well as collect simple datasets. Note that Paperspace is a cloud platform that allows you to access GPUs, which are necessary to run deep learning models efficiently. A tutorial on how to use the code in this repository with Paperspace is given in the following section.
 
 
 It includes the following folders and files:
