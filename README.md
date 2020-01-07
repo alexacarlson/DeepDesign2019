@@ -50,9 +50,9 @@ A Job consists of:
 
 For step by step instructions on using Paperspace, please see the following:
 
-[Uploading your dataset to Paperspace]: https://github.com/alexacarlson/DeepDesign2019/Paperspace_uploadingdata.md
+[Uploading your dataset to Paperspace]:(https://github.com/alexacarlson/DeepDesign2019/Paperspace_uploadingdata.md)
 
-[Running/training models using the Gradient Experiment Builder]: https://github.com/alexacarlson/DeepDesign2019/Paperspace_usingExpBuilder.md
+[Running/training models using the Gradient Experiment Builder]:(https://github.com/alexacarlson/DeepDesign2019/Paperspace_usingExpBuilder.md)
 
-[Running/training models using the Paperspace Command Line Interface(CLI)]: https://github.com/alexacarlson/DeepDesign2019/Paperspace_usingtheCLI.md
+[Running/training models using the Paperspace Command Line Interface(CLI)]:(https://github.com/alexacarlson/DeepDesign2019/Paperspace_usingtheCLI.md)
 
