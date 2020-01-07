@@ -33,12 +33,13 @@ The information provided below is a basic introduction into using Paperspace to 
 ## THE BASICS OF PAPERSPACE:
 Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
 Each of the folders listed in the previous sections can be considered a Gradient Project. 
-A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as Models, code, and Model outputs), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the Gradient CLI). 
+A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as Models, code, and Model outputs), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). 
 
 Projects can be created manually or automatically from a Job corresponding to the current working directory name.
 Experiments are used to create and start either a single Job or multiple Jobs (eg for a hyperparameter search or distributed training).  
+Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed.
 Gradient Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure.
-Experiments are used to train machine learning models.
+
 Jobs are part of a larger suite of tools that work seamlessly with Gradient Notebooks, and our Core product, which together form a production-ready ML/AI pipeline.
 
 A Job consists of:
@@ -75,16 +76,20 @@ By setting the apiKey as an environment variable, you do not have to use the `--
 Note that you can log out of paperspace using
 `paperspace logout`
 
+## UPLOADING YOUR DATA TO PAPERSPACE
+
+There are also multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
+[here]: https://docs.paperspace.com/gradient/data/public-datasets-repository
 
 ## RUNNING A JOB THROUGH PAPERSPACE CLI:
 
-NOTE: for all jobs, the results of the network are saved to the /artifact folder in the paperspace workspace. 
-This means that any input paths used in your scripts need to have /artifacts as their parent directory. /artifacts exist temporarily, and should be retrieved right after the job has completed. Alternatively, you can save results to 
-/storage which persists across jobs and can be accessed by all notebooks/experiments.
+NOTE: for all jobs, the results of the network are saved to the `/artifact` folder in the paperspace workspace. 
+This means that any input paths used in your scripts need to have `/artifacts` as their parent directory. `/artifacts` exist temporarily, and should be retrieved right after the job has completed. Alternatively, you can save results to 
+`/storage` which persists across jobs and can be accessed by all notebooks/experiments.
 
 ### **2D Neural style transfer**
 
-First, need to create notebook via web GUI, upload vgg weights to /storage
+First, need to create notebook via web GUI, upload vgg weights to `/storage`
 
 In terminal on local computer:
 
@@ -112,12 +117,12 @@ and copy the listed jobID
 
 ### **2D class-based deep dreaming**
 
-When using a pertained network, you first need to upload the custom_weights folder to /storage using the notebook tool in the web GUI.
+When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
 
 A few things to keep in mind:
 
 + NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
-+ You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
++ You also have the option of uploading your dreamed images to the `/storage` folder, you would just need to specify their location in the appropriate `run.sh` file
 
 In terminal on local computer:
 
