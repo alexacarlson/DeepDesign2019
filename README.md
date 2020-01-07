@@ -38,6 +38,7 @@ A Gradient Project is a workspace for you to run Experiments and Jobs, store Art
 Projects can be created manually or automatically from a Job corresponding to the current working directory name.
 Experiments are used to create and start either a single Job or multiple Jobs (eg for a hyperparameter search or distributed training).  
 Gradient Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure.
+Experiments are used to train machine learning models.
 Jobs are part of a larger suite of tools that work seamlessly with Gradient Notebooks, and our Core product, which together form a production-ready ML/AI pipeline.
 
 A Job consists of:
@@ -115,9 +116,8 @@ When using a pertained network, you first need to upload the custom_weights fold
 
 A few things to keep in mind:
 
-	— NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
-
-	— You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
++ NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
++ You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
 
 In terminal on local computer:
 
