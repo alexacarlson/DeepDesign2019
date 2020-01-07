@@ -50,9 +50,9 @@ A Job consists of:
 
 For step by step instructions on using Paperspace, please see the following:
 
-[Uploading your dataset to Paperspace]:(Paperspace_uploadingdata.md)
+[Uploading your dataset to Paperspace](Paperspace_uploadingdata.md)
 
-[Running/training models using the Gradient Experiment Builder]:(Paperspace_usingExpBuilder.md)
+[Running/training models using the Gradient Experiment Builder](Paperspace_usingExpBuilder.md)
 
-[Running/training models using the Paperspace Command Line Interface(CLI)]:(Paperspace_usingtheCLI.md)
+[Running/training models using the Paperspace Command Line Interface(CLI)](Paperspace_usingtheCLI.md)
 
