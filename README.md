@@ -13,19 +13,20 @@ This folder contains code that allows you to perform the deep dreaming technique
 + 2D_to_2D_neural_style_transfer:
 This folder contains code that allows you to perform the 2D neural style transfer technique (used in Google's deep style editing GUI). However, with this code you can specify the input/output resolution. Note that the input would be a 2D 'content' image (i.e., the image whose spatial structure you wish to preserve) and a 2D 'style guide' image (i.e., an image whose style you wish to transfer onto the content image). NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE.
 
-+ coding_tutorial_prt1:
-This folder contains code that introduces you to basic python concepts (for loop, if statement, etc) as well as basic image processing in python. It also includes the powerpoint that will be given in class. 
-
-+ paperspace-code-examples:
-This folder provides two other deep learning examples that are designed to run on the paperspace cloud computing service: fast-style-transfer (which is a 'quick' version of the 2D to 2D neural style transfer above) and training/deploying pix2pix, which is a neural network architecure that performs domain transfer, ie, the network learns to transfer images from one dataset into the style of a separate dataset using generative adversarial network (GAN). To learn more about each project, tutorials are provided in the specific example project folders. NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE (see the tutorial provided below)
-
-+ simple_scrape_googleimages:
++ dataset_generation: 
+This folder contains code that can be used for dataset generation. Descriptions of its functionality are below:
+++ simple_scrape_googleimages:
 This folder contains code that allows you to generate a classification dataset by scraping google images. It requires a textfile of desired classes, which it uses as search words to google images. 
 
-+ satelliteMapGeneration:
+++ satelliteMapGeneration:
 This is a code repository that allows you to download aerial/satellite maps given a latitude and logitude. This code is a bit tricky to use, and requires an account with maptiles. If you are interested in collecting a satellite dataset, please contact Sandra or Matias, and we can step you through the code. 
 
-+ SuggestedReading.txt:
++class_material:
+This folder contains material that we have discussed during lecture.
+++ coding_tutorial_prt1:
+This folder contains code that introduces you to basic python concepts (for loop, if statement, etc) as well as basic image processing in python. It also includes the powerpoint that will be given in class. 
+
+++ SuggestedReading.txt:
 This file contains a list of resources about deep learning and architecture. 
 
 The information provided below is a basic introduction into using Paperspace to run the different image editing techniques and paperspace examples. 
@@ -38,6 +39,16 @@ A Job consists of a collection of files (code, resources, etc.) from your local 
 
 Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). 
 Anything you store in `/storage` directory will be accessible across multiple runs of Jobs and Notebooks in a given storage region.
+Data
+Persistent Storage
+
+Persistent storage is a persistent filesystem automatically mounted on every Experiment, Job, and Notebook and is ideal for storing data like images, datasets, model checkpoints, and more. Learn more here.
+Artifact Storage
+
+Artifact storage is collected and made available after the Experiment or Job run in the CLI and web interface. You can download any files that your job has placed in the /artifacts directory from the CLI or UI. If you need to get result data from a job run out of Gradient, use the Artifacts directory. Learn more here.
+Workspace Storage
+
+The Workspace storage is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  If you need to push code up to Gradient and run it, using the Workspace storage is the way to do it. Learn more here.
 
 For step by step instructions on using Paperspace, please see the following:
 
