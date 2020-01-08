@@ -32,21 +32,12 @@ The information provided below is a basic introduction into using Paperspace to 
 
 ## THE BASICS OF PAPERSPACE:
 Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
-Each of the folders listed in the previous sections can be considered a Gradient Project. 
-A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as Models, code, and Model outputs), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). 
+The folders listed in the previous sections can be considered a Gradient Project. 
+A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as models and code), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed. Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure. You can run multiple jobs within a single experiment.
+A Job consists of a collection of files (code, resources, etc.) from your local computer or GitHub, a container (with code dependencies and packages pre-installed), and a command to execute (i.e. python main.py). It is recommended to use the Gradient Experiment builder to run jobs. A step-by-step tutorial on how to use this feature is given below.
 
-Projects can be created manually or automatically from a Job corresponding to the current working directory name.
-Experiments are used to create and start either a single Job or multiple Jobs (eg for a hyperparameter search or distributed training).  
-Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed.
-Gradient Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure.
-
-Jobs are part of a larger suite of tools that work seamlessly with Gradient Notebooks, and our Core product, which together form a production-ready ML/AI pipeline.
-
-A Job consists of:
-
-- a collection of files (code, resources, etc.) from your local computer or GitHub
-- a container (with code dependencies and packages pre-installed)
-- a command to execute (i.e. python main.py)
+Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). 
+Anything you store in `/storage` directory will be accessible across multiple runs of Jobs and Notebooks in a given storage region.
 
 For step by step instructions on using Paperspace, please see the following:
 
