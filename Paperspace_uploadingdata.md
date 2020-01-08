@@ -31,10 +31,11 @@ This action creates a separate web page that is running the notebook instance.
 
 ![select notebook options and start the notebook running](tutorial_images/paperspace_nbsubopt.png)
 
-(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of you Paperspace server. These of the files that all of your projects/jobs can access
+(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of you Paperspace server. These of the files that all of your projects/jobs can access. The `/datasets` folder holds all of the public datasets mentioned above, where as `/storage` is your persistent storage space, which means that anything you upload there will 'persist' across jobs, experiments, and projects. Note that you will be charged for the amount of storage space you use. To upload a dataset from your local computer, you first need to zip the dataset locally. You then can upload it by selecting the Upload button on the right hand side of the console. This will prompt you to select a file to upload from you local file system. Once you have selected your zipped dataset, make sure to hit the blue upload button next to your zipped filename to complete the upload.
 
 ![start zipped dataset upload](tutorial_images/paperspace_unzipupload.png)
 
 
-(4)
+(4) Now that your zipped file is uploaded into Paperspace, you need to unzip it. An easy way to do this is to upload the `unzipfile.sh` script provided in this repository. Once that script is uploaded, select the New button (next to the upload button) and select Terminal from the dropdown menu. This will take you to a terminal for the notebook. If you typw `ls`, in the command line, you can view the files/folders. To unzip your dataset, type `bash unzipfile.sh <yourdatasetfilename.zip>`, or `bash unzipfile.sh storage/<yourdatasetfilename.zip>` if you placed your dataset into persistent storage, and hit the enter key. There will a large text output to the terminal screen once the script is running. Once it is finished, you can hit the back button on your browser to return to the notebook filesystem, where you can view the unzipped dataset. 
+
 ![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
