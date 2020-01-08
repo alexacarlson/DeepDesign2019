@@ -15,19 +15,20 @@ This folder contains code that allows you to perform the 2D neural style transfe
 
 + dataset_generation: 
 This folder contains code that can be used for dataset generation. Descriptions of its functionality are below:
-++ simple_scrape_googleimages:
-This folder contains code that allows you to generate a classification dataset by scraping google images. It requires a textfile of desired classes, which it uses as search words to google images. 
 
-++ satelliteMapGeneration:
-This is a code repository that allows you to download aerial/satellite maps given a latitude and logitude. This code is a bit tricky to use, and requires an account with maptiles. If you are interested in collecting a satellite dataset, please contact Sandra or Matias, and we can step you through the code. 
+  ++ simple_scrape_googleimages:
+  This folder contains code that allows you to generate a classification dataset by scraping google images. It requires a     textfile of desired classes, which it uses as search words to google images. 
+
+  ++ satelliteMapGeneration:
+  This is a code repository that allows you to download aerial/satellite maps given a latitude and logitude. This code is a bit tricky to use, and requires an account with maptiles. If you are interested in collecting a satellite dataset, please contact Sandra or Matias, and we can step you through the code. 
 
 +class_material:
 This folder contains material that we have discussed during lecture.
-++ coding_tutorial_prt1:
-This folder contains code that introduces you to basic python concepts (for loop, if statement, etc) as well as basic image processing in python. It also includes the powerpoint that will be given in class. 
+  ++ coding_tutorial_prt1:
+  This folder contains code that introduces you to basic python concepts (for loop, if statement, etc) as well as basic image processing in python. It also includes the powerpoint that will be given in class. 
 
-++ SuggestedReading.txt:
-This file contains a list of resources about deep learning and architecture. 
+  ++ SuggestedReading.txt:
+  This file contains a list of resources about deep learning and architecture. 
 
 The information provided below is a basic introduction into using Paperspace to run the different image editing techniques and paperspace examples. 
 
