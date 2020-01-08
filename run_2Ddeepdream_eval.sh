@@ -19,4 +19,4 @@ python visualize_class.py \
 	--image_h 720 \
 	--image_w 1280 \
 	--dream_class ${DREAM_CLASS} \
-	--iterations ${NUM_ITERS}
+	--iterations NUM_ITERS
