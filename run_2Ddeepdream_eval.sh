@@ -1,9 +1,14 @@
-IMAGE_DATA='/storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png'
-WEIGHTS_DIR='/storage/acadia_general_arch_styles_netweights'
-#RESULTS_DIR='/artifacts/test'
-RESULTS_DIR='/storage/test'
-NUM_ITERS=500
-DREAM_CLASS='gothic'
+#IMAGE_DATA='/storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png'
+#WEIGHTS_DIR='/storage/acadia_general_arch_styles_netweights'
+#RESULTS_DIR='/storage/test'
+#NUM_ITERS=500
+#DREAM_CLASS='gothic'
+
+IMAGE_DATA=$0
+WEIGHTS_DIR=$1
+RESULTS_DIR=$2
+NUM_ITERS=$3
+DREAM_CLASS=$4
 
 cd 2D_class_based_dreaming
 #visclass-tf \
