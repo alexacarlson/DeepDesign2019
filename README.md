@@ -30,6 +30,10 @@ This folder contains material that we have discussed during lecture.
   + SuggestedReading.txt:
   This file contains a list of resources about deep learning and architecture. 
 
++ unzipfile.sh: this file can be used to unzip `.zip` files that you have uploaded into the Paperspace Persistent Storage location. See the tutorial on uploading and downloading data on Paperspace listed below for more detail on usage.
+
++ zipfile.sh: this file can be used to zip folders that are in Paperspace Persistent Storage location. See the tutorial on uploading and downloading data on Paperspace listed below for more detail on usage.
+
 The information provided below is a basic introduction into using Paperspace to run the different image editing techniques and paperspace examples. 
 
 ## THE BASICS OF PAPERSPACE:
@@ -45,7 +49,7 @@ Paperspace also has several ways in which you can store your code, dataset, and 
 
 The second, called Workspace storage, is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  
 
-The third, called Artifact storage, is collected and made available after the Experiment or Job run in the CLI and web interface. You can download any files that your job has placed in the /artifacts directory from the CLI or UI. If you need to get result data from a job run out of Gradient, use the Artifacts directory. 
+The third, called Artifact storage, is collected and made available after the Experiment or Job run is completed. You can download any files that your job has placed in the /artifacts directory from the web UI. If you need to get result data, such as images, from a job run out of Gradient, use the Artifacts directory. 
 
 For step by step instructions on using Paperspace, please see the following:
 
