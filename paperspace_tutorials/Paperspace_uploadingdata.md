@@ -55,13 +55,18 @@ Just as an aside, there are multiple datasets that are publicly available in Pap
 You can also use Gradient Jupyter notebooks to download data or model outputs from Paperspace. 
 There are two locations where you can write and read data in Paperspace: the `/storage` (which is persistent storage that can be accessed by any Project) and `/artifacts` (which is associated with a specific job/experiment within your Project workspace).
 
-## Download from Persistent storage
+## Download from `/storage`
 
 (1) Create a notebook (using the instructions [here](#creating-a-jupyter-notebook-in-paperspace)) or start up an already created notebook, and toggle to the notebook window.
 
-(2) To download data, 
+(2) To download a single file, navigate through the `/storage` file hierarchy to that file location. Select the checkbox next the filename, and then select the Download button. NOTE: the Download button will only appear once you have selected the file to download.
+
+![select storage item](tutorial_images/paperspace_downloadstorage_singlefile.png)
+
+(3) To download a folder, you will have to zip the folder and then follow the instructions in the above step. 
 
 ## Download from `/artifacts`
+You don't need a jupyter notebook running to do this! Just login to your Paperspace account. 
 
 (1) Toggle to the Projects Console. Select the Project that contains the experiment from which you want to retrieve the output.
 
