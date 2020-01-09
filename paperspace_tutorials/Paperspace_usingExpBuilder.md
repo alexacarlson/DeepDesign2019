@@ -1,7 +1,7 @@
 # Executing Models using Paperspace Gradient Experiment Builder
 The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
-This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#evaluating 2D class-based deep dream). We also provide an example of how to run code from a separate github repository as well. 
+This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#evaluating-2D-class-based-deep-dream). We also provide an example of how to run code from a separate github repository as well. 
 
 ## Running Deep Dream using the Gradient Experiment Builder
 After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
