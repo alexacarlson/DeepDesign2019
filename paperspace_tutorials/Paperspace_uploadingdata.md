@@ -1,16 +1,15 @@
-Jump to uploading data to Paperspace [here](#uploading-data-to-paperspace).
-Jump to downloading data from Paperspace [here](#downloading-outputs-from-paperspace).
-
-# Uploading data to Paperspace
-
-Just as an aside, there are multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
-[here](https://docs.paperspace.com/gradient/data/public-datasets-repository)
-
-The simplest way to upload datasets (or code) from your local computer to Paperspace is using a Gradient Jupyter Notebook. 
+The simplest way to transfer data/outputs between local computer and Paperspace is using a Gradient Jupyter Notebook. 
 In general, Jupyter notebooks are incredibly powerful; they are an interactive python coding environment and allow you to run snippets of code to see how they function. They are used for tensorflow tutorials (you can download them too! [see the neural network tutorials available](https://www.tensorflow.org/tutorials/images/cnn) ). If you upload any jupyter notebook code to Paperspace, you can use its contents to train/test a model as well within the paperspace notebook environment.
 
-The following steps in this tutorial describe only how to upload datasets using the Gradient Jupyter Notebook feature. To learn more about how you can use these notebooks in paperspace, please refer [here](https://support.paperspace.com/hc/en-us/articles/115004535973-Getting-Started-with-Notebooks)
+The following steps in this tutorial describe only how to upload datasets and download models/outputs using the Gradient Jupyter Notebook feature. To learn more about how you can use these notebooks in paperspace, please refer [here](https://support.paperspace.com/hc/en-us/articles/115004535973-Getting-Started-with-Notebooks)
 
+Jump to creating a Jupyter notebook in Paperspace [here](#creating-a-jupyter-notebook-in-paperspace)
+
+Jump to uploading data to Paperspace [here](#uploading-data-to-paperspace).
+
+Jump to downloading data from Paperspace [here](#downloading-outputs-from-paperspace).
+
+# Creating a Jupyter notebook in Paperspace
 
 (1) After logging into Paperspace, toggle your mouse to the Gradient section (in the left hand column of the Paperspace consule) to see the drop down menu of Gradient options. Select Notebooks (second option) to access the control console for jupyter notebooks. 
 
@@ -34,7 +33,16 @@ This action creates a separate web page that is running the notebook instance.
 
 ![select notebook options and start the notebook running](tutorial_images/paperspace_nbsubopt.png)
 
-(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of you Paperspace server. These of the files that all of your projects/jobs can access. The `/datasets` folder holds all of the public datasets mentioned above, where as `/storage` is your persistent storage space, which means that anything you upload there will 'persist' across jobs, experiments, and projects. Note that you will be charged for the amount of storage space you use. To upload a dataset from your local computer, you first need to zip the dataset locally. You then can upload it by selecting the Upload button on the right hand side of the console. This will prompt you to select a file to upload from you local file system. Once you have selected your zipped dataset, make sure to hit the blue upload button next to your zipped filename to complete the upload.
+(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of you Paperspace server. These of the files that all of your projects/jobs can access. The `/datasets` folder holds all of the public datasets mentioned above, where as `/storage` is your persistent storage space, which means that anything you upload there will 'persist' across jobs, experiments, and projects. Note that you will be charged for the amount of storage space you use.
+
+# Uploading data to Paperspace
+
+Just as an aside, there are multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
+[here](https://docs.paperspace.com/gradient/data/public-datasets-repository).
+
+(1) Create a notebook (using the instructions [here](#creating-a-jupyter-notebook-in-paperspace)) or start up an already created notebook, and toggle to the notebook window.
+
+(2) To upload a dataset from your local computer, you first need to zip the dataset locally. You then can upload it by selecting the Upload button on the right hand side of the console. This will prompt you to select a file to upload from you local file system. Once you have selected your zipped dataset, make sure to hit the blue upload button next to your zipped filename to complete the upload.
 
 ![start zipped dataset upload](tutorial_images/paperspace_unzipupload.png)
 
