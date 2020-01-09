@@ -1,8 +1,13 @@
 
-INPUT_OBJ_PATH='/storage/3Dmodels/bench.obj'
-OUTPUT_FILENAME=3Ddreamed_bench.gif
-OUTPUT_DIR=/artifacts/results_3D_dream
-NUM_ITER=300
+#INPUT_OBJ_PATH='/storage/3Dmodels/bench.obj'
+#OUTPUT_FILENAME=3Ddreamed_bench.gif
+#OUTPUT_DIR=/artifacts/results_3D_dream
+#NUM_ITER=300
+
+INPUT_OBJ_PATH=$1
+OUTPUT_FILENAME=$2
+OUTPUT_DIR=$3
+NUM_ITER=$4
 
 cd 2D_3D_style_dream_neural_renderer
 
