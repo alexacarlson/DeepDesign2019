@@ -1,4 +1,4 @@
-The simplest way to transfer data/outputs between local computer and Paperspace is using a Gradient Jupyter Notebook. 
+The simplest way to transfer data/outputs between your local computer and Paperspace is using a Gradient Jupyter Notebook. 
 In general, Jupyter notebooks are incredibly powerful; they are an interactive python coding environment and allow you to run snippets of code to see how they function. They are used for tensorflow tutorials (you can download them too! [see the neural network tutorials available](https://www.tensorflow.org/tutorials/images/cnn) ). If you upload any jupyter notebook code to Paperspace, you can use its contents to train/test a model as well within the paperspace notebook environment.
 
 The following steps in this tutorial describe only how to upload datasets and download models/outputs using the Gradient Jupyter Notebook feature. To learn more about how you can use these notebooks in paperspace, please refer [here](https://support.paperspace.com/hc/en-us/articles/115004535973-Getting-Started-with-Notebooks)
@@ -46,11 +46,14 @@ Just as an aside, there are multiple datasets that are publicly available in Pap
 
 ![start zipped dataset upload](tutorial_images/paperspace_unzipupload.png)
 
-
 (4) Now that your zipped file is uploaded into Paperspace, you need to unzip it. An easy way to do this is to upload the `unzipfile.sh` script provided in this repository. Once that script is uploaded, select the New button (next to the upload button) and select Terminal from the dropdown menu. This will take you to a terminal for the notebook. If you typw `ls`, in the command line, you can view the files/folders. To unzip your dataset, type `bash unzipfile.sh <yourdatasetfilename.zip>`, or `bash unzipfile.sh storage/<yourdatasetfilename.zip>` if you placed your dataset into persistent storage, and hit the enter key. There will a large text output to the terminal screen once the script is running. Once it is finished, you can hit the back button on your browser to return to the notebook filesystem, where you can view the unzipped dataset. 
 
 ![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
 
 # Downloading outputs from Paperspace
 
-You can also use Gradient Jupyter notebooks to download data or model outputs from Paperspace. Assuming you have started running a jupyter notebook on paperspace (see [here](#) on how to do that),
+You can also use Gradient Jupyter notebooks to download data or model outputs from Paperspace. 
+
+(1) Create a notebook (using the instructions [here](#creating-a-jupyter-notebook-in-paperspace)) or start up an already created notebook, and toggle to the notebook window.
+
+(2) To download data
