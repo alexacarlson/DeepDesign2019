@@ -1,4 +1,23 @@
-# Executing Models on Paperspace using Gradient Experiment Builder
+# Executing Models using Paperspace Gradient Experiment Builder
+The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. 
+
+After signing in, click on Gradient in the navigation bar on the left to choose Projects. Click on the Create Project button and select Create Standalone Project. Enter a name for the project when prompted.
+
+Once you have created a Project, select the project to enter its console.
+
+Select the light blue `+ Create Experiment` button on the right hand side of the Project console.
+This takes you through various options to set up your Experiment.
+
+The first step is to choose a machine type for scheduling the Experiment.
+
+In Gradient, Experiments are based on a container image that provides the runtime and dependencies.
+
+With the runtime container in place, we now need to point Gradient to the dataset and the training script. This is done through the integration with GitHub. Gradient pulls the GitHub repo into the experiment workspace and uses the assets for the training job.
+
+Finally, let’s define the command for the job which is the Python script that executes within the context of the runtime of the container. When the script exits gracefully, the job is marked as complete.
+
+We are now ready to kick off the training job by clicking on the Submit Experiment button.
+Gradient adds the job to the queue and schedules it in one of the chosen machine types. In a few minutes, the job execution completes.
 
 ## git repo
 https://github.com/alexacarlson/DeepDesign2019.git
