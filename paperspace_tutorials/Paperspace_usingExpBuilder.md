@@ -1,16 +1,31 @@
 # Executing Models using Paperspace Gradient Experiment Builder
 The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
-After signing in, click on Gradient in the navigation bar on the left to choose Projects. Click on the Create Project button and select Create Standalone Project. Enter a name for the project when prompted.
+After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
 
-Once you have created a Project, select the project to enter its console.
+![Go to projects console](tutorial_images/paperspace_gradientprojecttoggle.png)
 
-Select the light blue `+ Create Experiment` button on the right hand side of the Project console.
-This takes you through various options to set up your Experiment.
+Click on the `+ Create Project` button and select `Create Standalone Project`. This generates a white popup screen that guides you through the different options for setting up your Project. Enter a name for the project when prompted. 
 
-The first step is to choose a machine type for scheduling the Experiment.
+![Setting up a new project](tutorial_images/paperspace_projectconsole.png)
 
-In Gradient, Experiments are based on a container image that provides the runtime and dependencies.
+Once you have created a Project, it will appear at the bottom of the Projects console. All of your Projects (and basic information about how many experiments you have in your project, recent activity, etc) will appear here. 
+Select a project to enter its console. In the depicted example, we enter the testcode project console.
+
+Now that you are in Select the light blue `+ Create Experiment` button on the right hand side of the Project console.
+This takes you to a new page, where you will step through various options to set up your Experiment.
+
+![Setting up a new experiment](tutorial_images/paperspace_experimentbuilderconsole.png)
+
+The first section to appear allows you to choose the provided paperspace sample examples; scroll past this to section 01 (unless you would like to run through those). 
+The first step is to choose a machine type for scheduling the Experiment. For the code in our DeepDesign github repository, you can choose either the `P4000` or `P5000` machine types. However, depening on the size of your inputs and outputs, you may need to select a machine type with more RAM (or random access memory; this is similar to working memory for humans, and defines how much memory the machine has to 'solve the problem' with the information you input to it).
+
+![Select experiment machine](tutorial_images/paperspace_expbuilderchoosemachine.png)
+
+
+Scroll to section 02, where you will input a docker container image to use. This sets up the computing environment that will be run on the machine you chose in the previous section. The best way to understand a container image is that it is a blueprint that defines all the software dependcies that your code will need to run successfully. 
+
+![Select experiment machine](tutorial_images/paperspace_experimentbuildercontainerworkspacedef.png)
 
 With the runtime container in place, we now need to point Gradient to the dataset and the training script. This is done through the integration with GitHub. Gradient pulls the GitHub repo into the experiment workspace and uses the assets for the training job.
 
