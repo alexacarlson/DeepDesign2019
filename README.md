@@ -5,7 +5,7 @@ On this page you can find code that will allow you to explore different 2D-to-2D
 It includes the following folders and files:
 
 + 2D_3D_style_dream_neural_renderer:
-This folder contains code that allows you to perform style transfer, deep dreaming, or vertex optimization on mesh objects. Note that for style transfer and vertex optimization, a 2D guide image is required. More information on how to run the code is provided below. NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE. [See the tutorial provided below](#running-and-training-models-using-the-gradient-experiment-builder).
+This folder contains code that allows you to perform style transfer, deep dreaming, or vertex optimization on mesh objects. Note that for style transfer and vertex optimization, a 2D guide image is required. More information on how to run the code is provided below. NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE. [See the tutorial provided below](#for-step-by-step).
 
 + 2D_class_based_dreaming:
 This folder contains code that allows you to perform the deep dreaming technique from Google, but allows you to specify an output class (such as fountain, arch, etc), meaning that you can hallucinate class features in images instead of arbitrary features learned by higher layer neurons. The folder also contains code that allows you to train your own classification neural network on a given dataset, which means you can specificy what image resolution you would like as well as what classes you would like. NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE (see the tutorial provided below).
