@@ -33,12 +33,12 @@ This action creates a separate web page that is running the notebook instance.
 
 ![select notebook options and start the notebook running](tutorial_images/paperspace_nbsubopt.png)
 
-(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of you Paperspace server. These of the files that all of your projects/jobs can access. The `/datasets` folder holds all of the public datasets mentioned above, where as `/storage` is your persistent storage space, which means that anything you upload there will 'persist' across jobs, experiments, and projects. Note that you will be charged for the amount of storage space you use.
+(3) Toggle to the separate web page where your notebook is running. Under the files tab, you can view the file system of your Paperspace server. It is structed as a standard file system GUI, and you can navigate it as such. These of the files that all of your projects/jobs can access. The `/datasets` folder holds all of the public datasets mentioned above, where as `/storage` is your persistent storage space, which means that anything you upload there will 'persist' across jobs, experiments, and projects. Note that you will be charged for the amount of storage space you use.
 
 # Uploading data to Paperspace
 
-Just as an aside, there are multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
-[here](https://docs.paperspace.com/gradient/data/public-datasets-repository).
+There are multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
+[here](https://docs.paperspace.com/gradient/data/public-datasets-repository). The following steps outline how to upload your own dataset to Paperspace.
 
 (1) Create a notebook (using the instructions [here](#creating-a-jupyter-notebook-in-paperspace)) or start up an already created notebook, and toggle to the notebook window.
 
@@ -63,7 +63,14 @@ There are two locations where you can write and read data in Paperspace: the `/s
 
 ![select storage item](tutorial_images/paperspace_downloadstorage_singlefile.png)
 
-(3) To download a folder, you will have to zip the folder and then follow the instructions in the above step. 
+(3) To download a folder, you will have to zip the folder and then follow the instructions in the above step. Make sure to upload the file `zipfile.sh` to your `/storage` location. In the upper right hand corner of the notebook, select `New` and in the drop down menu select `terminal`. 
+
+![zip terminal](tutorial_images/paperspace_fromstorage_zipfile_getterminal.png)
+
+Once you have a terminal open, `cd` into the location where you upload the `zipfile.sh` script. In the below example, I place it in `storage` so the command I run in the terminal command line is `cd /storage`. You can use the command `ls` to view the contents of the `/storage` folder. To zip a folder, type the command `bash zipfile.sh <your folder name>` and hit enter. There will be a lot of text output to the terminal from running the file. Wait until it is complete to toggle back to the noetbook file system gui. There you will see your zipped folder!
+
+![zip terminal](tutorial_images/paperspace_fromstorage_zipfile_getterminal.png)
+
 
 ## Download from `/artifacts`
 You don't need a jupyter notebook running to do this! Just login to your Paperspace account. 
