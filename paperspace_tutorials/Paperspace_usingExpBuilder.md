@@ -1,7 +1,7 @@
 # Executing Models using Paperspace Gradient Experiment Builder
 The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
-This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository. We also provide an example of how to run code from a separate github repository as well. 
+This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#Evaluating 2D class-based deep dream). We also provide an example of how to run code from a separate github repository as well. 
 
 ## Running Deep Dream using the Gradient Experiment Builder
 After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
@@ -40,7 +40,13 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 ## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
 You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. 
 
-### Evaluating 2D deep dream 
+### (#Evaluating 2D class-based deep dream) 
+When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
+
+A few things to keep in mind:
+
+  + NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
+  + You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
 
 2D deep dream Docker container image:
 
@@ -51,13 +57,14 @@ Workspace:
 `https://github.com/alexacarlson/DeepDesign2019.git`
 
 Command Format:
+
 `bash run_2Ddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
 
 Command Example:
 
 `bash run_2Ddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500 720 1280`
 
-### Training a classifcation network on your dataset to use for 2D deep dream
+### Training a classifcation network on your dataset to use for 2D class-based deep dream
 
 2D deep dream Docker container image:
 
@@ -68,6 +75,7 @@ Workspace:
 `https://github.com/alexacarlson/DeepDesign2019.git`
 
 Command Format:
+
 `bash run_2Ddeepdream_training.sh TRAIN_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR NUM_ITERS`
 
 Command Example:
@@ -75,6 +83,7 @@ Command Example:
 `bash run_2Ddeepdream_training.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
 
 ### Running 2D style transfer
+First, need to create notebook via web GUI, upload vgg weights, called `imagenet-vgg-verydeep-19.mat`, to `/storage`
 
 2D style transfer Docker container image:
 
