@@ -38,7 +38,7 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 ![Select command](tutorial_images/paperspace_expbuildersubmit.png)
 
 ## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
-You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. 
+You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. It is important to note that all of the below commands require an output filename as an input. You can save to either `/storage` or to `/artifacts` (which is the default output location for any job/experiment). 
 
 ### Evaluating 2D class-based deep dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
