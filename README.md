@@ -49,7 +49,7 @@ Paperspace also has several ways in which you can store your code, dataset, and 
 
 The second, called Workspace storage, is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  
 
-The third, called Artifact storage, is collected and made available after the Experiment or Job run is completed. You can download any files that your job has placed in the /artifacts directory from the web UI. If you need to get result data, such as images, from a job run out of Gradient, use the Artifacts directory. 
+The third, called Artifact storage, is collected and made available after the Experiment or Job run is completed. You can download any files that your job has placed in the /artifacts directory from the web UI. If you need to get result data, such as images, from a job run out of Gradient, use the Artifacts directory. Note that the total of Artifact storage cannot exceed ~200 GB. If you find you need more space, then it is recommended to use Persistent storage.
 
 For step by step instructions on using Paperspace, please see the following:
 
