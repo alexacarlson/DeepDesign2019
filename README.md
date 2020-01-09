@@ -35,27 +35,23 @@ The information provided below is a basic introduction into using Paperspace to 
 ## THE BASICS OF PAPERSPACE:
 Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
 The folders listed in the previous sections can be considered a Gradient Project. 
-A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as models and code), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed. Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure. You can run multiple jobs within a single experiment.
+A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as models and code), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). 
+
+Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed. Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure. You can run multiple jobs within a single experiment.
+
 A Job consists of a collection of files (code, resources, etc.) from your local computer or GitHub, a container (with code dependencies and packages pre-installed), and a command to execute (i.e. python main.py). It is recommended to use the Gradient Experiment builder to run jobs. A step-by-step tutorial on how to use this feature is given below.
 
-Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). 
-Anything you store in `/storage` directory will be accessible across multiple runs of Jobs and Notebooks in a given storage region.
-Data
-Persistent Storage
+Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). The first, called Persistent storage, is a persistent filesystem automatically mounted on every Experiment, Job, and Notebook and is ideal for storing data like images, datasets, model checkpoints, and more. Anything you store in `/storage` directory will be persistently stored in a given storage region.
 
-Persistent storage is a persistent filesystem automatically mounted on every Experiment, Job, and Notebook and is ideal for storing data like images, datasets, model checkpoints, and more. Learn more here.
-Artifact Storage
+The second, called Workspace storage, is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  
 
-Artifact storage is collected and made available after the Experiment or Job run in the CLI and web interface. You can download any files that your job has placed in the /artifacts directory from the CLI or UI. If you need to get result data from a job run out of Gradient, use the Artifacts directory. Learn more here.
-Workspace Storage
-
-The Workspace storage is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  If you need to push code up to Gradient and run it, using the Workspace storage is the way to do it. Learn more here.
+The third, called Artifact storage, is collected and made available after the Experiment or Job run in the CLI and web interface. You can download any files that your job has placed in the /artifacts directory from the CLI or UI. If you need to get result data from a job run out of Gradient, use the Artifacts directory. 
 
 For step by step instructions on using Paperspace, please see the following:
 
-[Uploading your dataset to Paperspace](paperspace_tutorials/Paperspace_uploadingdata.md)
+[Uploading your dataset to and downloading your model outputs from Paperspace](paperspace_tutorials/Paperspace_uploadingdata.md)
 
 [Running/training models using the Gradient Experiment Builder](paperspace_tutorials/Paperspace_usingExpBuilder.md)
 
-[Running/training models using the Paperspace Command Line Interface(CLI)](paperspace_tutorials/Paperspace_usingtheCLI.md)
+[Running/training models using the Paperspace Command Line Interface (NOT RECOMMENDED)](paperspace_tutorials/Paperspace_usingtheCLI.md)
 
