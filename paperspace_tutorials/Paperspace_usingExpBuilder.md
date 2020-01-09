@@ -40,7 +40,7 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 ## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
 You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. 
 
-### (#Evaluating 2D class-based deep dream) 
+### Evaluating 2D class-based deep dream
 When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
 
 A few things to keep in mind:
