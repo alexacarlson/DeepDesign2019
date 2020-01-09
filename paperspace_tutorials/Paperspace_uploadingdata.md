@@ -63,9 +63,22 @@ There are two locations where you can write and read data in Paperspace: the `/s
 
 ## Download from artifacts
 
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
-![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+(1) Toggle to the Projects Console. Select the Project that contains the experiment from which you want to retrieve the output.
+
+![select project](tutorial_images/paperspace_donwloadartifact_selectproject.png)
+
+(2) Within the Project console, select the experiment from which you want to retrieve the output.
+
+![select experiment](tutorial_images/paperspace_downloadartifact_selectexp.png)
+
+(3) Once in the experiment console, select the `Status` button (in the below example, it was a successful run, so it is labeled as such) which will take you to the logs and outputs of the experiment.
+
+![select experiment contents](tutorial_images/paperspace_downloadartifact_selectexpforartifact.png)
+
+(4) Select the `Artifacts` button. This will take you to the artifacts console.
+
+![select artifacts](tutorial_images/paperspace_downloadartifacts_selectartifacttab.png)
+
+(5) Select the `Download` button next to the artifact/output you wish to download. You will be prompted in a pop-up window to select a location on your local computer where you would like to store the artifact.
+
+![download to local computer](tutorial_images/paperspace_downloadartifacts_download.png)
