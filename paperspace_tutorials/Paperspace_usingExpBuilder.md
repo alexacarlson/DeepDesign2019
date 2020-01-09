@@ -1,6 +1,9 @@
 # Executing Models using Paperspace Gradient Experiment Builder
 The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
+This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository. We also provide an example of how to run code from a separate github repository as well. 
+
+## Running Deep Dream using the Gradient Experiment Builder
 After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
 
 ![Go to projects console](tutorial_images/paperspace_gradientprojecttoggle.png)
@@ -34,27 +37,52 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 
 ![Select command](tutorial_images/paperspace_expbuildersubmit.png)
 
-## git repo
-https://github.com/alexacarlson/DeepDesign2019.git
+## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
+You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. 
 
-## Running 2D deep dream
+### Evaluating 2D deep dream 
 
-2D deep dream Docker image:
+2D deep dream Docker container image:
 
 `acarlson32/visclass-tf:firstimage`
 
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
 Command Format:
-`bash run_2Ddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS`
+`bash run_2Ddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
 
 Command Example:
 
-`bash run_2Ddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
+`bash run_2Ddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500 720 1280`
 
-## Running 2D style transfer
+### Training a classifcation network on your dataset to use for 2D deep dream
 
-2D style transfer docker image:
+2D deep dream Docker container image:
+
+`acarlson32/visclass-tf:firstimage`
+
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
+Command Format:
+`bash run_2Ddeepdream_training.sh TRAIN_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR NUM_ITERS`
+
+Command Example:
+
+`bash run_2Ddeepdream_training.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
+
+### Running 2D style transfer
+
+2D style transfer Docker container image:
 
 `acarlson32/neuralstyle-tf:firstimage`
+
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
 
 Command Format:
 
@@ -64,16 +92,58 @@ Command Example:
 
 `bash run_2Dneuralstyletransfer.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
 
-## Running 2D to 3D neural renderer
+### Running 2D to 3D neural renderer for 3D deep dreaming
 
-Neural Renderer docker image:
+Neural Renderer Docker container image:
 
 `acarlson32/2d3d_neuralrenderer:firstimage`
 
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
 Command Format:
 
-bash run_2Dto3Ddeepdream.sh /storage/3Dmodels/bench.obj 3Ddreamed_bench.gif /artifacts/results_3D_dream 300
+`bash run_2Dto3Ddeepdream.sh INPUT_OBJ_PATH OUTPUT_FILENAME OUTPUT_DIR NUM_ITER`
 
-bash run_2Dto3Dstyletransfer.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree.gif /artifacts/results_2D_to_3D_styletransfer
+Command Example: 
 
-bash run_2Dto3Dvertexoptimization.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree /artifacts/results_vertoptim 250
+`bash run_2Dto3Ddeepdream.sh /storage/3Dmodels/bench.obj 3Ddreamed_bench.gif /artifacts/results_3D_dream 300`
+
+### Running 2D to 3D neural renderer for 2D to 3D style transfer
+
+Neural Renderer Docker container image:
+
+`acarlson32/2d3d_neuralrenderer:firstimage`
+
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
+Command Format:
+
+`bash run_2Dto3Dstyletransfer.sh INPUT_OBJ_PATH INPUT_2D_PATH OUTPUT_FILENAME OUTPUT_DIR STYLE_WEIGHT CONTENT_WEIGHT NUM_ITERS`
+
+Command Example: 
+
+`bash run_2Dto3Dstyletransfer.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree.gif /artifacts/results_2D_to_3D_styletransfer 1.0 2e9 1000`
+
+### Running 2D to 3D neural renderer for 2D to 3D vertex optimization
+
+Neural Renderer Docker container image:
+
+`acarlson32/2d3d_neuralrenderer:firstimage`
+
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
+Command Format:
+
+`bash run_2Dto3Dvertexoptimization.sh INPUT_OBJ_PATH INPUT_2D_PATH OUTPUT_FILENAME OUTPUT_DIR NUM_ITERS`
+
+Command Example: 
+
+`bash run_2Dto3Dvertexoptimization.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree /artifacts/results_vertoptim 250`
+
+## Running other github repositories using the Gradient Experiment Builder
