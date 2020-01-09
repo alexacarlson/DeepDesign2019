@@ -1,7 +1,7 @@
 # Uploading data to Paperspace
 
 Just as an aside, there are multiple datasets that are publicly available in Paperspace. They are located in the `/datasets` folder, and can be accessed in any project. A list of these datasets (and a brief description of them) is found 
-[here]: https://docs.paperspace.com/gradient/data/public-datasets-repository
+[here](https://docs.paperspace.com/gradient/data/public-datasets-repository)
 
 The simplest way to upload datasets (or code) from your local computer to Paperspace is using a Gradient Jupyter Notebook. 
 In general, Jupyter notebooks are incredibly powerful; they are an interactive python coding environment and allow you to run snippets of code to see how they function. They are used for tensorflow tutorials (you can download them too! [see the neural network tutorials available](https://www.tensorflow.org/tutorials/images/cnn) ). If you upload any jupyter notebook code to Paperspace, you can use its contents to train/test a model as well.
