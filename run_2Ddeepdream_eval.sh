@@ -9,12 +9,8 @@ WEIGHTS_DIR=$2
 DREAM_CLASS=$3
 RESULTS_DIR=$4
 NUM_ITERS=$5
-
-echo $IMAGE_DATA
-echo $WEIGHTS_DIR
-echo $RESULTS_DIR
-echo $NUM_ITERS
-echo $DREAM_CLASS
+IMAGE_H=$6
+IMAGE_W=$7
 
 cd 2D_class_based_dreaming
 #visclass-tf \
@@ -22,7 +18,7 @@ python visualize_class.py \
 	--vgg_model ${WEIGHTS_DIR} \
 	--dream_image ${IMAGE_DATA} \
 	--dream_results_dir ${RESULTS_DIR} \
-	--image_h 720 \
-	--image_w 1280 \
+	--image_h ${IMAGE_H} \
+	--image_w ${IMAGE_W} \
 	--dream_class ${DREAM_CLASS} \
 	--iterations ${NUM_ITERS}
