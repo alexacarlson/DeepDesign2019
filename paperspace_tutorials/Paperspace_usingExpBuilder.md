@@ -1,5 +1,5 @@
 # Executing Models using Paperspace Gradient Experiment Builder
-The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. 
+The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
 After signing in, click on Gradient in the navigation bar on the left to choose Projects. Click on the Create Project button and select Create Standalone Project. Enter a name for the project when prompted.
 
