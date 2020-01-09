@@ -41,6 +41,7 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. 
 
 ### Evaluating 2D class-based deep dream
+This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
 When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
 
 A few things to keep in mind:
@@ -102,6 +103,9 @@ Command Example:
 `bash run_2Dneuralstyletransfer.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
 
 ### Running 2D to 3D neural renderer for 3D deep dreaming
+This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
+
+Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels.
 
 Neural Renderer Docker container image:
 
@@ -120,6 +124,9 @@ Command Example:
 `bash run_2Dto3Ddeepdream.sh /storage/3Dmodels/bench.obj 3Ddreamed_bench.gif /artifacts/results_3D_dream 300`
 
 ### Running 2D to 3D neural renderer for 2D to 3D style transfer
+This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
+
+Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels and any 2D models (i.e., images) to /storage/2Dmodels.
 
 Neural Renderer Docker container image:
 
@@ -138,6 +145,9 @@ Command Example:
 `bash run_2Dto3Dstyletransfer.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree.gif /artifacts/results_2D_to_3D_styletransfer 1.0 2e9 1000`
 
 ### Running 2D to 3D neural renderer for 2D to 3D vertex optimization
+This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
+
+Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels and any 2D models (i.e., images) to /storage/2Dmodels.
 
 Neural Renderer Docker container image:
 
