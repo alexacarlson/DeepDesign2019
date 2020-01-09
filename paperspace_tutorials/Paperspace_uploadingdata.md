@@ -61,7 +61,7 @@ There are two locations where you can write and read data in Paperspace: the `/s
 
 (2) To download data, 
 
-## Download from artifacts
+## Download from `/artifacts`
 
 (1) Toggle to the Projects Console. Select the Project that contains the experiment from which you want to retrieve the output.
 
@@ -75,10 +75,14 @@ There are two locations where you can write and read data in Paperspace: the `/s
 
 ![select experiment contents](tutorial_images/paperspace_downloadartifact_selectexpforartifact.png)
 
-(4) Select the `Artifacts` button. This will take you to the artifacts console.
+(4) Select the `Artifacts` button. This will take you to the Artifacts Storage console, which is organized as a file hierarchy similar to what you saw with the jupyter notebooks.
 
 ![select artifacts](tutorial_images/paperspace_downloadartifacts_selectartifacttab.png)
 
-(5) Select the `Download` button next to the artifact/output you wish to download. You will be prompted in a pop-up window to select a location on your local computer where you would like to store the artifact.
+(5) If you specified a results directory(ies) in your run script for the experiment, that folder hierarchy is mirrored in the Artifacts storage location. Select the results directory as shown below.
+
+![select artifacts results dir](tutorial_images/paperspace_downloadartifacts_selectresults.png)
+
+(6) Select the `Download` button next to the artifact/output you wish to download. You will be prompted in a pop-up window to select a location on your local computer where you would like to store the artifact.
 
 ![download to local computer](tutorial_images/paperspace_downloadartifacts_download.png)
