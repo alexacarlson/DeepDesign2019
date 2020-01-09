@@ -53,7 +53,7 @@ Just as an aside, there are multiple datasets that are publicly available in Pap
 # Downloading outputs from Paperspace
 
 You can also use Gradient Jupyter notebooks to download data or model outputs from Paperspace. 
-There are two locations where you can write and read data in Paperspace: the `/storage` (persistent storage that can be access at anytime or by any Project) and `/artifacts` (which is associated with a specific job/experiment within your Project workspace).
+There are two locations where you can write and read data in Paperspace: the `/storage` (which is persistent storage that can be accessed by any Project) and `/artifacts` (which is associated with a specific job/experiment within your Project workspace).
 
 ## Download from Persistent storage
 
@@ -62,3 +62,10 @@ There are two locations where you can write and read data in Paperspace: the `/s
 (2) To download data, 
 
 ## Download from artifacts
+
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
+![unzip dataset using notebook terminal](tutorial_images/paperspace_unzipterminal.png)
