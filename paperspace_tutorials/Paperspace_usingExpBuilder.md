@@ -40,6 +40,31 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 ## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
 You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. It is important to note that all of the below commands require an output filename as an input. You can save to either `/storage` or to `/artifacts` (which is the default output location for any job/experiment). 
 
+### Evaluating 2D google deep dream
+This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of a specific neuron in the final layer of a classification neural network. 
+When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
+
+A few things to keep in mind:
+
+  + NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
+  + You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
+
+2D deep dream Docker container image:
+
+`acarlson32/visclass-tf:firstimage`
+
+Workspace:
+
+`https://github.com/alexacarlson/DeepDesign2019.git`
+
+Command Format:
+
+`bash run_2Ddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
+
+Command Example:
+
+`bash run_2Ddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500 720 1280`
+
 ### Evaluating 2D class-based deep dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
 When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
