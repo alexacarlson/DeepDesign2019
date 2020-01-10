@@ -3,7 +3,7 @@ The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You
 
 This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#evaluating-2D-class-based-deep-dream). We also provide an example of how to run code from a separate github repository as well [here](#running-other-github-repositories-using-the-gradient-experiment builder). 
 
-## Running Deep Dream using the Gradient Experiment Builder
+## Running 2D, class-based, Deep Dream using the Gradient Experiment Builder
 After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
 
 ![Go to projects console](tutorial_images/paperspace_gradientprojecttoggle.png)
@@ -166,3 +166,37 @@ Command Example:
 `bash run_2Dto3Dvertexoptimization.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree /artifacts/results_vertoptim 250`
 
 ## Running other github repositories using the Gradient Experiment Builder
+What is awesome about the experiment builder is that you can run pretty much any model from a github repository.
+As a demonstration, we will step through how to train and test the super resolution GAN model, `pix2pixHD` in the Paperspace Experiment Builder. 
+
+First, `pix2pixHD` is a generative adversarial neural network that transforms one dataset of high resolution images, which we refer to as data domain A, into the style of a different high resolution dataset, which we refer to as data domain B. We use the term domain to desrcibe a dataset because a limited amount of visual information is captured in each dataset, and can vary greatly between datasets. Thus, in a sense, each dataset is it's own little world, or domain! The easiest way to understand this is by thinking of a dataset of purely daytime images compared to a dataset of purely night time images. While both datasets may capture similar structures (buildings, roads cars, people etc), the overall appearance/style is drastically different. The `pix2pixHD` was originally developed to transform semantically segmented maps into corresponding images, but it can be trained to transfer any one dataset into the style of a different dataset. 
+
+#### Training pix2pixHD
+For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`.
+
+pix2pixHD Docker container:
+
+`datmo/keras-tensorflow:gpu-py35`
+
+Workspace:
+
+https://github.com/NVIDIA/pix2pixHD.git
+
+Command Format:
+
+`python train.py --name <RUNNAME> --dataroot /storage --label_nc 0 --no_instance`
+
+#### Testing pix2pixHD
+For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`.
+
+pix2pixHD Docker container:
+
+`datmo/keras-tensorflow:gpu-py35`
+
+Workspace:
+
+https://github.com/NVIDIA/pix2pixHD.git
+
+Command Format:
+
+`python test.py --name label2city_1024p --netG local --ngf 32 --resize_or_crop none $@`
