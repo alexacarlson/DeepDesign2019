@@ -7,6 +7,7 @@ IMAGE_DATA=$1
 MODEL_DIR=$2
 NUM_ITERS=$3
 
+pip install pillow
 cd google_DeepDreaming/
 
 python deepdream.py \
