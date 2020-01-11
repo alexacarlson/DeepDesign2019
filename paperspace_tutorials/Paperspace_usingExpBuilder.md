@@ -42,7 +42,7 @@ You can use the above steps to run any of the other code in the DeepDesign repos
 
 ### Evaluating 2D google deep dream
 This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of a specific neuron in the final layer of a classification neural network. 
-When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
+When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node int the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
 
 2D deep dream Docker container image:
 
@@ -54,11 +54,11 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
+`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA MODEL_DIR NUM_ITERS`
 
 Command Example:
 
-`bash run_2Ddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500 720 1280`
+`bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5_weights/tensorflow_inception_graph.pb 30`
 
 ### Evaluating 2D class-based deep dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
