@@ -427,8 +427,8 @@ if render_multiscale_flag:
 ## Let's load some image and populate it with DogSlugs (in case you've missed them).
 #img0 = PIL.Image.open('pilatus800.jpg')
 #data_root = 'kitti_withdepth'
-img_filepath = '/root/image.jpg'#os.path.join(data_root, '04_rgb.png')
-img0 = PIL.Image.open(img_filepath)
+#img_filepath = '/root/image.jpg'#os.path.join(data_root, '04_rgb.png')
+#img0 = PIL.Image.open(img_filepath)
 img0 = np.float32(img0)
 #showarray(img0/255.0)   
 
