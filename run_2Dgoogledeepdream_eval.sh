@@ -5,7 +5,8 @@
 
 IMAGE_DATA=$1
 MODEL_DIR=$2
-NUM_ITERS=$3
+RESULTS_DIR=$3
+NUM_ITERS=$4
 
 pip install pillow
 cd google_DeepDreaming/
@@ -13,4 +14,5 @@ cd google_DeepDreaming/
 python deepdream.py \
   --image_file ${IMAGE_DATA} \
   --network_model ${MODEL_DIR} \
+  --dream_results_dir ${RESULTS_DIR} \
   --iterations ${NUM_ITERS}
