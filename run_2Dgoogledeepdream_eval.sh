@@ -1,6 +1,6 @@
 #
 #IMAGE_DATA='/storage/2Dmodels/tree1.jpg'
-#MODEL_DIR='/storage/inception5_weights'
+#MODEL_DIR='/storage/inception5_weights/tensorflow_inception_graph.pb'
 #NUM_ITERS=30
 
 IMAGE_DATA=$1
