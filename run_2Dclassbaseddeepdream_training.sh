@@ -8,6 +8,8 @@ TRAIN_EPOCHS=$2
 WEIGHTS_DIR=$3
 RESULTS_DIR=$4
 IMAGE_DATA=$5
+IMAGE_H=$6
+IMAGE_W=$7
 
 cd 2D_class_based_dreaming
 
@@ -19,6 +21,6 @@ python visualize_class.py \
   --vgg_model /storage/${WEIGHTS_DIR} \
   --dream_image ${IMAGE_DATA} \
   --dream_results_dir ${RESULTS_DIR} \
-  --image_h 400 \
-  --image_w 600 \
+  --image_h ${IMAGE_H} \
+  --image_w ${IMAGE_W} \
   --dream_class 'arch'
