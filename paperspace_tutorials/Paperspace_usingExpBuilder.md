@@ -41,8 +41,8 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. It is important to note that all of the below commands require an output filename as an input. You can save to either `/storage` or to `/artifacts` (which is the default output location for any job/experiment). 
 
 ### Evaluating 2D google deep dream
-This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of a specific neuron in the final layer of a classification neural network. 
-When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node int the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
+This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. 
+When using a pertained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node int the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
 
 2D deep dream Docker container image:
 
@@ -54,11 +54,11 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA MODEL_DIR NUM_ITERS`
+`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA MODEL_DIR RESULTS_DIR NUM_ITERS`
 
 Command Example:
 
-`bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5_weights/tensorflow_inception_graph.pb 30`
+`bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5_weights/tensorflow_inception_graph.pb /artifacts/test_dream 30`
 
 ### Evaluating 2D class-based deep dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
