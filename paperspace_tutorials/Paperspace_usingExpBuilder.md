@@ -44,14 +44,9 @@ You can use the above steps to run any of the other code in the DeepDesign repos
 This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of a specific neuron in the final layer of a classification neural network. 
 When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
 
-A few things to keep in mind:
-
-  + NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
-  + You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
-
 2D deep dream Docker container image:
 
-`acarlson32/visclass-tf:firstimage`
+`tensorflow/tensorflow:1.1.0-devel-gpu`
 
 Workspace:
 
@@ -59,7 +54,7 @@ Workspace:
 
 Command Format:
 
-`bash run_2Ddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
+`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
 
 Command Example:
 
