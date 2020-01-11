@@ -85,9 +85,9 @@ def showarray(a, filename='test22.jpeg'):
     a = np.uint8(np.clip(a, 0, 1)*255)
     #f = BytesIO()
     #PIL.Image.fromarray(a).save(f, fmt)
-    print(a.size)
-    filename1 = os.path.join('/root/Wuhan_deepdreamed',filename)
-    PIL.Image.fromarray(a).save(filename1)
+    #print(a.size)
+    #filename1 = os.path.join('/root/Wuhan_deepdreamed',filename)
+    PIL.Image.fromarray(a).save(filename)
     #pdb.set_trace()
     #display(Image(data=f.getvalue()))
     
@@ -231,7 +231,7 @@ def render_lapnorm(sess, t_obj, t_input, img0, visfunc=visstd, iter_n=10, step=1
         #clear_output()
         showarray(visfunc(img))
 
-def render_deepdream(sess, t_obj, t_input, img0, channel, iter_n=50, step=1.5, octave_n=4, octave_scale=1.4):
+def render_deepdream(sess, t_obj, t_input, img0, channel, dream_results_dir, iter_n=50, step=1.5, octave_n=4, octave_scale=1.4):
     # Now let's reproduce the [DeepDream algorithm](https://github.com/google/deepdream/blob/master/dream.ipynb) 
     # with TensorFlow. 
     #
@@ -262,7 +262,7 @@ def render_deepdream(sess, t_obj, t_input, img0, channel, iter_n=50, step=1.5, o
             img += g*(step / (np.abs(g).mean()+1e-7))
             #print('.',end = ' ')
         #clear_output()
-        showarray(img/255.0,filename='image_dream_channel%d.jpg'%(channel))
+        showarray(img/255.0,filename=os.path.join(dream_results_dir,'image_dream_channel%d.jpg'%(channel)))
 
 
 ###############################################
@@ -442,7 +442,7 @@ img0 = np.float32(img0)
 channel=143
 layer = 'mixed4d_3x3_bottleneck_pre_relu'
 for channel in range(143):
-    render_deepdream(sess, T(layer, graph)[:,:,:,channel], t_input, img0, channel, iter_n=args.iterations) 
+    render_deepdream(sess, T(layer, graph)[:,:,:,channel], t_input, img0, channel, args.dream_results_dir, iter_n=args.iterations) 
 
 
 # Don't hesitate to use higher resolution inputs (also increase the number of octaves)! 
