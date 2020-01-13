@@ -13,7 +13,6 @@ from scipy.misc import imsave
 from keras.applications.vgg16 import decode_predictions, preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
 import glob
-import pdb 
 import math
 #import cv2
 '''
@@ -148,7 +147,6 @@ def generate_arrays_from_file(file_list, batch_size, class_labels_dict, input_sh
             #
         image_batch = np.array(image_batch)
         label_batch = np.array(label_batch)
-        #pdb.set_trace()
         yield image_batch, label_batch
 
 def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
@@ -202,14 +200,12 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
     #
     ##  train the network
     STEP_SIZE_TRAIN=train_generator.n//train_generator.batch_size
-    #pdb.set_trace()
     custom_model.fit_generator(train_generator, 
                                 steps_per_epoch=STEP_SIZE_TRAIN, 
                                 epochs=num_epochs, 
                                 verbose=1)
     ## save as tf model
-#pdb.set_trace()
-#tf.keras.models.save_model(custom_model, os.path.join(weights_dir,'vgg16_custom_model_tf'), save_format='tf')
+    #tf.keras.models.save_model(custom_model, os.path.join(weights_dir,'vgg16_custom_model_tf'), save_format='tf')
     #custom_model.save(os.path.join(weights_dir,'vgg16_custom_model_tf'), save_format='tf')
     ## save the network weights
     custom_model.save_weights(os.path.join(weights_dir,'vgg16_custom_model_weights.h5'))
@@ -218,11 +214,10 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
         f.write(custom_model.to_json())
     ## save the dataset class dictionary
     label_map = train_generator.class_indices
-    #pdb.set_trace()
+    #
     with open(os.path.join(weights_dir, 'classes.txt'), 'w') as f:
         f.write(str(label_map))
         ###
-    #pdb.set_trace()
 
 def center_crop_image(input_img_data_full, new_shape=(224,224)):
     #
@@ -274,8 +269,7 @@ results_dir = args.dream_results_dir#'results_dreaming_with_%s'%(vgg16_model_id)
 if not os.path.exists(results_dir):
     #os.mkdir(results_dir)
     os.makedirs(results_dir)
-
-
+    
 ## --------------------------------------
 ## Train the model for class optimization
 ## --------------------------------------
@@ -308,7 +302,6 @@ if vgg16_model=='imagenet':
     #output_classes = vgg16.decode_predictions(np.expand_dims(np.arange(1000), axis=0), top=1000)
     output_classes = decode_predictions(np.expand_dims(np.arange(1000), axis=0), top=1000)
     num_classes = len(output_classes[0])
-    #pdb.set_trace()
     all_classes_index_dict = {tup_[1]:tup_[2] for tup_ in output_classes[0]}
     #
     ## get the desired class and the corresponding output index
@@ -432,7 +425,6 @@ else:
     import sys
     sys.exit()
    
-pdb.set_trace()
 ## -------------------------------
 ## Perform class optimization     
 ## -------------------------------  
@@ -463,7 +455,6 @@ for input_img_data, dream_input_id in zip(img_list, dream_input_ids):
     img = reprocess_image(input_img_[0])
     imsave(os.path.join(results_dir, '%s_dreamed_%s_final.png' %(dream_input_id, desired_class)), img)
     print('finished %s'%(dream_input_id))
-    #pdb.set_trace()
 #img = input_img_data[0]
 #img = deprocess_image(img)
 #print(img.shape)
