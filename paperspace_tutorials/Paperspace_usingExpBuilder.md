@@ -222,7 +222,7 @@ Command Format:
 `python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
 
 ## What to do if you need to modify the run code within a github repository
-Often you may need to change config files that define the parameters to train a neural network. This is the case for Nvidia's Progressive  Growing of GANs (PG-GAN) model. 
+Often you may need to change config files that define the parameters to train a neural network. For example, this is the case for Nvidia's Progressive  Growing of GANs (PG-GAN) model. PG-GAN is a high resolution generative adversarial neural network that takes in a random noise vector and produces an output image that is based upon your training data. It can generate 'unseen'/novel images, because it effectively can interpolate between the training images in the dataset to create new images. 
 
 You will need to fork (which is the same thing as copying the repository to your personal github account) the PG-GAN github repository, located at <https://github.com/tkarras/progressive_growing_of_gans.git>.
 
