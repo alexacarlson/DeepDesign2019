@@ -4,6 +4,8 @@ The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You
 This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#evaluating-2D-class-based-deep-dream). We also provide an example of how to run code from a separate github repository as well [here](#running-other-github-repositories-using-the-gradient-experiment builder). 
 
 ## Running 2D, class-based, Deep Dream using the Gradient Experiment Builder
+Before running this experiment, you need to make sure to upload an image and vgg16 neural network weights to your `/storage`. We have provided two sets of examples weights for you to experiment with. 
+
 After signing in, click on Gradient in the navigation bar on the left to choose `Projects`. This takes you to the Projects console.
 
 ![Go to projects console](tutorial_images/paperspace_gradientprojecttoggle.png)
@@ -38,11 +40,11 @@ Scroll past section 05 and 06. We are now ready to kick off the training job by 
 ![Select command](tutorial_images/paperspace_expbuildersubmit.png)
 
 ## Running the other image/mesh editing code in DeepDesign using the Gradient Experiment Builder
-You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the container image, workspace, and command needed to run each option. It is important to note that all of the below commands require an output filename as an input. You can save to either `/storage` or to `/artifacts` (which is the default output location for any job/experiment). 
+You can use the above steps to run any of the other code in the DeepDesign repository! Below we list the docker container image, workspace, and command needed to run each option. It is important to note that all of the below commands require an output filename as an input. You can save to either `/storage` or to `/artifacts` (which is the default output location for any job/experiment). 
 
 ### Evaluating 2D google deep dream
-This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. 
-When using a pertained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node int the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
+This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. Thus, for a single input image, this code generates 143 output images, each using the learned features from a different neuron. 
+When using a pertained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node in the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
 
 2D deep dream Docker container image:
 
@@ -61,13 +63,9 @@ Command Example:
 `bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5_weights/tensorflow_inception_graph.pb /artifacts/test_dream 30`
 
 ### Evaluating 2D class-based deep dream
-This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network. 
-When using a pertained network, you first need to upload the custom_weights folder to `/storage` using the notebook tool in the web GUI.
-
-A few things to keep in mind:
-
-  + NOTE THAT INPUT MUST BE IN RGB FORMAT (i.e., three channels)
-  + You also have the option of uploading your dreamed images to the /storage folder, you would just need to specify their location in the appropriate run.sh file
+This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network, specifically a VGG network. 
+When using a pertained network, you first need to upload pretrained VGG neural network weights folder to `/storage` using the notebook tool in the web GUI. Note that the next subsection details how to train a VGG network on your own dataset. 
+Note that the  input must be in RGB format (i.e., three channels).
 
 2D deep dream Docker container image:
 
@@ -86,6 +84,7 @@ Command Example:
 `bash run_2Dclassbaseddeepdream_eval.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500 720 1280`
 
 ### Training a classifcation network on your dataset to use for 2D class-based deep dream
+This code produces a trained VGG network that can be used to perform 2D class-based dreaming (as described in the previous section). Note that the weights directory in the below command is where the weights will be saved. You will need to upload your classification dataset to `/storage` before running this code. It assumes that your dataset contains a folder for each different class of images, and that each of these folders contains images only for that class. 
 
 2D deep dream Docker container image:
 
@@ -97,14 +96,15 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dclassbaseddeepdream_training.sh TRAIN_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR NUM_ITERS`
+`bash run_2Dclassbaseddeepdream_training.sh TRAIN_IMAGE_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR NUM_ITERS`
 
 Command Example:
 
 `bash run_2Dclassbaseddeepdream_training.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
 
 ### Running 2D style transfer
-First, need to create notebook via web GUI, upload vgg weights, called `imagenet-vgg-verydeep-19.mat`, to `/storage`
+First, you will need to create notebook via web GUI, upload vgg weights, called `imagenet-vgg-verydeep-19.mat`, to `/storage`
+You will also need to upload a content image and style guide image to `/storage`.
 
 2D style transfer Docker container image:
 
@@ -125,7 +125,7 @@ Command Example:
 ### Running 2D to 3D neural renderer for 3D deep dreaming
 This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
 
-Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels.
+Note that before running any jobs in this project, you will need to upload the desired 3D models (in `.obj` format) to the paperspace `/storage space`. Add each 3D model to `/storage/3Dmodels`. You do not need to worry about uploading pretrained weights, the code handles this under the hood. 
 
 Neural Renderer Docker container image:
 
@@ -146,7 +146,7 @@ Command Example:
 ### Running 2D to 3D neural renderer for 2D to 3D style transfer
 This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
 
-Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels and any 2D models (i.e., images) to /storage/2Dmodels.
+Note that before running any jobs in this project, you will need to upload the desired 3D models (in `.obj` format) to the paperspace `/storage` space. Add each 3D model to `/storage/3Dmodels` and any 2D models (i.e., images) to `/storage/2Dmodels`. You do not need to worry about uploading pretrained weights, the code handles this under the hood. 
 
 Neural Renderer Docker container image:
 
@@ -167,7 +167,7 @@ Command Example:
 ### Running 2D to 3D neural renderer for 2D to 3D vertex optimization
 This project uses the neural 3D mesh renderer (CVPR 2018) by H. Kato, Y. Ushiku, and T. Harada to achieve dreaming and style transfer in 3D. It builds upon the code in (https://github.com/hiroharu-kato/neural_renderer.git)
 
-Note that before running any jobs in this project, you will need to upload the desired 3D models to the paperspace /storage space. Add each 3D model to /storage/3Dmodels and any 2D models (i.e., images) to /storage/2Dmodels.
+Note that before running any jobs in this project, you will need to upload the desired 3D models (in `.obj` format) to the paperspace `/storage` space. Add each 3D model to `/storage/3Dmodels` and any 2D models (i.e., images) to `/storage/2Dmodels`. You do not need to worry about uploading pretrained weights, the code handles this under the hood. 
 
 Neural Renderer Docker container image:
 
@@ -196,7 +196,7 @@ For training pix2pixHD, you will need to upload your input data domain A to `/st
 
 pix2pixHD Docker container:
 
-`datmo/keras-tensorflow:gpu-py35`
+`taesungp/pytorch-cyclegan-and-pix2pix`
 
 Workspace:
 
@@ -204,14 +204,14 @@ https://github.com/NVIDIA/pix2pixHD.git
 
 Command Format:
 
-`python train.py --name <RUNNAME> --dataroot /storage --label_nc 0 --no_instance`
+`python train.py --name <RUNNAME> --dataroot /storage/example_dataset --label_nc 0 --no_instance`
 
 #### Testing pix2pixHD
 For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`.
 
 pix2pixHD Docker container:
 
-`datmo/keras-tensorflow:gpu-py35`
+`taesungp/pytorch-cyclegan-and-pix2pix`
 
 Workspace:
 
@@ -219,4 +219,4 @@ https://github.com/NVIDIA/pix2pixHD.git
 
 Command Format:
 
-`python test.py --name label2city_1024p --netG local --ngf 32 --resize_or_crop none $@`
+`python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
