@@ -32,6 +32,9 @@ This folder contains material that we have discussed during lecture.
 
   + SuggestedReading.txt:
   This file contains a list of resources about deep learning and architecture. 
+  
+  + deeplearning_architecture_semseries_updated.pptx:
+  This is a powerpoint presentation that contains basic concepts and mathematics behind deep learning.
 
 + unzipfile.sh: this file can be used to unzip `.zip` files that you have uploaded into the Paperspace Persistent Storage location. See the tutorial on uploading and downloading data on Paperspace listed below for more detail on usage.
 
