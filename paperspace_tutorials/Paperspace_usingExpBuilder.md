@@ -220,3 +220,14 @@ https://github.com/NVIDIA/pix2pixHD.git
 Command Format:
 
 `python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
+
+## What to do if you need to modify the run code within a github repository
+Often you may need to change config files that define the parameters to train a neural network. This is the case for Nvidia's Progressive  Growing of GANs (PG-GAN) model. 
+
+You will need to fork (which is the same thing as copying the repository to your personal github account) the PG-GAN github repository, located at <https://github.com/tkarras/progressive_growing_of_gans.git>.
+
+![Forking1](tutorial_images/paperspace__forking_pggan1.png)
+
+A pop-up will appear that will prompt you to copy the PG-GAN repository to your github account.
+
+Once this process is completed, you will have a copy of the PG-GAN repository, and you can experiment with any of the code, e.g., you can alter the `config.py` file to change the training parameters. To run on paperspace, you can use the github link to your copy of the PG-GAN repository as the Workspace. Note that the docker container you can use is `datmo/keras-tensorflow:gpu-py35`.
