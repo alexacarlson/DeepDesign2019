@@ -22,8 +22,8 @@ gpu_id = '3'
 #----------------------------------------------------------------------------
 # Paths.
 
-data_dir = 'datasets'
-result_dir = '/root/results'
+data_dir = '/storage'
+result_dir = '/storage/pgGAN_results'
 
 #----------------------------------------------------------------------------
 # TensorFlow options.
@@ -54,7 +54,7 @@ sched       = EasyDict()                                    # Options for train.
 grid        = EasyDict(size='1080p', layout='random')       # Options for train.setup_snapshot_image_grid().
 
 # Dataset (choose one).
-desc += '-alldata';            dataset = EasyDict(tfrecord_dir='alldata'); train.mirror_augment = False
+desc += '-pgGAN_data';            dataset = EasyDict(tfrecord_dir='pgGAN_data'); train.mirror_augment = False
 #train.resume_run_id='/root/results/001-pgan-alldata-preset-v2-1gpu-fp32/network-snapshot-003747.pkl'
 
 #desc += '-celebahq';            dataset = EasyDict(tfrecord_dir='celebahq'); train.mirror_augment = True
