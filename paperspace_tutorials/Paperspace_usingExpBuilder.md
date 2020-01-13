@@ -226,7 +226,7 @@ Often you may need to change config files that define the parameters to train a 
 
 You will need to fork (which is the same thing as copying the repository to your personal github account) the PG-GAN github repository, located at <https://github.com/tkarras/progressive_growing_of_gans.git>.
 
-![Forking1](tutorial_images/paperspace__forking_pggan1.png)
+![Forking1](tutorial_images/paperspace_forking_pggan1.png)
 
 A pop-up will appear that will prompt you to copy the PG-GAN repository to your github account.
 
