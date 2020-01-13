@@ -13,6 +13,9 @@ This folder contains code that allows you to perform the deep dreaming technique
 + 2D_to_2D_neural_style_transfer:
 This folder contains code that allows you to perform the 2D neural style transfer technique (used in Google's deep style editing GUI). However, with this code you can specify the input/output resolution. Note that the input would be a 2D 'content' image (i.e., the image whose spatial structure you wish to preserve) and a 2D 'style guide' image (i.e., an image whose style you wish to transfer onto the content image). NOTE YOU WILL NEED TO USE PAPERSPACE TO RUN THIS CODE. See the tutorials provided below.
 
++ google_DeepDreaming:
+This folder contains code that underlies the google Deep Dream web UI. Thus, the key differences between the above class-based dreaming and this function is that, with this code, you can hallucinate learned features of *neurons* at *multiple scales* in input images. Also note that this code can take in any resolution input image, which is restricted in the web UI.
+
 + dataset_generation: 
 This folder contains code that can be used for dataset generation. Descriptions of its functionality are below:
 
@@ -37,15 +40,15 @@ This folder contains material that we have discussed during lecture.
 The information provided below is a basic introduction into using Paperspace to run the different image editing techniques and paperspace examples. 
 
 ## THE BASICS OF PAPERSPACE:
-Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
-The folders listed in the previous sections can be considered a Gradient Project. 
+Paperspace is a cloud computing service that gives you access to powerful machines for running/training models. Gradient is a project management platform provided by Paperspace. We can use it to easily deploy deep learning models. 
+The folders listed in the previous section can each be considered a Gradient Project. 
 A Gradient Project is a workspace for you to run Experiments and Jobs, store Artifacts (such as models and code), and manage Deployments (deployed models). We will be creating StandAlone Projects exclusively (vs. using the GradientCI project framework). 
 
 Experiments are used to train machine learning models. When you run an Experiment within Gradient, a job is created and executed. Jobs are designed for executing code (such as training a deep neural network) on a CPU or GPU without managing any infrastructure. You can run multiple jobs within a single experiment.
 
 A Job consists of a collection of files (code, resources, etc.) from your local computer or GitHub, a container (with code dependencies and packages pre-installed), and a command to execute (i.e. python main.py). It is recommended to use the Gradient Experiment builder to run jobs. A step-by-step tutorial on how to use this feature is given below.
 
-Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). The first, called Persistent storage, is a persistent filesystem automatically mounted on every Experiment, Job, and Notebook and is ideal for storing data like images, datasets, model checkpoints, and more. Anything you store in `/storage` directory will be persistently stored in a given storage region.
+Paperspace also has several ways in which you can store your code, dataset, and model outputs (e.g., network weights, output images, accuracy metrics, etc). The first, called Persistent storage, is a persistent filesystem automatically mounted on every Experiment, Job, and Notebook and is ideal for storing data like images, datasets, model checkpoints, and more. Anything you store in `/storage` directory will be persistently stored in a given storage region (e.g., East vs. west coast storage).
 
 The second, called Workspace storage, is typically imported from the local directory in which you started your job. The contents of that directory are zipped up and uploaded to the container in which your job runs. The Workspace exists for the duration of the job run.  
 
