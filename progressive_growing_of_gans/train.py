@@ -10,7 +10,7 @@ import time
 import numpy as np
 import tensorflow as tf
 
-import config
+import config_training
 import tfutil
 import dataset
 import misc
