@@ -22,4 +22,4 @@ python run_examples_style_transfer_3d/run.py \
     --filename_output ${OUTPUT_DIR}/${OUTPUT_FILENAME} \
     --lambda_style ${STYLE_WEIGHT} \
     --lambda_content ${CONTENT_WEIGHT} \
-    --num_iterations ${NUM_ITERS}
+    --num_iteration ${NUM_ITERS}
