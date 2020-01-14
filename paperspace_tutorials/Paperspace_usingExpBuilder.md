@@ -60,7 +60,7 @@ Command Format:
 
 Command Example:
 
-`bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5_weights/tensorflow_inception_graph.pb /artifacts/test_dream 30`
+`bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5h_weights/tensorflow_inception_graph.pb /storage/test_dream 30`
 
 ### Evaluating 2D class-based deep dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network, specifically a VGG network. 
@@ -104,7 +104,7 @@ Command Example:
 
 ### Running 2D style transfer
 First, you will need to create notebook via web GUI, upload vgg weights, called `imagenet-vgg-verydeep-19.mat`, to `/storage`
-You will also need to upload a content image and style guide image to `/storage`.
+You will also need to upload a content image and style guide image to `/storage`. You can download the vgg weights from <http://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat>.
 
 2D style transfer Docker container image:
 
@@ -192,7 +192,7 @@ As a demonstration, we will step through how to train and test the super resolut
 First, `pix2pixHD` is a generative adversarial neural network that transforms one dataset of high resolution images, which we refer to as data domain A, into the style of a different high resolution dataset, which we refer to as data domain B. We use the term domain to desrcibe a dataset because a limited amount of visual information is captured in each dataset, and can vary greatly between datasets. Thus, in a sense, each dataset is it's own little world, or domain! The easiest way to understand this is by thinking of a dataset of purely daytime images compared to a dataset of purely night time images. While both datasets may capture similar structures (buildings, roads cars, people etc), the overall appearance/style is drastically different. The `pix2pixHD` was originally developed to transform semantically segmented maps into corresponding images, but it can be trained to transfer any one dataset into the style of a different dataset. 
 
 #### Training pix2pixHD
-For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`.
+For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. Note the pix2pixHD requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. The filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. For more information please visit the pix2pix github repository, which includes instructions for training and testing.
 
 pix2pixHD Docker container:
 
