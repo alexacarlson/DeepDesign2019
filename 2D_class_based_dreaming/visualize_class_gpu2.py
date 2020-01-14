@@ -439,7 +439,7 @@ for input_img_data, dream_input_id in zip(img_list, dream_input_ids):
     #input_img_arr = preprocess_input(input_img_arr, mode ='tf')
     #
     for iter_ in range(num_iters):
-        print('iteration %s'%(str(iter_ in)))
+        print 'iteration %s'%(str(iter_ in))
         loss_value, grads_value = iterate([input_img_])
         input_img_ += grads_value *1
         #
@@ -455,7 +455,7 @@ for input_img_data, dream_input_id in zip(img_list, dream_input_ids):
     #img = deprocess_image(img)
     img = reprocess_image(input_img_[0])
     imsave(os.path.join(results_dir, '%s_dreamed_%s_final.png' %(dream_input_id, desired_class)), img)
-    print('finished %s'%(dream_input_id))
+    print 'finished %s'%(dream_input_id)
 #img = input_img_data[0]
 #img = deprocess_image(img)
 #print(img.shape)
