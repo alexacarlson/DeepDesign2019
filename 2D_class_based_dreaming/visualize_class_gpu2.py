@@ -439,6 +439,7 @@ for input_img_data, dream_input_id in zip(img_list, dream_input_ids):
     #input_img_arr = preprocess_input(input_img_arr, mode ='tf')
     #
     for iter_ in range(num_iters):
+        print('iteration %d'%(iter_ in))
         loss_value, grads_value = iterate([input_img_])
         input_img_ += grads_value *1
         #
