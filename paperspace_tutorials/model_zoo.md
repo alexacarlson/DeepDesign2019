@@ -1,6 +1,6 @@
 # Model Zoo
 Collection of more deep learning models.
-1. [Attention GAN for Image generation from Text](#attention_gan)
+1. [Attention GAN](#attention_gan)
 
 <a name="attention_gan"></a>
 ## Attention GAN for Image generation from Text 
