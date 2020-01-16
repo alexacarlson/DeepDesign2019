@@ -1,15 +1,15 @@
 # Model Zoo
 Collection of more deep learning models.
 ## Content
-1. [Attention GAN](#attention_gan)
+1. [AttnGAN](#attention_gan)
 
 <a name="attention_gan"></a>
-## Attention GAN for Image generation from Text 
+## AttnGAN for Image generation from Text 
 Pytorch implementation for reproducing AttnGAN results in the paper [AttnGAN: Fine-Grained Text to Image Generation
 with Attentional Generative Adversarial Networks](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_AttnGAN_Fine-Grained_Text_CVPR_2018_paper.pdf) by Tao Xu, Pengchuan Zhang, Qiuyuan Huang, Han Zhang, Zhe Gan, Xiaolei Huang, Xiaodong He. (This work was performed when Tao was an intern with Microsoft Research). 
 Currently, it uses the weights trained on COCO dataset.
 
-### Running Attention GAN
+### Running AttnGAN
 + Upload and unzip the [coco.zip](https://drive.google.com/file/d/1z33_LQfRon0P3eCBT_tjdxhLv63beC5c/view?usp=sharing) file in the storage folder using Jupyter notebook
 + In the coco folder modify `captions.txt` file for the desired text/caption input
 + Start an experiment with the following parameters in paperspace:
