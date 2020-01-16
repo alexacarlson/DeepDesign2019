@@ -10,7 +10,7 @@ with Attentional Generative Adversarial Networks](http://openaccess.thecvf.com/c
 Currently, it uses the weights trained on COCO dataset.
 
 ### Running AttnGAN
-+ Upload and unzip the [coco.zip](https://drive.google.com/file/d/1z33_LQfRon0P3eCBT_tjdxhLv63beC5c/view?usp=sharing) file in the storage folder using Jupyter notebook
++ Upload and unzip the [coco.zip](https://drive.google.com/file/d/1BEwvpCyLvuTFsFuWlmX1NfWS13v0HcY4/view?usp=sharing) file in the storage folder using Jupyter notebook
 + In the coco folder modify `captions.txt` file for the desired text/caption input
 + Start an experiment with the following parameters in paperspace:
 	+ **Container:** `brannondorsey/docker-stackgan`
