@@ -4,7 +4,7 @@ with Attentional Generative Adversarial Networks](http://openaccess.thecvf.com/c
 Currently, it uses the weights trained on COCO dataset.
 
 ### Running Attention GAN
-+ Upload and unzip the coco.zip file in the storage folder using Jupyter notebook
++ Upload and unzip the [coco.zip](https://drive.google.com/file/d/1z33_LQfRon0P3eCBT_tjdxhLv63beC5c/view?usp=sharing) file in the storage folder using Jupyter notebook
 + In the coco folder modify `captions.txt` file for the desired text input
 + Start an experiment with the following parameters:
 	+ **Container:** `brannondorsey/docker-stackgan`
