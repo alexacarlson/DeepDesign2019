@@ -186,21 +186,25 @@ Command Example:
 `bash run_2Dto3Dvertexoptimization.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree /artifacts/results_vertoptim 250`
 
 ## Running other github repositories using the Gradient Experiment Builder
-What is awesome about the experiment builder is that you can run pretty much any model from a github repository.
-As a demonstration, we will step through how to train and test the super resolution GAN model, `pix2pixHD` in the Paperspace Experiment Builder. 
+What is awesome about the experiment builder is that you can run pretty much any model from a github repository! 
+As a demonstration, we provide three examples of how to do this: for pix2pixHD, PG-GAN, and cycleGAN.
 
-First, `pix2pixHD` is a generative adversarial neural network that transforms one dataset of high resolution images, which we refer to as data domain A, into the style of a different high resolution dataset, which we refer to as data domain B. We use the term domain to desrcibe a dataset because a limited amount of visual information is captured in each dataset, and can vary greatly between datasets. Thus, in a sense, each dataset is it's own little world, or domain! The easiest way to understand this is by thinking of a dataset of purely daytime images compared to a dataset of purely night time images. While both datasets may capture similar structures (buildings, roads cars, people etc), the overall appearance/style is drastically different. The `pix2pixHD` was originally developed to transform semantically segmented maps into corresponding images, but it can be trained to transfer any one dataset into the style of a different dataset. 
+### Running pix2pixHD on paperspace
+We will step through how to train and test the super resolution GAN model, `pix2pixHD` in the Paperspace Experiment Builder. 
 
-#### Training pix2pixHD
-For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. Note the pix2pixHD requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. The filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. For more information please visit the pix2pix github repository, which includes instructions for training and testing.
+First, `pix2pixHD` is a generative adversarial neural network that transforms one dataset of high resolution images, which we refer to as data domain A, into the style of a different high resolution dataset, which we refer to as data domain B. Note that the data in domain A must be paired with the data in domain B; this means that the spatial structure of an image in domain A must correpsond to an image in domain D that has the same spatial structure; a good example of this is having domain A be a collection of semantic segmentation maps (each object class is a different color pixel) and domain B is the segmentation maps corresponding RGB image. This means that, effectively, pix2pixHD is painting the RGB color palette/textures of the shapes in domain B onto the appropriate shapes in domain A.
+We use the term domain to desrcibe a dataset because a limited amount of visual information is captured in each dataset, and can vary greatly between datasets. Thus, in a sense, each dataset is it's own little world, or domain! The easiest way to understand this is by thinking of a dataset of purely daytime images compared to a dataset of purely night time images. While both datasets may capture similar structures (buildings, roads cars, people etc), the overall appearance/style is drastically different. The `pix2pixHD` was originally developed to transform semantically segmented maps into corresponding images, but it can be trained to transfer any one dataset into the style of a different dataset. 
 
-pix2pixHD Docker container:
+The pix2pixHD Docker container you can use for both training and testing your model:
 
 `taesungp/pytorch-cyclegan-and-pix2pix`
 
-Workspace:
+The workspace you can use for both training and testing your model:
 
 https://github.com/NVIDIA/pix2pixHD.git
+
+#### Training pix2pixHD
+For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. AS A REMINDER, the pix2pixHD model requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. Because of this requirement, the filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. For more information please visit the pix2pix github repository, which includes instructions for training and testing.
 
 Command Format:
 
@@ -209,17 +213,57 @@ Command Format:
 #### Testing pix2pixHD
 For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`.
 
-pix2pixHD Docker container:
-
-`taesungp/pytorch-cyclegan-and-pix2pix`
-
-Workspace:
-
-https://github.com/NVIDIA/pix2pixHD.git
-
 Command Format:
 
 `python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
+
+
+### Running PG-GAN on paperspace
+PG-GAN functions like a standard GAN framework: the generator neural network takes in a latent noise vector and projects it into the pixel space of RGB images that constitute the 'real' dataset you wish the GAN to model. The Discriminator network determines if its input image is real or fake (i.e, rendered by the Generator network). Each network is influenced by the others error, which trains the Generator to produce highly realistic images. After training, the Discrimiantor network is discarded and the Generator is used to produce novel images that would reasonably come from the training dataset, but do not exist in the training dataset.
+
+In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/pggan_dataset` and store your training and testing datasets there. The training folder should contain your training images, and your test folder should contain your test images; the naming convention of the images does not matter. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
+
+Your dataset should be stored in the following hierarchy:
+~~~
+---------------------------------------------
+The training data folder should be formatted like : 
+</storage/pggan_dataset>
+                |--Your Folder of training images
+                        |--image 1
+                        |--image 2
+                        |--image 3 ...
+---------------------------------------------
+~~~
+The PG-GAN Docker container that you can use for both training and testing the model:
+
+
+The workspace you can use for both training and testing your model: 
+
+https://github.com/alexacarlson/pggan-pytorch
+
+#### Training PG-GAN
+The command format used for training a model:
+
+
+#### Testing PG-GAN
+The command format used for testing an already-trained model:
+
+
+
+### Running cycleGAN on paperspace:
+The cycleGAN Docker container you can use for both training and testing your model:
+
+The workspace you can use for both training and testing your model:
+
+https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git
+
+#### Training cycleGAN
+The command format used for training a model:
+
+
+#### Testing cycleGAN
+The command format used for testing an already-trained model:
+
 
 ## What to do if you need to modify the run code within a github repository
 Often you may need to change config files that define the parameters to train a neural network. For example, this is the case for Nvidia's Progressive  Growing of GANs (PG-GAN) model. PG-GAN is a high resolution generative adversarial neural network that takes in a random noise vector and produces an output image that is based upon your training data. It can generate 'unseen'/novel images, because it effectively can interpolate between the training images in the dataset to create new images. 
