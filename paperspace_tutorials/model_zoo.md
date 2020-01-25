@@ -261,10 +261,11 @@ The command format used for testing an already-trained model:
 ## CycleGAN for unpaired image-to-image translation:
 The paper proposes a method that can capture the characteristics of one image domain and figure out how these characteristics could be translated into another image domain, all in the absence of any paired training examples. CycleGAN uses a special cycle consistency loss to enable training without the need for paired data. In other words, it can translate from one domain to another without a one-to-one mapping between the source and target domain.
 This opens up the possibility to do a lot of interesting tasks like photo-enhancement, image colorization, style transfer, etc. All you need is the source and the target dataset (which is simply a directory of images). Check out their github page at <https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/README.md> to see some cool examples of what this framework can do!
+Your training dataset should have subfolders `trainA`, where you should load your training images for dataset/domain A, `trainB`, where you should load your training images for dataset/domain B, `testA`, where you should load your test images for dataset/domain A  that will be transferred to the style of domain B after training.
 
 The cycleGAN Docker container you can use for both training and testing your model:
 
-`taesungp/pytorch-cyclegan-and-pix2pix`
+`acarlson32/pytorch-cyclegan-pggan:thirdimage`
 
 The workspace you can use for both training and testing your model:
 
@@ -273,8 +274,25 @@ https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git
 ### Training cycleGAN
 The command format used for training a model:
 
+`python train.py --data_root DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --load_size RESIZE --crop_size CROP_SIZE --model cycle_gan`
+
+where `DATASET_PATH` is the location of your dataset on papespace, `EXPERIMENT_NAME` is a name you create for your model, 
+`CHECKPT_DIR` is the location where the weights and output images will be save, `RESIZE` is a number that your images will be scaled to, `CROP_SIZE` is what the images will be cropped to after scaling. the `--load_size` and `--crop_size` flags are optional.
+
+Command Example:
+
+`python train.py --dataroot /storage/cyclegan-dataset --name train_cyclegan --checkpoints_dir --load_size 256 --crop_size 128 --model cycle_gan --display_id 0`
+
+To see intermediate training image results, check out `/artifacts/checkpoints/EXPERIMENT_NAME/web/index.html`
 
 ### Testing cycleGAN
 The command format used for testing an already-trained model:
 
+`python test.py --data_root DATASET_PATH --name EXPERIMENT_NAME --model cycle_gan`
 
+Command Example:
+
+`python test.py --dataroot /storage/cyclegan-dataset --name mapstest_cyclegan --model cycle_gan`
+
+Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights.
+The test results will be saved to a html file here: `/artifacts/results/EXPERIMENT_NAME/latest_test/index.html`
