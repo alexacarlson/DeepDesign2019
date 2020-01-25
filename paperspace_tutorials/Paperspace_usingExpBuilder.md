@@ -1,7 +1,7 @@
 # Executing Models using Paperspace Gradient Experiment Builder
 The Paperspace Experiment Builder is a wizard-style UI tool to submit a job. You can use it for both training and testing models.  
 
-This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, and after that will be a list of commands that will be needed to run the other code provided in the DeepDesign repository, accessed [here](#evaluating-2D-class-based-deep-dream). We also provide an example of how to run code from a separate github repository as well [here](#running-other-github-repositories-using-the-gradient-experiment builder). 
+This tutorial will proceed as follows: first we will step through how to submit an Experiment using the 2D class-based deep dreaming code as an example, A list of commands that will be needed to run the other code provided in the DeepDesign repositoryas well as examples of how to run code from a separate github repositories as well can be accessed [here](model_zoo.md). 
 
 ## Running 2D, class-based, Deep Dream using the Gradient Experiment Builder
 Before running this experiment, you need to make sure to upload an image and vgg16 neural network weights to your `/storage`. We have provided two sets of examples weights for you to experiment with. 
