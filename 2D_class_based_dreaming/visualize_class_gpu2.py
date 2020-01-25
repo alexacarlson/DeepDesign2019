@@ -275,7 +275,7 @@ if not os.path.exists(results_dir):
 ## --------------------------------------
 if train_model:
     ## finetune vgg16 model on dataset
-    finetune_vgg16(train_folder_path, results_dir, input_shape, num_epochs)
+    finetune_vgg16(train_folder_path, vgg16_model, input_shape, num_epochs)
     print("Finished training custom vgg16 model")
     import sys
     sys.exit()
