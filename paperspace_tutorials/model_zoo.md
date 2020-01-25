@@ -35,9 +35,8 @@ DeepDream is an experiment that visualizes the patterns learned by a neural netw
 It does so by forwarding an image through the network, then calculating the gradient of the image with respect to the activations of a particular layer. The image is then modified to increase these activations, enhancing the patterns seen by the network, and resulting in a dream-like image. This process was dubbed "Inceptionism". 
 This is Google's implementation of deep dream that is used for their web UI. 
 
-### Dream with all the neurons 
-This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. Thus, for a single input image, this code generates 143 output images, each using the learned features from a different neuron. 
-When using a pre-trained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node in the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
+This code allows you to augment an input image with the learned features for a specifc neuron or every neuron in the final layer of a classification neural network. Thus, for a single input image, this code will either generate a single output image, or generate 143 output images, each using the learned features from a different neuron. 
+When using a pre-trained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution!
 
 2D deep dream Docker container image:
 
@@ -49,7 +48,9 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA MODEL_DIR RESULTS_DIR NUM_ITERS`
+`bash run_2Dgoogledeepdream_eval.sh IMAGE_DATA WHICH_NEURON MODEL_DIR RESULTS_DIR NUM_ITERS`
+
+Where `IMAGE_DATA` is the location of your input image on paperspace, `WHICH_NEURON` is a number 0-143 to specify which neuron you would like to use for dreaming. If you would like to use all of them, specify `'all'` instead of a number. `MODEL_DIR` is the location of `inception5_weights` in paperspace, `RESULTS_DIR` is the location in paperspace where the output image(s) will be saved, and `NUM_ITERS` determines how many times the algorithm will perform the dreaming operation (more iterations will have a stronger dreaming effect in the input image).
 
 Command Example:
 
@@ -58,6 +59,7 @@ Command Example:
 <a name="classdeepdream"></a>
 ## Class-based Deep Dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network, specifically a VGG network. 
+This technique is used for visualising the class models learnt by the image classification ConvNets. Given a learnt/trained classification ConvNet and a class of interest from the network's training dataset, this visualisation method generates an image with features that are representative of what the ConvNet has learned to represent/detect the given class; it lets us know what are the features expected in input image to maximize the output class node score.
 
 ### Evaluating 2D class-based deep dream
 When using a pre-trained network, you first need to upload pretrained VGG neural network weights folder to `/storage` using the notebook tool in the web GUI. Note that the next subsection details how to train a VGG network on your own dataset. 
@@ -74,6 +76,8 @@ Workspace:
 Command Format:
 
 `bash run_2Dclassbaseddeepdream_eval.sh IMAGE_DATA WEIGHTS_DIR DREAM_CLASS RESULTS_DIR NUM_ITERS IMAGE_H IMAGE_W`
+
+Where `IMAGE_DATA` is the location of your input image on paperspace, `WEIGHTS_DIR` is the location of the VGG network weights in paperspace,`DREAM_CLASS` is the class you would like to use for dreaming. If you would like to use all of them, specify `'all'` instead of a number.  `RESULTS_DIR` is the location in paperspace where the output image(s) will be saved, and `NUM_ITERS` determines how many times the algorithm will perform the dreaming operation (more iterations will have a stronger dreaming effect in the input image), `IMAGE_H` and `IMAGE_W` are the output image height and width, respectively.
 
 Command Example:
 
@@ -92,11 +96,13 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dclassbaseddeepdream_training.sh TRAIN_IMAGE_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR NUM_ITERS`
+`bash run_2Dclassbaseddeepdream_training.sh TRAIN_IMAGE_DIR TRAIN_EPOCHS WEIGHTS_DIR RESULTS_DIR`
+
+Where `TRAIN_IMAGE_DIR` is the location of your classification training dataset on paperspace, `TRAIN_EPOCHS` determines how long your classification network will train for, `WEIGHTS_DIR` is the location of where the finetuned VGG network weights will be saved in paperspaced, , `IMAGE_H` and `IMAGE_W` are the desired image height and width that your trained VGG network will operate on, respectively. Note that the network can only operate on images that are the same size as it has been trained for.
 
 Command Example:
 
-`bash run_2Dclassbaseddeepdream_training.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
+`bash run_2Dclassbaseddeepdream_training.sh /storage/classificationdataset /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
 
 <a name="neuralstyle"></a>
 ## Neural Style Transfer
