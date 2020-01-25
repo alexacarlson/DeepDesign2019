@@ -243,6 +243,7 @@ The training data folder should be formatted like :
 ~~~
 The PG-GAN Docker container that you can use for both training and testing the model:
 
+`taesungp/pytorch-cyclegan-and-pix2pix`
 
 The workspace you can use for both training and testing your model: 
 
@@ -258,7 +259,12 @@ The command format used for testing an already-trained model:
 
 <a name="cyclegan"></a>
 ## CycleGAN for unpaired image-to-image translation:
+The paper proposes a method that can capture the characteristics of one image domain and figure out how these characteristics could be translated into another image domain, all in the absence of any paired training examples. CycleGAN uses a special cycle consistency loss to enable training without the need for paired data. In other words, it can translate from one domain to another without a one-to-one mapping between the source and target domain.
+This opens up the possibility to do a lot of interesting tasks like photo-enhancement, image colorization, style transfer, etc. All you need is the source and the target dataset (which is simply a directory of images). Check out their github page at <https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/README.md> to see some cool examples of what this framework can do!
+
 The cycleGAN Docker container you can use for both training and testing your model:
+
+`taesungp/pytorch-cyclegan-and-pix2pix`
 
 The workspace you can use for both training and testing your model:
 
