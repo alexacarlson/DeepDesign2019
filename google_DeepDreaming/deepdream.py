@@ -272,7 +272,7 @@ def render_deepdream(sess, t_obj, t_input, img0, channel, dream_results_dir, ite
 parser = argparse.ArgumentParser()
 #parser.add_argument("--gpu", type=str, help="specify which gpu to use default=[0]")
 parser.add_argument("--image_file", type=str, default='noise', help="specifcy the image(s) to dream on, takes in a folder path, or image path or noise (to dream on a noise image) [default: noise]")
-parser.add_argument("--dream_class", type=str, default='dome', help="specifcy the class you which to optimize within the input image, dependent upon vgg model used [default: dome]")
+parser.add_argument("--which_neuron", type=str, default='dome', help="specifcy which neuron you would like to use for dreaming. If you would like to visualize all neurons, specify all [default: all]")
 parser.add_argument("--dream_results_dir", type=str, default='dreaming_results', help="path location of results folder/where to save the dreamed image  [default: dreaming_results]")
 parser.add_argument("--network_model", type=str, default='imagenet', help="specify the vgg model path to the location of the json arch file \n and \
                                                                         h5 weights file. If training a network, this specifies the location to save the model.\n Default is to load pretrained imagenet default=[imagenet]")
@@ -439,12 +439,15 @@ img0 = np.float32(img0)
 # features due to the nature of the ImageNet dataset.
 # 
 # Using an arbitrary optimization objective still works:
-channel=143
 layer = 'mixed4d_3x3_bottleneck_pre_relu'
-for channel in range(143):
+if args.which_neuron=='all':
+    #channel=143
+    for channel in range(143):
+        render_deepdream(sess, T(layer, graph)[:,:,:,channel], t_input, img0, channel, args.dream_results_dir, iter_n=args.iterations) 
+else:
+    channel = args.which_neuron
     render_deepdream(sess, T(layer, graph)[:,:,:,channel], t_input, img0, channel, args.dream_results_dir, iter_n=args.iterations) 
-
-
+    
 # Don't hesitate to use higher resolution inputs (also increase the number of octaves)! 
 # Here is an [example](http://storage.googleapis.com/deepdream/pilatus_flowers.jpg) of running the flower dream 
 # over the bigger image.    
