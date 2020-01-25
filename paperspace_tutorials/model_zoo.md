@@ -30,9 +30,14 @@ Currently, it uses the weights trained on COCO dataset.
 
 
 <a name="googledeepdream"></a>
-### Evaluating 2D google deep dream
-This is Google's implementation of deep dream that is used for their web UI. This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. Thus, for a single input image, this code generates 143 output images, each using the learned features from a different neuron. 
-When using a pertained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node in the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
+## Google Deep Dream
+DeepDream is an experiment that visualizes the patterns learned by a neural network. Similar to when a child watches clouds and tries to interpret random shapes, DeepDream over-interprets and enhances the patterns it sees in an image.
+It does so by forwarding an image through the network, then calculating the gradient of the image with respect to the activations of a particular layer. The image is then modified to increase these activations, enhancing the patterns seen by the network, and resulting in a dream-like image. This process was dubbed "Inceptionism". 
+This is Google's implementation of deep dream that is used for their web UI. 
+
+### Dream with all the neurons 
+This code allows you to augment an input image with the learned features of each neuron in the final layer of a classification neural network. Thus, for a single input image, this code generates 143 output images, each using the learned features from a different neuron. 
+When using a pre-trained network, you first need to upload the `inception5_weights.zip` file folder to `/storage` using the notebook tool in the web GUI, and unzip it. What is nice about using this code in leu of the google web UI is that this code takes in an image of any resolution, and loops through each node in the final layer of the provided classification network, so you can view the dreamed features for 143 different neurons!
 
 2D deep dream Docker container image:
 
@@ -51,9 +56,11 @@ Command Example:
 `bash run_2Dgoogledeepdream_eval.sh /storage/2Dmodels/tree1.jpg /storage/inception5h_weights/tensorflow_inception_graph.pb /storage/test_dream 30`
 
 <a name="classdeepdream"></a>
-### Evaluating 2D class-based deep dream
+## Class-based Deep Dream
 This code allows you to augment an input image with the learned features of a specific class from a trained classification neural network, specifically a VGG network. 
-When using a pertained network, you first need to upload pretrained VGG neural network weights folder to `/storage` using the notebook tool in the web GUI. Note that the next subsection details how to train a VGG network on your own dataset. 
+
+### Evaluating 2D class-based deep dream
+When using a pre-trained network, you first need to upload pretrained VGG neural network weights folder to `/storage` using the notebook tool in the web GUI. Note that the next subsection details how to train a VGG network on your own dataset. 
 Note that the  input must be in RGB format (i.e., three channels).
 
 2D deep dream Docker container image:
@@ -92,6 +99,10 @@ Command Example:
 `bash run_2Dclassbaseddeepdream_training.sh /storage/2Dmodels/scene0_camloc_0_5_-20_rgb.png /storage/acadia_general_arch_styles_netweights gothic /storage/test 500`
 
 <a name="neuralstyle"></a>
+## Neural Style Transfer
+Neural style transfer is an optimization technique used to take two images—a content image and a style reference image (such as an artwork by a famous painter)—and blend them together so the output image looks like the content image, but “painted” in the style of the style reference image.
+This is implemented by optimizing the output image to match the content statistics of the content image and the style statistics of the style reference image. These statistics are extracted from the images using a convolutional network.
+
 ### Running 2D style transfer
 First, you will need to create notebook via web GUI, upload vgg weights, called `imagenet-vgg-verydeep-19.mat`, to `/storage`
 You will also need to upload a content image and style guide image to `/storage`. You can download the vgg weights from <http://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat>.
@@ -179,7 +190,7 @@ Command Example:
 `bash run_2Dto3Dvertexoptimization.sh /storage/3Dmodels/TreeCartoon1_OBJ.obj /storage/2Dmodels/new000524.png 2Dgeo_3Dtree /artifacts/results_vertoptim 250`
 
 <a name="pix2pixhd"></a>
-### Running pix2pixHD on paperspace
+## Pix2pixHD for paired image-to-image translation
 We will step through how to train and test the super resolution GAN model, `pix2pixHD` in the Paperspace Experiment Builder. 
 
 First, `pix2pixHD` is a generative adversarial neural network that transforms one dataset of high resolution images, which we refer to as data domain A, into the style of a different high resolution dataset, which we refer to as data domain B. Note that the data in domain A must be paired with the data in domain B; this means that the spatial structure of an image in domain A must correpsond to an image in domain D that has the same spatial structure; a good example of this is having domain A be a collection of semantic segmentation maps (each object class is a different color pixel) and domain B is the segmentation maps corresponding RGB image. This means that, effectively, pix2pixHD is painting the RGB color palette/textures of the shapes in domain B onto the appropriate shapes in domain A.
@@ -193,14 +204,14 @@ The workspace you can use for both training and testing your model:
 
 https://github.com/NVIDIA/pix2pixHD.git
 
-#### Training pix2pixHD
+### Training pix2pixHD
 For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. AS A REMINDER, the pix2pixHD model requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. Because of this requirement, the filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. For more information please visit the pix2pix github repository, which includes instructions for training and testing.
 
 Command Format:
 
 `python train.py --name <RUNNAME> --dataroot /storage/example_dataset --label_nc 0 --no_instance`
 
-#### Testing pix2pixHD
+### Testing pix2pixHD
 For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`.
 
 Command Format:
@@ -208,7 +219,7 @@ Command Format:
 `python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
 
 <a name="pggan"></a>
-### Running PG-GAN on paperspace
+## Progressive growing of GANs (PG-GAN)
 PG-GAN functions like a standard GAN framework: the generator neural network takes in a latent noise vector and projects it into the pixel space of RGB images that constitute the 'real' dataset you wish the GAN to model. The Discriminator network determines if its input image is real or fake (i.e, rendered by the Generator network). Each network is influenced by the others error, which trains the Generator to produce highly realistic images. After training, the Discrimiantor network is discarded and the Generator is used to produce novel images that would reasonably come from the training dataset, but do not exist in the training dataset.
 
 In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/pggan_dataset` and store your training and testing datasets there. The training folder should contain your training images, and your test folder should contain your test images; the naming convention of the images does not matter. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
@@ -231,27 +242,27 @@ The workspace you can use for both training and testing your model:
 
 https://github.com/alexacarlson/pggan-pytorch
 
-#### Training PG-GAN
+### Training PG-GAN
 The command format used for training a model:
 
 
-#### Testing PG-GAN
+### Testing PG-GAN
 The command format used for testing an already-trained model:
 
 
 <a name="cyclegan"></a>
-### Running cycleGAN on paperspace:
+## CycleGAN for unpaired image-to-image translation:
 The cycleGAN Docker container you can use for both training and testing your model:
 
 The workspace you can use for both training and testing your model:
 
 https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git
 
-#### Training cycleGAN
+### Training cycleGAN
 The command format used for training a model:
 
 
-#### Testing cycleGAN
+### Testing cycleGAN
 The command format used for testing an already-trained model:
 
 
