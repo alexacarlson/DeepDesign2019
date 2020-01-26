@@ -230,17 +230,6 @@ PG-GAN functions like a standard GAN framework: the generator neural network tak
 
 In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/pggan_dataset` and store your training and testing datasets there. The training folder should contain your training images (jpg or png), and your test folder should contain your test images; the naming convention of the images does not matter. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
 
-Your dataset should be stored in the following hierarchy:
-~~~
----------------------------------------------
-The training data folder should be formatted like : 
-</storage/pggan_dataset>
-                |--Your Folder of training images
-                        |--image 1
-                        |--image 2
-                        |--image 3 ...
----------------------------------------------
-~~~
 The PG-GAN Docker container that you can use for both training and testing the model:
 
 `acarlson32/pytorch-cyclegan-pggan:thirdimage`
