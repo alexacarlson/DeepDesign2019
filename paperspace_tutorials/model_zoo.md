@@ -228,7 +228,7 @@ Command Format:
 ## Progressive growing of GANs (PG-GAN)
 PG-GAN functions like a standard GAN framework: the generator neural network takes in a latent noise vector and projects it into the pixel space of RGB images that constitute the 'real' dataset you wish the GAN to model. The Discriminator network determines if its input image is real or fake (i.e, rendered by the Generator network). Each network is influenced by the others error, which trains the Generator to produce highly realistic images. After training, the Discrimiantor network is discarded and the Generator is used to produce novel images that would reasonably come from the training dataset, but do not exist in the training dataset.
 
-In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/pggan_dataset` and store your training and testing datasets there. The training folder should contain your training images, and your test folder should contain your test images; the naming convention of the images does not matter. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
+In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/pggan_dataset` and store your training and testing datasets there. The training folder should contain your training images (jpg or png), and your test folder should contain your test images; the naming convention of the images does not matter. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
 
 Your dataset should be stored in the following hierarchy:
 ~~~
@@ -243,19 +243,25 @@ The training data folder should be formatted like :
 ~~~
 The PG-GAN Docker container that you can use for both training and testing the model:
 
-`taesungp/pytorch-cyclegan-and-pix2pix`
+`acarlson32/pytorch-cyclegan-pggan:thirdimage`
 
 The workspace you can use for both training and testing your model: 
 
-https://github.com/alexacarlson/pggan-pytorch
+`https://github.com/alexacarlson/pytorch_GAN_zoo.git`
 
 ### Training PG-GAN
 The command format used for training a model:
 
+`python train.py PGAN -c dataset.json -d OUTPUT_DIR -n EXPERIMENT_NAME --no_vis`
+
+where `EXPERIMENT_NAME` is a name you create for your model, and `OUTPUT_DIR` is where the training outputs are stored.
 
 ### Testing PG-GAN
-The command format used for testing an already-trained model:
+The command format used for testing an already-trained model; note that `EXPERIMENT_NAME` should match the one you used to train the model. 
 
+`python eval.py visualization -n EXPERIMENT_NAME -m PGAN --save_dataset PATH_TO_THE_OUTPUT_DATASET --size_dataset NUMBER_IMAGES_IN_THE_OUTPUT_DATASET`
+
+`PATH_TO_THE_OUTPUT_DATASET` is where your output images will be saved, and `NUMBER_IMAGES_IN_THE_OUTPUT_DATASET` is the number of images you would like to output. 
 
 <a name="cyclegan"></a>
 ## CycleGAN for unpaired image-to-image translation:
