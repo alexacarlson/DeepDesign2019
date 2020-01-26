@@ -99,8 +99,7 @@ def run():
         image = images.data.get()[0].transpose((1, 2, 0))
         scipy.misc.toimage(image, cmin=0, cmax=1).save('%s/_tmp_%04d.png' % (directory_output, num))
     make_gif(directory_output, args.filename_output)
-    neural_renderer.save_obj(directory_output+'result.obj', model.vertices[0], model.faces[0], cf.tanh(model.textures[0]).array)
-
+    
 
 if __name__ == '__main__':
     run()
