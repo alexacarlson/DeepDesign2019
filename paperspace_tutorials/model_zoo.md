@@ -128,16 +128,16 @@ Command Format for running with no mask:
 
 Command Example for running with no mask: 
 
-`bash run_2Dneuralstyletransfer.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
+`bash run_2Dneuralstyletransfer_nomask.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
 
 
 Command Format for running with mask:
 
-`bash run_2Dneuralstyletransfer_nomask.sh CONTENT_FILE STYLE_FILE MASK_FILE OUTPUT_FILE IMAGE_SIZE CONTENT_WEIGHT STYLE_WEIGHT`
+`bash run_2Dneuralstyletransfer_withmask.sh CONTENT_FILE STYLE_FILE MASK_FILE OUTPUT_FILE IMAGE_SIZE CONTENT_WEIGHT STYLE_WEIGHT`
 
 Command Example  for running with mask: 
 
-`bash run_2Dneuralstyletransfer.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /storage/2Dmodels/new000343_mask.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
+`bash run_2Dneuralstyletransfer_withmask.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /storage/2Dmodels/new000343_mask.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0`
 
 <a name="3ddream"></a>
 ### Running 2D to 3D neural renderer for 3D deep dreaming
