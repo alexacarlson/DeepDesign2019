@@ -31,7 +31,7 @@ def parse_args():
         help='The ratio between noise and content, ranging from 0. to 1.')
 
     parser.add_argument('--model_path', type=str,
-        default='imagenet-vgg-verydeep-19.mat',
+        default='/storage/imagenet-vgg-verydeep-19.mat',
         help='The path of the vgg model')
 
     parser.add_argument('--feature_pooling_type', type=str,
