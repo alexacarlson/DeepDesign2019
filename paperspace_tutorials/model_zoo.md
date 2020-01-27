@@ -3,8 +3,8 @@ Collection of more deep learning models, with tutorials on how to run them on pa
 
 ## Content
 1. [AttnGAN](#attention_gan)
-2. [Google Deep Dream](#googledeepdream)
-3. [Class-Based Deep Dreaming](#classdeepdream)
+2. [Google's Neuron-based Deep Dream](#googledeepdream)
+3. [Class-Based Deep Dream](#classdeepdream)
 4. [2D Neural Style Transfer](#neuralstyle)
 5. [2D to 3D Deep Dreaming](#3ddream)
 6. [2D to 3D Style Transfer](#3dstyle)
