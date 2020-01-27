@@ -65,3 +65,5 @@ For step by step instructions on using Paperspace, please see the following:
 
 [Running/training models using the Paperspace Command Line Interface (NOT RECOMMENDED)](paperspace_tutorials/Paperspace_usingtheCLI.md)
 
+[Model Zoo](paperspace_tutorials/model_zoo.md)
+
