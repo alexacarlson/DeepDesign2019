@@ -266,7 +266,7 @@ The command format used for testing an already-trained model; note that `EXPERIM
 ## CycleGAN for unpaired image-to-image translation:
 The paper proposes a method that can capture the characteristics of one image domain and figure out how these characteristics could be translated into another image domain, all in the absence of any paired training examples. CycleGAN uses a special cycle consistency loss to enable training without the need for paired data. In other words, it can translate from one domain to another without a one-to-one mapping between the source and target domain.
 This opens up the possibility to do a lot of interesting tasks like photo-enhancement, image colorization, style transfer, etc. All you need is the source and the target dataset (which is simply a directory of images). Check out their github page at <https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/README.md> to see some cool examples of what this framework can do!
-Your training dataset should have subfolders `trainA`, where you should load your training images for dataset/domain A, `trainB`, where you should load your training images for dataset/domain B, `testA`, where you should load your test images for dataset/domain A  that will be transferred to the style of domain B after training.
+Your training dataset should have subfolders `trainA`, where you should load your training images for dataset/domain A, `trainB`, where you should load your training images for dataset/domain B, `testA`, where you should load your test images for dataset/domain A  that will be transferred to the style of domain B after training. You will need to create a folder to store the model weights in `/storage`, which is the `CHECKPT_DIR` below.
 
 The cycleGAN Docker container you can use for both training and testing your model:
 
@@ -286,18 +286,18 @@ where `DATASET_PATH` is the location of your dataset on papespace, `EXPERIMENT_N
 
 Command Example:
 
-`python train.py --dataroot /storage/cyclegan-dataset --name train_cyclegan --checkpoints_dir --load_size 256 --crop_size 128 --model cycle_gan --display_id 0`
+`python train.py --dataroot /storage/cyclegan-dataset --name train_cyclegan --checkpoints_dir /storage/cgan_checkpts --load_size 256 --crop_size 128 --model cycle_gan --display_id 0`
 
-To see intermediate training image results, check out `/artifacts/checkpoints/EXPERIMENT_NAME/web/index.html`
+To see intermediate training image results, check out `CHECKPT_DIR/EXPERIMENT_NAME/web/index.html`
 
 ### Testing cycleGAN
 The command format used for testing an already-trained model:
 
-`python test.py --data_root DATASET_PATH --name EXPERIMENT_NAME --model cycle_gan`
+`python test.py --data_root DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --model cycle_gan`
 
 Command Example:
 
-`python test.py --dataroot /storage/cyclegan-dataset --name mapstest_cyclegan --model cycle_gan`
+`python test.py --dataroot /storage/cyclegan-dataset --name mapstest_cyclegan --checkpoints_dir /storage/cgan_checkpts --model cycle_gan`
 
-Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights.
+Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights, similar with `CHECKPT_DIR`.
 The test results will be saved to a html file here: `/artifacts/results/EXPERIMENT_NAME/latest_test/index.html`
