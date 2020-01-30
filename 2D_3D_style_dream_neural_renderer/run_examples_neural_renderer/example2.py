@@ -85,6 +85,7 @@ def run():
     parser.add_argument('-oo', '--filename_output_optimization', type=str, default='./examples/data/example2_optimization.gif')
     parser.add_argument('-or', '--filename_output_result', type=str, default='./examples/data/example2_result.gif')
     parser.add_argument('-g', '--gpu', type=int, default=0)
+    parser.add_argument('-ni', '--num_iters', type=int, default=300)
     args = parser.parse_args()
     working_directory = os.path.dirname(args.filename_output_result)
     if not os.path.exists(working_directory):
@@ -95,7 +96,7 @@ def run():
 
     optimizer = chainer.optimizers.Adam()
     optimizer.setup(model)
-    loop = tqdm.tqdm(range(300))
+    loop = tqdm.tqdm(range(args.num_iters))
     for i in loop:
         loop.set_description('Optimizing')
         optimizer.target.cleargrads()
