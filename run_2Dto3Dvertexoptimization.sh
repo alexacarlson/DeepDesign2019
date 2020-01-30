@@ -10,7 +10,8 @@ OUTPUT_FILENAME=$3
 OUTPUT_DIR=$4
 NUM_ITERS=$5
 
-cd 2D_3D_style_dream_neural_renderer
+#cd 2D_3D_style_dream_neural_renderer
+cd 2d_3d_style_dream_neural_renderer
 
 python run_examples_neural_renderer/example2.py \
     --filename_obj ${INPUT_OBJ_PATH} \

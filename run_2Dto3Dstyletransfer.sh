@@ -14,7 +14,8 @@ STYLE_WEIGHT=$5
 CONTENT_WEIGHT=$6
 NUM_ITERS=$7
 
-cd 2D_3D_style_dream_neural_renderer/
+#cd 2D_3D_style_dream_neural_renderer/
+cd 2d_3d_style_dream_neural_renderer
 
 python run_examples_style_transfer_3d/run.py \
     --filename_mesh ${INPUT_OBJ_PATH} \
