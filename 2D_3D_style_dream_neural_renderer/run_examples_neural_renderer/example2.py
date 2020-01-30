@@ -101,6 +101,19 @@ def run():
         scipy.misc.toimage(image, cmin=0, cmax=1).save('%s/_tmp_%04d.png' % (working_directory, i))
     make_gif(working_directory, args.filename_output_optimization)
 
+
+    # save obj file
+    #vertices,faces,textures = model.mesh.get_batch(args.batch_size)
+    ## fill back
+    #textures_1 = chainer.functions.concat((textures, textures.transpose((0, 1, 4, 3, 2, 5))), axis=1)
+    faces_1 = chainer.functions.concat((model.faces, model.faces[:, :, ::-1]), axis=1).data
+    obj_fn = args.filename_output_result.split('/')[-1].split('.')[0]
+    #output_directory = os.path.split(args.filename_output_result)[0]#'/'.join(args.filename_output.split('/')[-3:-1])
+    #import pdb
+    #pdb.set_trace()
+    neural_renderer.save_obj('%s/%s.obj'% (working_directory,obj_fn), model.vertices[0], faces_1[0])
+    #neural_renderer.save_obj('%s/%s.obj'% (output_directory,obj_fn), vertices[0], faces[0], textures[0].array)
+    
     # draw object
     loop = tqdm.tqdm(range(0, 360, 4))
     for num, azimuth in enumerate(loop):
