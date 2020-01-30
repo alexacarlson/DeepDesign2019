@@ -147,7 +147,7 @@ Note that before running any jobs in this project, you will need to upload the d
 
 Neural Renderer Docker container image:
 
-`acarlson32/2d3d_neuralrenderer:firstimage`
+`acarlson32/2d3d_neuralrenderer:secondimage`
 
 Workspace:
 
@@ -155,11 +155,11 @@ Workspace:
 
 Command Format:
 
-`bash run_2Dto3Ddeepdream.sh INPUT_OBJ_PATH OUTPUT_FILENAME OUTPUT_DIR NUM_ITER`
+`bash run_2Dto3Ddeepdream.sh INPUT_OBJ_PATH OUTPUT_FILENAME OUTPUT_DIR IMAGE_SIZE NUM_ITER`
 
 Command Example: 
 
-`bash run_2Dto3Ddeepdream.sh /storage/3Dmodels/bench.obj 3Ddreamed_bench.gif /artifacts/results_3D_dream 300`
+`bash run_2Dto3Ddeepdream.sh /storage/3Dmodels/bench.obj 3Ddreamed_bench.gif /artifacts/results_3D_dream 512 300`
 
 <a name="3dstyle"></a>
 ### Running 2D to 3D neural renderer for 2D to 3D style transfer
@@ -169,7 +169,7 @@ Note that before running any jobs in this project, you will need to upload the d
 
 Neural Renderer Docker container image:
 
-`acarlson32/2d3d_neuralrenderer:firstimage`
+`acarlson32/2d3d_neuralrenderer:secondimage`
 
 Workspace:
 
@@ -191,7 +191,7 @@ Note that before running any jobs in this project, you will need to upload the d
 
 Neural Renderer Docker container image:
 
-`acarlson32/2d3d_neuralrenderer:firstimage`
+`acarlson32/2d3d_neuralrenderer:secondimage`
 
 Workspace:
 
@@ -258,9 +258,9 @@ where `EXPERIMENT_NAME` is a name you create for your model, and `/storgae/OUTPU
 ### Testing PG-GAN
 The command format used for testing an already-trained model; note that `EXPERIMENT_NAME` should match the one you used to train the model. 
 
-`python eval.py visualization -n EXPERIMENT_NAME -m PGAN --save_dataset PATH_TO_THE_OUTPUT_DATASET --size_dataset NUMBER_IMAGES_IN_THE_OUTPUT_DATASET`
+`python eval.py visualization -n EXPERIMENT_NAME -m PGAN --dir CHECKPOINT_LOCATION --save_dataset PATH_TO_THE_OUTPUT_DATASET --size_dataset NUMBER_IMAGES_IN_THE_OUTPUT_DATASET --no_vis`
 
-`PATH_TO_THE_OUTPUT_DATASET` is where your output images will be saved, and `NUMBER_IMAGES_IN_THE_OUTPUT_DATASET` is the number of images you would like to output. 
+`EXPERIMENT_NAME` is the same name you used in training, `PATH_TO_THE_OUTPUT_DATASET` is where your output images will be saved, and `NUMBER_IMAGES_IN_THE_OUTPUT_DATASET` is the number of images you would like to output, and `CHECKPOINT_LOCATION` is the location of your network checkpoitns/weights in paperspace storage.
 
 <a name="cyclegan"></a>
 ## CycleGAN for unpaired image-to-image translation:
