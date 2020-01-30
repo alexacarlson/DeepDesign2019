@@ -18,4 +18,4 @@ python run_examples_neural_renderer/example2.py \
     --filename_ref ${INPUT_2D_PATH} \
     --filename_output_optimization ${OUTPUT_DIR}/${OUTPUT_FILENAME}_optim.gif \
     --filename_output_result ${OUTPUT_DIR}/${OUTPUT_FILENAME}.gif \
-    --num_iters ${NUM_ITERS}
+    --num_iterations ${NUM_ITERS}
