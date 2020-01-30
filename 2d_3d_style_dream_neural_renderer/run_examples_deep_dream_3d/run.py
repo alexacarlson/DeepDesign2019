@@ -71,9 +71,7 @@ def run():
     #model.textures_1 = chainer.functions.concat((model.mesh.textures, model.mesh.textures), axis=1)
     #obj_fn = args.filename_output.split('/')[-1].split('.')[0]
     #neural_renderer.save_obj('%s/%s.obj'% (args.output_directory,obj_fn), model.mesh.vertices, model.mesh.faces, chainer.functions.tanh(model.textures_1).array)
-    
-    import pdb
-    #pdb.set_trace()
+    #
     vertices,faces,textures = model.mesh.get_batch(args.batch_size)
     ## fill back
     textures_1 = chainer.functions.concat((textures, textures.transpose((0, 1, 4, 3, 2, 5))), axis=1)
