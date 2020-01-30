@@ -89,6 +89,18 @@ def run():
         optimizer.update()
         loop.set_description('Optimizing. Loss %.4f' % loss.data)
 
+    ## save obj
+    vertices,faces,textures = model.mesh.get_batch(args.batch_size)
+    ## fill back
+    textures_1 = chainer.functions.concat((textures, textures.transpose((0, 1, 4, 3, 2, 5))), axis=1)
+    faces_1 = chainer.functions.concat((faces, faces[:, :, ::-1]), axis=1).data
+    #
+    obj_fn = args.filename_output.split('/')[-1].split('.')[0]
+    output_directory = os.path.split(args.filename_output)[0]#'/'.join(args.filename_output.split('/')[-3:-1])
+    #neural_renderer.save_obj('%s/%s.obj'% (output_directory,obj_fn), model.mesh.vertices.array, model.mesh.faces, model.mesh.textures.array)
+    neural_renderer.save_obj('%s/%s.obj'% (output_directory,obj_fn), vertices[0], faces[0], textures[0].array)
+    #neural_renderer.save_obj('%s/%s.obj'% (output_directory,obj_fn), model.mesh.vertices[0], model.mesh.faces[0], chainer.functions.tanh(model.textures_1[0]).array)
+
     # draw object
     model.renderer.background_color = (1, 1, 1)
     loop = tqdm.tqdm(range(0, 360, 4))
