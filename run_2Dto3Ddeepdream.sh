@@ -7,7 +7,8 @@
 INPUT_OBJ_PATH=$1
 OUTPUT_FILENAME=$2
 OUTPUT_DIR=$3
-NUM_ITER=$4
+IMAGE_SIZE=$4
+NUM_ITER=$5
 
 #cd 2D_3D_style_dream_neural_renderer
 cd 2d_3d_style_dream_neural_renderer
