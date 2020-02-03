@@ -293,7 +293,7 @@ To see intermediate training image results, check out `CHECKPT_DIR/EXPERIMENT_NA
 ### Testing cycleGAN
 The command format used for testing an already-trained model:
 
-`python test.py --data_root DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --model cycle_gan`
+`python test.py --dataroot DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --model cycle_gan`
 
 Command Example:
 
