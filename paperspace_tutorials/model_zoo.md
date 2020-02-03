@@ -297,7 +297,7 @@ The command format used for testing an already-trained model:
 
 Command Example:
 
-`python test.py --dataroot /storage/cyclegan-dataset --name mapstest_cyclegan --checkpoints_dir /storage/cgan_checkpts --model cycle_gan`
+`python test.py --dataroot /storage/cyclegan-dataset --name mapstest_cyclegan --checkpoints_dir /storage/cgan_checkpts --model cycle_gan --results_dir /artifacts`
 
 Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights, similar with `CHECKPT_DIR`.
 The test results will be saved to a html file here: `/artifacts/results/EXPERIMENT_NAME/latest_test/index.html`
