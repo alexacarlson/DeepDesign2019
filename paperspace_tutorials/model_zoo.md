@@ -279,7 +279,7 @@ https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git
 ### Training cycleGAN
 The command format used for training a model:
 
-`python train.py --data_root DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --load_size RESIZE --crop_size CROP_SIZE --model cycle_gan`
+`python train.py --dataroot DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --load_size RESIZE --crop_size CROP_SIZE --model cycle_gan`
 
 where `DATASET_PATH` is the location of your dataset on papespace, `EXPERIMENT_NAME` is a name you create for your model, 
 `CHECKPT_DIR` is the location where the weights and output images will be save, `RESIZE` is a number that your images will be scaled to, `CROP_SIZE` is what the images will be cropped to after scaling. the `--load_size` and `--crop_size` flags are optional.
