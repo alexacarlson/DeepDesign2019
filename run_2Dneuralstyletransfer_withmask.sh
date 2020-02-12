@@ -1,7 +1,7 @@
 CONTENT_FILE=$1
 STYLE_FILE=$2
 MASK_FILE=$3
-OUTPUT_FILE=$4
+OUTPUT_DIR=$4
 IMAGE_SIZE=$5
 STYLE_WEIGHT=$6
 CONTENT_WEIGHT=$7
@@ -25,4 +25,5 @@ python stylize.py \
      --hard_width=$IMAGE_SIZE \
      --iteration ${NUM_ITERS} \
      --style_weight ${STYLE_WEIGHT} \
-     --content_weight ${CONTENT_WEIGHT} 
+     --content_weight ${CONTENT_WEIGHT} \
+     --output_dir ${OUTPUT_DIR}
