@@ -221,18 +221,19 @@ The workspace you can use for both training and testing your model:
 https://github.com/NVIDIA/pix2pixHD.git
 
 ### Training pix2pixHD
-For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. AS A REMINDER, the pix2pixHD model requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. Because of this requirement, the filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. For more information please visit the pix2pix github repository, which includes instructions for training and testing.
+For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. AS A REMINDER, the pix2pixHD model requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. Because of this requirement, the filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. Note that you will also need to create a folder, `/storage/checkpoints_dir`, where your model weights and intermediate generated images will be saved during training.
+For more information please visit the pix2pix github repository, which includes instructions for training and testing.
 
 Command Format:
 
-`python train.py --name <RUNNAME> --dataroot /storage/example_dataset --label_nc 0 --no_instance`
+`python train.py --name <RUNNAME> --dataroot /storage/example_dataset --checkpoints_dir /storage/checkpoints --label_nc 0 --no_instance`
 
 ### Testing pix2pixHD
-For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`.
+For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpoints_dir`.
 
 Command Format:
 
-`python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --results_dir /artifacts/pix2pixhd_outputs --resize_or_crop none $@`
+`python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --checkpoints_dir /storage/checkpoints_from_training --results_dir /artifacts/pix2pixhd_testoutputs --resize_or_crop none $@`
 
 <a name="pggan"></a>
 ## Progressive growing of GANs (PG-GAN)
