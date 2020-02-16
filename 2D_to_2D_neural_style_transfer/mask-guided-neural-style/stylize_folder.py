@@ -236,20 +236,20 @@ def  main(args):
     style_img = read_image(args.style_img, args.hard_width) 
 
     ## get stacked 0./1. masks
-    #if args.mask_n_colors > 1: # colorful
-    #    target_masks_origin, style_masks_origin = read_colorful_mask(args.target_mask, args.style_mask, args.hard_width, args.mask_n_colors)    
-    #else: # single mask
-    #    if args.target_mask is None:
-    #        if args.content_img:
-    #            target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
-    #        else:
-    #            target_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)   
-    #    else:
-    #        target_masks_origin = read_single_mask(args.target_mask, args.hard_width)
-    #    if args.style_mask is None:
-    #        style_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)
-    #    else:
-    #        style_masks_origin = read_single_mask(args.style_mask, args.hard_width)
+    if args.mask_n_colors > 1: # colorful
+        target_masks_origin, style_masks_origin = read_colorful_mask(args.target_mask, args.style_mask, args.hard_width, args.mask_n_colors)    
+    else: # single mask
+        if args.target_mask is None:
+            if args.content_img:
+                target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
+            else:
+                target_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)   
+        else:
+            target_masks_origin = read_single_mask(args.target_mask, args.hard_width)
+        if args.style_mask is None:
+            style_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)
+        else:
+            style_masks_origin = read_single_mask(args.style_mask, args.hard_width)
 
     ## init img & target shape
     init_img_list = [get_init_image(c_img, args.init_noise_ratio) for c_img in content_img_list]
