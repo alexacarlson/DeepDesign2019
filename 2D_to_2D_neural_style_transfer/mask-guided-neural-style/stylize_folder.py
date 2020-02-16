@@ -223,147 +223,117 @@ def  main(args):
     '''
     init 
     '''  
-    # read images and preprocess
-    if args.content_img:
-        content_img = read_image(args.content_img, args.hard_width) 
+    ## read images and preprocess
+    if not os.isdir(args.content_img):
+        print "content image folder is not a folder"
+        import sys
+        sys.exit()
+
+    content_img_filelist =[c_imgf for c_imgf in os.listdir(args.content_img) if '.jpg' in c_imgf or '.png' in c_imgf]
+    content_img_list =[read_image(c_imgf, args.hard_width) for c_imgf in content_img_filelist]
     style_img = read_image(args.style_img, args.hard_width) 
 
-    # get stacked 0./1. masks
-    if args.mask_n_colors > 1: # colorful
-        target_masks_origin, style_masks_origin = read_colorful_mask(args.target_mask, args.style_mask, 
-                                                    args.hard_width, args.mask_n_colors)    
-    
-    else: # single mask
-        if args.target_mask is None:
-            if args.content_img:
-                target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
-            else:
-                target_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)   
+    ## get stacked 0./1. masks
+    #if args.mask_n_colors > 1: # colorful
+    #    target_masks_origin, style_masks_origin = read_colorful_mask(args.target_mask, args.style_mask, args.hard_width, args.mask_n_colors)    
+    #else: # single mask
+    #    if args.target_mask is None:
+    #        if args.content_img:
+    #            target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
+    #        else:
+    #            target_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)   
+    #    else:
+    #        target_masks_origin = read_single_mask(args.target_mask, args.hard_width)
+    #    if args.style_mask is None:
+    #        style_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)
+    #    else:
+    #        style_masks_origin = read_single_mask(args.style_mask, args.hard_width)
+
+    ## init img & target shape
+    init_img_list = [get_init_image(c_img, args.init_noise_ratio) for c_img in content_img_list]
+    target_shape = init_img_list[0].shape
+
+    ## check shape & number of masks
+    #if args.content_img and content_img.shape[1:3] != target_masks_origin.shape[1:3]:
+    #    print('content and mask have different shape')
+    #    sys.exit(0)
+    #if style_img.shape[1:3] != style_masks_origin.shape[1:3]:
+    #    print('style and mask have different shape')
+    #    sys.exit(0)
+    #if target_masks_origin.shape[0] != style_masks_origin.shape[0]:
+    #    print('content and style have different masks')
+    #    sys.exit(0)
+
+    for cfn, content_img in zip(content_img_filelist, init_img_list):
+        ''' compute features & build net '''
+        # prepare model weights
+        vgg_weights = Model.prepare_model(args.model_path)  
+
+        # feature maps of specific layers
+        content_features = compute_features(vgg_weights, args.feature_pooling_type, content_img, args.content_layers)   
+        style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers) 
+
+        ## masks of specific layers
+        #target_masks = compute_layer_masks(target_masks_origin, args.style_layers, args.mask_downsample_type)
+        #style_masks = compute_layer_masks(style_masks_origin, args.style_layers, args.mask_downsample_type) 
+
+        # build net
+        target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
+
+        ''' loss '''
+        ## content loss
+        if args.content_img:
+            content_loss = sum_content_loss(target_net, content_features, args.content_layers, args.content_layers_weights, args.content_loss_normalization)
         else:
-            target_masks_origin = read_single_mask(args.target_mask, args.hard_width)
-
-        if args.style_mask is None:
-            style_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)
+            content_loss = 0.
+        ## style loss
+        style_masked_loss = sum_masked_style_loss(target_net, style_features, target_masks, style_masks, args.style_layers, args.style_layers_weights, args.mask_normalization_type)
+        #
+        if args.tv_weight != 0.:
+            tv_loss = sum_total_variation_loss(target_net['input'], target_shape)
         else:
-            style_masks_origin = read_single_mask(args.style_mask, args.hard_width)
+            tv_loss = 0.
+            #
+        total_loss = args.content_weight * content_loss + args.style_weight * style_masked_loss + args.tv_weight * tv_loss
+        #
+        ''' train '''
+        if not os.path.exists(args.output_dir):
+            os.mkdir(args.output_dir)   
 
-    # init img & target shape
-    if args.content_img:
-        target_shape = content_img.shape
-        init_img = get_init_image(content_img, args.init_noise_ratio)
-    else:
-        target_shape = [1] + list(target_masks_origin.shape[1:3]) + [3]
-        init_img = np.random.uniform(-20., 20., target_shape).astype(np.float32)
-
-    # check shape & number of masks
-    if args.content_img and content_img.shape[1:3] != target_masks_origin.shape[1:3]:
-        print('content and mask have different shape')
-        sys.exit(0)
-    if style_img.shape[1:3] != style_masks_origin.shape[1:3]:
-        print('style and mask have different shape')
-        sys.exit(0)
-    if target_masks_origin.shape[0] != style_masks_origin.shape[0]:
-        print('content and style have different masks')
-        sys.exit(0)
-
-    '''
-    compute features & build net
-    '''
-    # prepare model weights
-    vgg_weights = Model.prepare_model(args.model_path)
-
-    # feature maps of specific layers
-    if args.content_img:
-        content_features = compute_features(vgg_weights, args.feature_pooling_type, 
-            content_img, args.content_layers)   
-    style_features = compute_features(vgg_weights, args.feature_pooling_type, 
-        style_img, args.style_layers)
-
-    # masks of specific layers
-    target_masks = compute_layer_masks(target_masks_origin, args.style_layers, 
-        args.mask_downsample_type)
-    style_masks = compute_layer_masks(style_masks_origin, args.style_layers, 
-        args.mask_downsample_type)
-
-    # build net
-    target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape)
-
-
-    '''
-    loss 
-    '''
-    if args.content_img:
-        content_loss = sum_content_loss(target_net, content_features, 
-                                        args.content_layers, args.content_layers_weights,
-                                        args.content_loss_normalization)
-    else:
-        content_loss = 0.
-
-    style_masked_loss = sum_masked_style_loss(target_net, style_features, 
-                                              target_masks, style_masks, 
-                                              args.style_layers, args.style_layers_weights, 
-                                              args.mask_normalization_type)
-
-    if args.tv_weight != 0.:
-        tv_loss = sum_total_variation_loss(target_net['input'], target_shape)
-    else:
-        tv_loss = 0.
-
-    total_loss = args.content_weight * content_loss + \
-                 args.style_weight * style_masked_loss + \
-                 args.tv_weight * tv_loss
-
-
-    '''
-    train 
-    '''
-    if not os.path.exists(args.output_dir):
-        os.mkdir(args.output_dir)
-
-    if args.optimizer == 'adam':
-        optimizer = tf.train.AdamOptimizer(args.learning_rate)
-        train_op = optimizer.minimize(total_loss)
-        #init
-        init_op = tf.global_variables_initializer() # must! Adam has some varibales to init
-        sess = tf.Session()
-        sess.run(init_op)
-        sess.run( target_net['input'].assign(init_img) )
-        #train
-        for i in range(args.iteration):
-            sess.run(train_op)
-            if i % args.log_iteration == 0:
-                print('Iteration %d: loss = %f' % (i+1, sess.run(total_loss)))
-                result = sess.run(target_net['input'])
-                output_path = os.path.join(args.output_dir, 'result_%s.png' % (str(i).zfill(4)))
-                #output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[1])[0]+'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
-                #import pdb
-                #pdb.set_trace()
-                write_image(output_path, result)
-    
-    elif args.optimizer == 'lbfgs':
-        optimizer = tf.contrib.opt.ScipyOptimizerInterface(
-            total_loss, method='L-BFGS-B',
-            options={'maxiter': args.iteration,
-                     'disp': args.log_iteration})   
-        # init  
-        init_op = tf.global_variables_initializer()
-        sess = tf.Session()
-        sess.run(init_op)
-        sess.run( target_net['input'].assign(init_img) )
-        # train
-        optimizer.minimize(sess)    
-
-
-    '''
-    out
-    '''
-    print('Iteration %d: loss = %f' % (args.iteration, sess.run(total_loss)))
-    result = sess.run(target_net['input'])
-    #output_path = os.path.join(args.output_dir, 'result_final.png')
-    output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[0])[1]+'2'+os.path.split(os.path.splitext(args.style_img)[0])[1]+ '.png')
-    #import pdb
-    #pdb.set_trace()
-    write_image(output_path, result)
+        if args.optimizer == 'adam':
+            optimizer = tf.train.AdamOptimizer(args.learning_rate)
+            train_op = optimizer.minimize(total_loss)
+            #init
+            init_op = tf.global_variables_initializer() # must! Adam has some varibales to init
+            sess = tf.Session()
+            sess.run(init_op)
+            sess.run( target_net['input'].assign(init_img) )
+            #train
+            for i in range(args.iteration):
+                sess.run(train_op)
+                if i % args.log_iteration == 0:
+                    print('Iteration %d: loss = %f' % (i+1, sess.run(total_loss)))
+                    result = sess.run(target_net['input'])
+                    output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[1])[0]+'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
+                    write_image(output_path, result)
+        elif args.optimizer == 'lbfgs':
+            optimizer = tf.contrib.opt.ScipyOptimizerInterface(
+                total_loss, method='L-BFGS-B',
+                options={'maxiter': args.iteration,
+                         'disp': args.log_iteration})   
+            # init  
+            init_op = tf.global_variables_initializer()
+            sess = tf.Session()
+            sess.run(init_op)
+            sess.run( target_net['input'].assign(init_img) )
+            # train
+            optimizer.minimize(sess)    
+            #
+        ''' out '''
+        print('Iteration %d: loss = %f' % (args.iteration, sess.run(total_loss)))
+        result = sess.run(target_net['input'])
+        output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[0])[1]+'2'+os.path.split(os.path.splitext(args.style_img)[0])[1]+ '.png')
+        write_image(output_path, result)
 
 
 if __name__ == '__main__':   
