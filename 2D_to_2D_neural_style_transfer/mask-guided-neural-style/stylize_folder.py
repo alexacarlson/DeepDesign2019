@@ -267,7 +267,7 @@ def  main(args):
     #    print('content and style have different masks')
     #    sys.exit(0)
 
-    for cfn, content_img in zip(content_img_filelist, init_img_list):
+    for cfn, content_img, init_img in zip(content_img_filelist, content_img_list, init_img_list):
         ''' compute features & build net '''
         # prepare model weights
         vgg_weights = Model.prepare_model(args.model_path)  
