@@ -318,7 +318,7 @@ def  main(args):
                     if i % args.log_iteration == 0:
                         print('Iteration %d: loss = %f' % (i+1, sess.run(total_loss)))
                         result = sess.run(target_net['input'])
-                        output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[1])[0]+'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
+                        output_path = os.path.join(args.output_dir, os.path.splitext(cfn)[1] +'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
                         write_image(output_path, result)
             elif args.optimizer == 'lbfgs':
                 optimizer = tf.contrib.opt.ScipyOptimizerInterface(
@@ -336,7 +336,7 @@ def  main(args):
             ''' out '''
             print('Iteration %d: loss = %f' % (args.iteration, sess.run(total_loss)))
             result = sess.run(target_net['input'])
-            output_path = os.path.join(args.output_dir, os.path.split(os.path.splitext(args.content_img)[0])[1]+'2'+os.path.split(os.path.splitext(args.style_img)[0])[1]+ '.png')
+            output_path = os.path.join(args.output_dir, os.path.splitext(cfn)[1]+'2'+os.path.split(os.path.splitext(args.style_img)[0])[1]+ '.png')
             write_image(output_path, result)
             print('------------------------ FINISHED IMAGE ------------------------')
 
