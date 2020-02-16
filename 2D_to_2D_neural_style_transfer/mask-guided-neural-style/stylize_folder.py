@@ -224,6 +224,8 @@ def  main(args):
     init 
     '''  
     ## read images and preprocess
+    print args.content_img
+    print os.listdir(args.content_img)
     if not os.path.isdir(args.content_img):
         print "content image folder is not a folder"
         import sys
