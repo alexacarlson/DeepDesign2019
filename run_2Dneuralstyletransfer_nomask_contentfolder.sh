@@ -16,7 +16,7 @@ NUM_ITERS=$7
 
 cd 2D_to_2D_neural_style_transfer/mask-guided-neural-style
 
-python stylize.py \
+python stylize_folder.py \
      --mask_n_colors=0 \
      --content_img=${CONTENT_FILE1} \
      --style_img=${STYLE_FILE} \
