@@ -241,7 +241,8 @@ def  main(args):
     else: # single mask
         if args.target_mask is None:
             if args.content_img:
-                target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
+                #target_masks_origin = np.ones(content_img.shape[0:3]).astype(np.float32)
+                target_masks_origin = np.ones(content_img_list[0].shape[0:3]).astype(np.float32)
             else:
                 target_masks_origin = np.ones(style_img.shape[0:3]).astype(np.float32)   
         else:
