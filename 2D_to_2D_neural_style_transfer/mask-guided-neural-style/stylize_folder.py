@@ -277,8 +277,8 @@ def  main(args):
         style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers) 
 
         ## masks of specific layers
-        #target_masks = compute_layer_masks(target_masks_origin, args.style_layers, args.mask_downsample_type)
-        #style_masks = compute_layer_masks(style_masks_origin, args.style_layers, args.mask_downsample_type) 
+        target_masks = compute_layer_masks(target_masks_origin, args.style_layers, args.mask_downsample_type)
+        style_masks = compute_layer_masks(style_masks_origin, args.style_layers, args.mask_downsample_type) 
 
         # build net
         target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
