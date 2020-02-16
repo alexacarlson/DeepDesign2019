@@ -232,7 +232,7 @@ def  main(args):
         sys.exit()
 
     content_img_filelist =[c_imgf for c_imgf in os.listdir(args.content_img) if '.jpg' in c_imgf or '.png' in c_imgf]
-    content_img_list =[read_image(c_imgf, args.hard_width) for c_imgf in content_img_filelist]
+    content_img_list =[read_image(os.path.join(args.content_img, c_imgf), args.hard_width) for c_imgf in content_img_filelist]
     style_img = read_image(args.style_img, args.hard_width) 
 
     ## get stacked 0./1. masks
