@@ -236,6 +236,42 @@ Command Format:
 
 `python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --checkpoints_dir /storage/checkpoints_from_training --results_dir /artifacts/pix2pixhd_testoutputs --resize_or_crop none $@`
 
+<a name="pix2pix"></a>
+## Pix2pix for paired image-to-image translation
+`pix2pix` is a generative adversarial neural network that transforms one dataset of images, which we refer to as data domain A, into the style of a different dataset, which we refer to as data domain B. Note that the data in domain A must be paired with the data in domain B; this means that the spatial structure of an image in domain A must correpsond to an image in domain D that has the same spatial structure; a good example of this is having domain A be a collection of semantic segmentation maps (each object class is a different color pixel) and domain B is the segmentation maps corresponding RGB image. 
+
+The pix2pixHD Docker container you can use for both training and testing your model:
+
+`taesungp/pytorch-cyclegan-and-pix2pix`
+
+The workspace you can use for both training and testing your model:
+
+https://github.com/dysdsyd/pytorch-CycleGAN-and-pix2pix.git
+
+### Processing Data
+For training create folder `/path/to/data` with subfolders `A` and `B`. `A` and `B` should each have their own subfolders `train`, etc. In `/path/to/data/A/train`, put training images in style `A`. In `/path/to/data/B/train`, put the corresponding images in style `B`. Corresponding images in a pair {A,B} must be the same size and have the same filename, e.g., `/path/to/data/A/train/1.jpg` is considered to correspond to `/path/to/data/B/train/1.jpg`.
+
+Change the --fold_A, --fold_B and --fold_B to your own domain A's path, domain B's path and output directory path.
+
+Command Format:
+`python datasets/combine_A_and_B.py --fold_A /storage/example_dataset/A --fold_B /storage/example_dataset/B --fold_AB /storage/example_dataset/data`
+
+
+### Training pix2pixHD
+Change the --dataroot, --name and --checkpoints_dir to your own dataset's path, model's and checkpoint directory name.
+
+Command Format:
+
+`python train.py --dataroot /storage/example_dataset/data --name experiment --checkpoints_dir /storage/ckp --n_epochs 3 --model pix2pix --netG unet_256 --direction AtoB --lambda_L1 100 --dataset_mode aligned --norm batch --pool_size 0 `
+
+
+### Testing pix2pixHD
+For testing pix2pixHD, you will need to upload your input data domain A to `/storage/example_dataset/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpoints_dir`.
+
+Command Format:
+
+`python test.py --dataroot /storage/example_dataset/test_A --name experiment --checkpoints_dir /storage/ckp --results_dir /artifacts --model test --netG unet_256 --direction AtoB  --dataset_mode single --norm batch`
+
 <a name="pggan"></a>
 ## Progressive growing of GANs (PG-GAN)
 PG-GAN functions like a standard GAN framework: the generator neural network takes in a latent noise vector and projects it into the pixel space of RGB images that constitute the 'real' dataset you wish the GAN to model. The Discriminator network determines if its input image is real or fake (i.e, rendered by the Generator network). Each network is influenced by the others error, which trains the Generator to produce highly realistic images. After training, the Discrimiantor network is discarded and the Generator is used to produce novel images that would reasonably come from the training dataset, but do not exist in the training dataset.
