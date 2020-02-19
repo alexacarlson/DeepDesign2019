@@ -259,7 +259,7 @@ Command Format:
 
 
 ### Training pix2pixHD
-Change the --dataroot, --name and --checkpoints_dir to your own dataset's path, model's and checkpoint directory name.
+Change the `--dataroot`, `--name` and `--checkpoints_dir` to your own dataset's path, model's and checkpoint directory name.
 
 Command Format:
 
