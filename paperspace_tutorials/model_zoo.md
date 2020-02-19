@@ -226,14 +226,14 @@ For more information please visit the pix2pix github repository, which includes 
 
 Command Format:
 
-`python train.py --dataroot DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --load_size RESIZE --crop_size CROP_SIZE --model pix2pix`
+`python train.py --dataroot DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --model pix2pix`
 
 where `DATASET_PATH` is the location of your dataset on papespace, `EXPERIMENT_NAME` is a name you create for your model, 
-`CHECKPT_DIR` is the location where the weights and output images will be save, `RESIZE` is a number that your images will be scaled to, `CROP_SIZE` is what the images will be cropped to after scaling. the `--load_size` and `--crop_size` flags are optional.
+`CHECKPT_DIR` is the location where the weights.
 
 Command Example:
 
-`python train.py --dataroot /storage/pix2pix-dataset --name experiment --checkpoints_dir /storage/checkpts --load_size 256 --crop_size 128 --model pix2pix --display_id 0`
+`python train.py --dataroot /storage/pix2pix-dataset --name experiment --checkpoints_dir /storage/checkpts --model pix2pix --display_id 0`
 
 ### Testing pix2pixHD
 For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpts`.
