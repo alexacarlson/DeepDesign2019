@@ -10,8 +10,9 @@ Collection of more deep learning models, with tutorials on how to run them on pa
 6. [2D to 3D Style Transfer](#3dstyle)
 7. [2D to 3D Vertex Optimizatoin](#3dvert)
 8. [Pix2PixHD](#pix2pixhd)
-9. [CycleGAN](#cyclegan)
-8. [PG-GAN](#pggan)
+9. [Pix2Pix](#pix2pix)
+10. [CycleGAN](#cyclegan)
+11. [PG-GAN](#pggan)
 
 <a name="attention_gan"></a>
 ## AttnGAN for Image generation from Text 
@@ -218,7 +219,7 @@ The pix2pixHD Docker container you can use for both training and testing your mo
 
 The workspace you can use for both training and testing your model:
 
-https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git
+https://github.com/NVIDIA/pix2pixHD.git
 
 ### Training pix2pixHD
 For training pix2pixHD, you will need to upload your input data domain A to `/storage/train_A`, and your output data domain B to `/storage/train_B`. AS A REMINDER, the pix2pixHD model requires that the images in domain A are paired with images in domain B; this means that the spatial structure for a pair of images should be similar. For example, domain A could be semantic segmentation maps  and domain B would be the corresponding RGB images, and a pair of images would be the semantic segmentation map of a specific scene and the corresponding RGB image. Because of this requirement, the filenames will need to be the same for image pairs. For example, an image pair would be  `/storage/train_A/0001.png` and `/storage/train_B/0001.png`. Note that you will also need to create a folder, `/storage/checkpoints_dir`, where your model weights and intermediate generated images will be saved during training.
@@ -226,28 +227,14 @@ For more information please visit the pix2pix github repository, which includes 
 
 Command Format:
 
-`python train.py --dataroot DATASET_PATH --name EXPERIMENT_NAME --checkpoints_dir CHECKPT_DIR --model pix2pix`
-
-where `DATASET_PATH` is the location of your dataset on papespace, `EXPERIMENT_NAME` is a name you create for your model, 
-`CHECKPT_DIR` is the location where the weights.
-
-Command Example:
-
-`python train.py --dataroot /storage/pix2pix-dataset --name experiment --checkpoints_dir /storage/checkpts --model pix2pix --display_id 0`
+`python train.py --name <RUNNAME> --dataroot /storage/example_dataset --checkpoints_dir /storage/checkpoints --label_nc 0 --no_instance`
 
 ### Testing pix2pixHD
-For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpts`.
+For testing pix2pixHD, you will need to upload your input data domain A to `/storage/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpoints_dir`.
 
 Command Format:
 
-`python test.py --dataroot /storage/pix2pix-dataset --name experiment --checkpoints_dir /storage/checkpts --model test --results_dir /artifacts`
-
-Command Example:
-
-`python test.py --dataroot /storage/pix2pix-dataset/testA/ --name experiment --checkpoints_dir /storage/checkpts --model test -results_dir /artifacts`
-
-Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights, similar with `CHECKPT_DIR`.
-The test results will be saved to a html file here: `/artifacts/results/EXPERIMENT_NAME/latest_test/index.html`
+`python test.py --name <RUNNAME_OF_TRAINED_NETWORK> --dataroot /storage/example_dataset --checkpoints_dir /storage/checkpoints_from_training --results_dir /artifacts/pix2pixhd_testoutputs --resize_or_crop none $@`
 
 <a name="pggan"></a>
 ## Progressive growing of GANs (PG-GAN)
