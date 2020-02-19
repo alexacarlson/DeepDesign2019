@@ -264,7 +264,7 @@ The pix2pixHD Docker container you can use for both training and testing your mo
 
 `daftvader/pix2pix`
 
-### Training pix2pixHD
+### Training pix2pix
 Change the `--dataroot`, `--name` and `--checkpoints_dir` to your own dataset's path, model's and checkpoint directory name.
 
 Command Format:
@@ -272,8 +272,8 @@ Command Format:
 `python train.py --dataroot /storage/example_dataset/data --name experiment --checkpoints_dir /storage/ckp --n_epochs 3 --model pix2pix --netG unet_256 --direction AtoB --lambda_L1 100 --dataset_mode aligned --norm batch --pool_size 0 `
 
 
-### Testing pix2pixHD
-For testing pix2pixHD, you will need to upload your input data domain A to `/storage/example_dataset/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpoints_dir`.
+### Testing pix2pix
+For testing pix2pix, you will need to upload your input data domain A to `/storage/example_dataset/test_A`. You will also need trained network weights, which should be stored in `/storage/checkpoints_dir`.
 
 Command Format:
 
