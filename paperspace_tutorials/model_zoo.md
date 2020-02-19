@@ -251,7 +251,7 @@ https://github.com/dysdsyd/pytorch-CycleGAN-and-pix2pix.git
 ### Processing Data
 For training create folder `/path/to/data` with subfolders `A` and `B`. `A` and `B` should each have their own subfolders `train`, etc. In `/path/to/data/A/train`, put training images in style `A`. In `/path/to/data/B/train`, put the corresponding images in style `B`. Corresponding images in a pair {A,B} must be the same size and have the same filename, e.g., `/path/to/data/A/train/1.jpg` is considered to correspond to `/path/to/data/B/train/1.jpg`.
 
-Change the --fold_A, --fold_B and --fold_B to your own domain A's path, domain B's path and output directory path.
+Change the `--fold_A`, `--fold_B` and `--fold_B` to your own domain A's path, domain B's path and output directory path.
 
 Command Format:
 
