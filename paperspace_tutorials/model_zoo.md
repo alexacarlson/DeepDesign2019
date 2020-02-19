@@ -262,7 +262,7 @@ Command Format:
 
 The pix2pixHD Docker container you can use for both training and testing your model:
 
-`taesungp/pytorch-cyclegan-and-pix2pix`
+`daftvader/pix2pix`
 
 ### Training pix2pixHD
 Change the `--dataroot`, `--name` and `--checkpoints_dir` to your own dataset's path, model's and checkpoint directory name.
