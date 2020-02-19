@@ -257,6 +257,7 @@ Command Format:
 
 `python datasets/combine_A_and_B.py --fold_A /storage/example_dataset/A --fold_B /storage/example_dataset/B --fold_AB /storage/example_dataset/data`
 
+**Note** : We have to run it only once every time there is a change in dataset.
 
 ### Training pix2pixHD
 Change the `--dataroot`, `--name` and `--checkpoints_dir` to your own dataset's path, model's and checkpoint directory name.
