@@ -254,6 +254,7 @@ For training create folder `/path/to/data` with subfolders `A` and `B`. `A` and 
 Change the --fold_A, --fold_B and --fold_B to your own domain A's path, domain B's path and output directory path.
 
 Command Format:
+
 `python datasets/combine_A_and_B.py --fold_A /storage/example_dataset/A --fold_B /storage/example_dataset/B --fold_AB /storage/example_dataset/data`
 
 
