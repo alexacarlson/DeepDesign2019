@@ -298,7 +298,7 @@ The command format used for training a model:
 
 `python train.py PGAN -c dataset.json -d OUTPUT_DIR -n EXPERIMENT_NAME --no_vis`
 
-where `EXPERIMENT_NAME` is a name you create for your model, and `/storgae/OUTPUT_DIR` is where the training outputs are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size.
+where `EXPERIMENT_NAME` is a name you create for your model, and `/storgae/OUTPUT_DIR` is where the training outputs are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. The `dataset.json` file is part of the PG-GAN training framework that specifies your dataset is located at `/storage/pggan_dataset`, and thus needs to be included in the training command.
 
 ### Testing PG-GAN
 The command format used for testing an already-trained model; note that `EXPERIMENT_NAME` should match the one you used to train the model. 
