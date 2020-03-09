@@ -13,6 +13,7 @@ Collection of more deep learning models, with tutorials on how to run them on pa
 9. [Pix2Pix](#pix2pix)
 10. [CycleGAN](#cyclegan)
 11. [PG-GAN](#pggan)
+12. [StyleGan2](#stylegan)
 
 <a name="attention_gan"></a>
 ## AttnGAN for Image generation from Text 
@@ -346,3 +347,27 @@ Command Example:
 
 Note that `EXPERIMENT_NAME` needs to be the same one you used to train the model/generate the weights, similar with `CHECKPT_DIR`.
 The test results will be saved to a html file here: `/artifacts/results/EXPERIMENT_NAME/latest_test/index.html`
+
+<a name="stylegan"></a>
+## StyleGAN 2
+In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/stylegan_dataset` and upload your training image dataset there. This training folder should contain your training images (jpg or png); the naming convention of the images does not matter. For example, a given image named `train_img-1.png` should be located at `/storage/style_dataset/train_img-1.png`. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
+
+The StyleGAN Docker container that you can use for both training and testing the model:
+
+`pytorch/pytorch`
+
+The workspace you can use for both training and testing your model: 
+
+`https://github.com/dysdsyd/stylegan2-pytorch.git`
+
+### Training StyleGAN
+The command format used for training a model:
+
+`bash train.sh /storage/DATA EXPERIMENT_NAME /storgae/OUTPUT_DIR IMG_SIZE BATCH_SIZE
+`
+
+where `/storage/DATA` is where input data is stored,`EXPERIMENT_NAME` is a name you create for your model, and `/storgae/OUTPUT_DIR` is where the training outputs are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on and `BATCH_SIZE` is the batch size of images for training(decrease it if you run into an OOM error).
+
+### Testing StyleGAN
+Updating..
+
