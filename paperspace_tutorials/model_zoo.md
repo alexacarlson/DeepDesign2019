@@ -363,7 +363,7 @@ The workspace you can use for both training and testing your model:
 ### Training StyleGAN
 The command format used for training a model:
 
-`bash train.sh /storage/DATA EXPERIMENT_NAME /storgae/OUTPUT_DIR /storage/MODEL_CKP IMG_SIZE BATCH_SIZE
+`bash train.sh /storage/DATA EXPERIMENT_NAME /storgae/OUTPUT_DIR IMG_SIZE BATCH_SIZE
 `
 
 where `/storage/DATA` is where input data is stored,`EXPERIMENT_NAME` is a name you create for your model, `/storgae/OUTPUT_DIR` is where the training outputs are stored and `/storage/MODEL_CKP` is where the model checkpoints are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on and `BATCH_SIZE` is the batch size of images for training(decrease it if you run into an OOM error).
