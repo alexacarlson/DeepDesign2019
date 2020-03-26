@@ -270,7 +270,7 @@ Change the `--dataroot`, `--name` and `--checkpoints_dir` to your own dataset's 
 
 Command Format:
 
-`python train.py --dataroot /storage/example_dataset/data --name experiment --checkpoints_dir /storage/ckp --n_epochs 3 --model pix2pix --netG unet_256 --direction AtoB --lambda_L1 100 --dataset_mode aligned --norm batch --pool_size 0 `
+`python train.py --dataroot /storage/example_dataset/data --name experiment --checkpoints_dir /storage/ckp --n_epochs 3 --batch_size 1 --load_size 286 --crop_size 256 --model pix2pix --netG unet_256 --direction AtoB --lambda_L1 100 --dataset_mode aligned --norm batch --pool_size 0 `
 
 
 ### Testing pix2pix
@@ -278,7 +278,7 @@ For testing pix2pix, you will need to upload your input data domain A to `/stora
 
 Command Format:
 
-`python test.py --dataroot /storage/example_dataset/test_A --name experiment --checkpoints_dir /storage/ckp --results_dir /artifacts --model test --netG unet_256 --direction AtoB  --dataset_mode single --norm batch`
+`python test.py --dataroot /storage/example_dataset/test_A --name experiment --checkpoints_dir /storage/ckp --results_dir /artifacts --batch_size 1 --load_size 256 --crop_size 256 --model test --netG unet_256 --direction AtoB  --dataset_mode single --norm batch`
 
 <a name="pggan"></a>
 ## Progressive growing of GANs (PG-GAN)
