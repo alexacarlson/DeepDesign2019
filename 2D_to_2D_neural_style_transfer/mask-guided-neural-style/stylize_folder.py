@@ -277,15 +277,14 @@ def  main(args):
         with tf.Graph().as_default():
             ## prepare model weights
             vgg_weights = Model.prepare_model(args.model_path)
-            ## build VGG net
-            target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
             # feature maps of specific layers
             content_features = compute_features(vgg_weights, args.feature_pooling_type, content_img, args.content_layers)   
             style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers) 
              ## masks of specific layers
             target_masks = compute_layer_masks(target_masks_origin, args.style_layers, args.mask_downsample_type)
             style_masks = compute_layer_masks(style_masks_origin, args.style_layers, args.mask_downsample_type) 
-                        
+            ## build VGG net
+            target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
             ''' loss '''
             ## content loss
             if args.content_img:
