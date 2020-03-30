@@ -24,4 +24,5 @@ python stylize_folder.py \
      --iteration ${NUM_ITERS} \
      --style_weight ${STYLE_WEIGHT} \
      --content_weight ${CONTENT_WEIGHT} \
-     --output_dir ${OUTPUT_DIR}
+     --output_dir ${OUTPUT_DIR} \
+     --optimizer adam
