@@ -19,8 +19,8 @@ def read_image(path, hard_width):   # read and preprocess
     if hard_width:
         img = scipy.misc.imresize(img, float(hard_width) / img.shape[1])
     img = img.astype(np.float32)
-    h,w,c = img.shape
-    if c>3:
+    #h,w,c = img.shape
+    if len(img.shape)>3 and img.shape[-1]>3:
         img = img[:,:,:-1]
     img = img[np.newaxis, :, :, :]
     img = img - [123.68, 116.779, 103.939]
