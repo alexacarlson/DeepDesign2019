@@ -19,11 +19,7 @@ def read_image(path, hard_width):   # read and preprocess
     if hard_width:
         img = scipy.misc.imresize(img, float(hard_width) / img.shape[1])
     img = img.astype(np.float32)
-    #h,w,c = img.shape
-    #print len(img.shape)>3
-    #print img.shape[-1]>3
     if len(img.shape)>2 and img.shape[-1]>3:
-        #print 'FUCK'
         img = img[:,:,:-1]
     print img.shape
     img = img[np.newaxis, :, :, :]
@@ -274,24 +270,18 @@ def  main(args):
     #    print('content and style have different masks')
     #    sys.exit(0)
     #
-    
-    ## prepare model weights
-    vgg_weights = Model.prepare_model(args.model_path)
-    ## build VGG net
-    target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
-    
-    ## precompute the style features
-    style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers)
-    
+
     ## run the optimization loop
     for cfn, content_img, init_img in zip(content_img_filelist, content_img_list, init_img_list):
         ''' compute features & build net '''
         with tf.Graph().as_default():
-              
+            ## prepare model weights
+            vgg_weights = Model.prepare_model(args.model_path)
+            ## build VGG net
+            target_net = build_target_net(vgg_weights, args.feature_pooling_type, target_shape) 
             # feature maps of specific layers
             content_features = compute_features(vgg_weights, args.feature_pooling_type, content_img, args.content_layers)   
-            #style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers) 
-
+            style_features = compute_features(vgg_weights, args.feature_pooling_type, style_img, args.style_layers) 
              ## masks of specific layers
             target_masks = compute_layer_masks(target_masks_origin, args.style_layers, args.mask_downsample_type)
             style_masks = compute_layer_masks(style_masks_origin, args.style_layers, args.mask_downsample_type) 
