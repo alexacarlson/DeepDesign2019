@@ -257,7 +257,7 @@ def  main(args):
 
     ## init img & target shape
     init_img_list = [get_init_image(c_img, args.init_noise_ratio) for c_img in content_img_list]
-    #target_shape = init_img_list[0].shape
+    target_shape = init_img_list[0].shape
 
     ## check shape & number of masks
     #if args.content_img and content_img.shape[1:3] != target_masks_origin.shape[1:3]:
@@ -273,7 +273,7 @@ def  main(args):
 
     ## run the optimization loop
     for cfn, content_img, init_img in zip(content_img_filelist, content_img_list, init_img_list):
-        target_shape=init_img.shape
+        #target_shape=init_img.shape
         ''' compute features & build net '''
         with tf.Graph().as_default():
             ## prepare model weights
