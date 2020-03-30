@@ -320,8 +320,8 @@ def  main(args):
                     if i % args.log_iteration == 0:
                         print('Iteration %d: loss = %f' % (i+1, sess.run(total_loss)))
                         result = sess.run(target_net['input'])
-                        output_path = os.path.join(args.output_dir, os.path.splitext(cfn)[0] +'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
-                        write_image(output_path, result)
+                        #output_path = os.path.join(args.output_dir, os.path.splitext(cfn)[0] +'2'+os.path.split(os.path.splitext(args.style_img)[1])[0]+ '.png')
+                        #write_image(output_path, result)
             elif args.optimizer == 'lbfgs':
                 optimizer = tf.contrib.opt.ScipyOptimizerInterface(
                     total_loss, method='L-BFGS-B',
