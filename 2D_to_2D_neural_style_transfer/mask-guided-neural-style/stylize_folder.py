@@ -20,8 +20,12 @@ def read_image(path, hard_width):   # read and preprocess
         img = scipy.misc.imresize(img, float(hard_width) / img.shape[1])
     img = img.astype(np.float32)
     #h,w,c = img.shape
+    print len(img.shape)>3
+    img.shape[-1]>3
     if len(img.shape)>3 and img.shape[-1]>3:
+        print 'FUCK'
         img = img[:,:,:-1]
+    print img.shape
     img = img[np.newaxis, :, :, :]
     img = img - [123.68, 116.779, 103.939]
     return img
