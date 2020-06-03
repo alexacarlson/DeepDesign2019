@@ -3,7 +3,7 @@ On this page you can find code that will allow you to explore different 2D-to-2D
 
 ### Below are the links to the different tutorials in this repository
 
-For step by step instructions on using Paperspace, please see the following:
+**For step by step instructions on using Paperspace, please see the following:**
 
 [The Basics of Paperspace](paperspace_tutorials/Paperspace_basics.md)
 
@@ -11,11 +11,11 @@ For step by step instructions on using Paperspace, please see the following:
 
 [Running and training models using the Gradient Experiment Builder](paperspace_tutorials/Paperspace_usingExpBuilder.md)
 
-To access the tutorials for how to run/train a variety of different models using the Paperspace Gradient Experiment Builder:
+**To access the tutorials for how to run/train a variety of different models using the Paperspace Gradient Experiment Builder:**
 
 [Model Zoo](paperspace_tutorials/model_zoo.md)
 
-For a step-by-step walk through of the above folders and files and the code they contain:
+**For a step-by-step walk through of the above folders and files and the code they contain:**
 
 [Repository Walk-through](repowalkthrough.md)
 
