@@ -19,7 +19,7 @@ cd 2D_to_2D_neural_style_transfer/mask-guided-neural-style
 
 python stylize.py \
      --mask_n_colors=1 \
-     --content_img=$CONTENT_FILE1 \
+     --content_img=$CONTENT_FILE \
      --target_mask=$MASK_FILE \
      --style_img=$STYLE_FILE \
      --hard_width=$IMAGE_SIZE \
