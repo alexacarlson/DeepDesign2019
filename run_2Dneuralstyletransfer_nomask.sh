@@ -2,8 +2,8 @@ CONTENT_FILE=$1
 STYLE_FILE=$2
 OUTPUT_DIR=$3
 IMAGE_SIZE=$4
-STYLE_WEIGHT=$5
-CONTENT_WEIGHT=$6
+CONTENT_WEIGHT=$5
+STYLE_WEIGHT=$6
 NUM_ITERS=$7
 
 #bash run_2Dneuralstyletransfer_nomask.sh /storage/2Dmodels/robotics_building_satellite.png /storage/2Dmodels/new000343.png /artifacts/roboticsbuilding_satellite_style000343_styleweight10.jpg 500 5.0 1.0 100
