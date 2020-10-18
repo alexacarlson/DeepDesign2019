@@ -350,7 +350,7 @@ The test results will be saved to a html file here: `/artifacts/results/EXPERIME
 
 <a name="stylegan"></a>
 ## StyleGAN 2
-In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/stylegan_dataset` and upload your training image dataset there. This training folder should contain your training images (jpg or png); the naming convention of the images does not matter. For example, a given image named `train_img-1.png` should be located at `/storage/style_dataset/train_img-1.png`. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run)
+In the paperspace persistent storage (using the jupyter notebook) you will need to create the folder `/storage/your_stylegan_dataset` (though you could name it whatever name you'd like) and upload your training image dataset there. This training folder should contain your training images (jpg or png); the naming convention of the images does not matter. For example, a given image named `train_img-1.png` should be located at `/storage/your_stylegan_dataset/train_img-1.png`. They should all be resized and/or cropped to 1024 by 1024 (you can also do 512x512 or attempt 2048x2048; note that the larger images take much longer to run and will require heftier computing resources/memory).
 
 The StyleGAN Docker container that you can use for both training and testing the model:
 
@@ -358,16 +358,23 @@ The StyleGAN Docker container that you can use for both training and testing the
 
 The workspace you can use for both training and testing your model: 
 
-`https://github.com/dysdsyd/stylegan2-pytorch.git`
+`https://github.com/alexacarlson/stylegan2-pytorch.git`
 
 ### Training StyleGAN
 The command format used for training a model:
 
-`bash train.sh /storage/DATA EXPERIMENT_NAME /storgae/OUTPUT_DIR IMG_SIZE BATCH_SIZE
+`bash train.sh DATASET_DIR EXPERIMENT_NAME OUTPUT_DIR IMG_SIZE BATCH_SIZE
 `
 
-where `/storage/DATA` is where input data is stored,`EXPERIMENT_NAME` is a name you create for your model, `/storgae/OUTPUT_DIR` is where the training outputs are stored and `/storage/MODEL_CKP` is where the model checkpoints are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on and `BATCH_SIZE` is the batch size of images for training(decrease it if you run into an OOM error).
+where `DATASET_DIR` is where input/training data is stored,`EXPERIMENT_NAME` is a name you create for your model, `OUTPUT_DIR` is where the training outputs are stored and where the model checkpoints/weights are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on (eg, specify 512 or 1024, etc) and `BATCH_SIZE` is the batch size of images for training (decrease it if you run into an OOM error).
+
+A command example for training could be:
+
+`bash train.sh /storage/your_stylegan_dataset myFirstStyleganExperiment /storage/your_stylegan_outputdir 512 4
+`
 
 ### Testing StyleGAN
-Updating..
+Once you have trained your styleGan2 model, to use it to generate images use the follwing command:
 
+`bash evaluate.sh /storage/your_stylegan_outputdir/myFirstStyleganExperiment/
+`
