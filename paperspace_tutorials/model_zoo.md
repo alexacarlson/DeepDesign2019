@@ -363,14 +363,14 @@ The workspace you can use for both training and testing your model:
 ### Training StyleGAN
 The command format used for training a model:
 
-`bash train.sh DATASET_DIR EXPERIMENT_NAME OUTPUT_DIR IMG_SIZE BATCH_SIZE
+`bash train.sh  EXPERIMENT_NAME DATASET_DIR RESULTS_DIR MODEL_DIR IMG_SIZE BATCH_SIZE
 `
 
-where `DATASET_DIR` is where input/training data is stored,`EXPERIMENT_NAME` is a name you create for your model, `OUTPUT_DIR` is where the training outputs are stored and where the model checkpoints/weights are stored. We recommend that you create the `OUTPUT_DIR` directory in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on (eg, specify 512 or 1024, etc) and `BATCH_SIZE` is the batch size of images for training (decrease it if you run into an OOM error).
+where `DATASET_DIR` is where input/training data is stored,`EXPERIMENT_NAME` is a name you create for your model, `RESULTS_DIR` is where the training outputs are stored and `MODEL_DIR` is where the the model checkpoints/weights are stored. We recommend that you create the `RESULTS_DIR` and `MODEL_DIR` directories in storage so you will be able to access intermediate images produced during the training process, which can take days to weeks depending upon the image size. `IMG_SIZE` is the size of the image on which you want to train on (eg, specify 512 or 1024, etc) and `BATCH_SIZE` is the batch size of images for training (decrease it if you run into an OOM error).
 
 A command example for training could be:
 
-`bash train.sh /storage/your_stylegan_dataset myFirstStyleganExperiment /storage/your_stylegan_outputdir 512 4
+`bash train.sh myFirstStyleganExperimentstorage /your_stylegan_dataset /storage/your_stylegan_resultsdir /storage/your_stylegan_modeldir  512 4
 `
 
 ### Testing StyleGAN
