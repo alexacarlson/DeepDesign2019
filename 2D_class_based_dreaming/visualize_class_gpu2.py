@@ -157,6 +157,7 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
     class_names = sorted(class_names) # Sorting them
     class_labels_dict = dict(zip(class_names, range(len(class_names))))
     num_classes = len(class_names)
+    print(num_classes)
     ##
     ## define input of model
     #image_shape = (None, None, 3)
