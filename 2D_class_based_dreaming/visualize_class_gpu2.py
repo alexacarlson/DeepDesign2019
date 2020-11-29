@@ -215,6 +215,7 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
     #tf.keras.models.save_model(custom_model, os.path.join(weights_dir,'vgg16_custom_model_tf'), save_format='tf')
     #custom_model.save(os.path.join(weights_dir,'vgg16_custom_model_tf'), save_format='tf')
     ## save the network weights
+    print(weights_dir)
     custom_model.save_weights(os.path.join(weights_dir,'vgg16_custom_model_weights.h5'))
     ## Save the model architecture
     with open(os.path.join(weights_dir, 'model_architecture.json'), 'w') as f:
