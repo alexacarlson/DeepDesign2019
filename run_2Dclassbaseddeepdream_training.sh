@@ -16,6 +16,6 @@ python visualize_class_gpu2.py \
   --train_vgg_model True \
   --train_epochs ${TRAIN_EPOCHS} \
   --train_dataset ${TRAIN_DIR} \
-  --vgg_model /storage/${WEIGHTS_DIR} \
+  --vgg_model ${WEIGHTS_DIR} \
   --image_h ${IMAGE_H} \
   --image_w ${IMAGE_W} \
