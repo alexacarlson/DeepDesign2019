@@ -195,7 +195,7 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
     train_generator=train_datagen.flow_from_directory(train_folder_path,
                                                      target_size=(image_shape[0], image_shape[1]),
                                                      color_mode='rgb',
-                                                     batch_size=4,
+                                                     batch_size=3,
                                                      class_mode='categorical',
                                                      shuffle=True)
     # generate_arrays_from_file(all_data, batch_size, class_labels_dict)
