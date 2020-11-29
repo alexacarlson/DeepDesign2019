@@ -167,10 +167,15 @@ def finetune_vgg16(train_folder_path, weights_dir, image_shape, num_epochs):
     base_model = applications.VGG16(include_top=False, weights='imagenet', input_shape=image_shape)
     ## add layers specific to our task
     x=base_model.output
+    print(x.shape)
     x = keras.layers.GlobalAveragePooling2D()(x)
+    print(x.shape)
     x = keras.layers.Dense(4096, activation='relu', name='fc1')(x)
+    print(x.shape)
     x = keras.layers.Dense(4096, activation='relu', name='fc2')(x)
+    print(x.shape)
     predictions = keras.layers.Dense(num_classes, activation='softmax', name='predictions')(x)
+    print(predictions.shape)
     ##
     custom_model = keras.Model(inputs=base_model.input,outputs=predictions)
     # Make sure that the pre-trained bottom layers are not trainable
