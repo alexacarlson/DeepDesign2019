@@ -376,5 +376,11 @@ A command example for training could be:
 ### Testing StyleGAN
 Once you have trained your styleGan2 model, to use it to generate images use the follwing command:
 
-`bash evaluate.sh /storage/your_stylegan_outputdir/myFirstStyleganExperiment/
+`bash evaluate.sh RESULTS_DIR MODEL_DIR`
+
+where RESULTS_DIR is the location to save the generated images and MODEL_DIR is the location of the trained weights.
+
+Example command:
+
+`bash evaluate.sh /storage/your_stylegan_outputdir/ /storage/stylegan_model'
 `
