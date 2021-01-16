@@ -370,7 +370,7 @@ where `DATASET_DIR` is where input/training data is stored,`EXPERIMENT_NAME` is 
 
 A command example for training could be:
 
-`bash train.sh myFirstStyleganExperimentstorage /your_stylegan_dataset /storage/your_stylegan_resultsdir /storage/your_stylegan_modeldir  512 4
+`bash train.sh myFirstStyleganExperiment /storage/your_stylegan_dataset /storage/your_stylegan_resultsdir /storage/your_stylegan_modeldir  512 4
 `
 
 ### Testing StyleGAN
