@@ -14,7 +14,7 @@ Collection of more deep learning models, with tutorials on how to run them on pa
 10. [CycleGAN](#cyclegan)
 11. [PG-GAN](#pggan)
 12. [StyleGan2](#stylegan)
-13. [Tree-GAN] (#treegan)
+13. [Tree-GAN](#treegan)
 
 <a name="attention_gan"></a>
 ## AttnGAN for Image generation from Text 
@@ -408,23 +408,26 @@ The workspace you can use for both training and testing your model:
   -  Create a  folder in persistent storage to store intermediate 'checkpoints' i.e the full path name will be the CKPT_PATH
   -  If you are training a model from scratch - the 0th epoch the argument  `CKPT_LOAD`=None
   -  If you want to resume training a model `CKPT_PATH`=full path to Checkpoint folder and `CKPT_LOAD`=checkpoint name from which you want to resume training   
-3. Create a folder in storage to save 'Result' i.e the full path name will be the RESULT_PATH
-    When you start training, the intermediate .pts files will be found under  RESULT_PATH/Points and  RESULT_PATH/Matplot_Images will contain plotted images of the pointclouds
+3. Create a folder in storage to save 'Result' i.e the full path name will be the `RESULT_PATH`
+    When you start training, the intermediate .pts files will be found under  `RESULT_PATH/Points` and  `RESULT_PATH/Matplot_Images` will contain plotted images of the pointclouds
 4. Let `BATCH_SIZE` = 20, Note, if you get an out of memory error (OOM), reduce `BATCH_SIZE` until you get rid of OOM error
     `POINT_NUM`=4096 Maximum number of points used to generate pointcloud for your data models
-5  Train for `EPOCHS`=1000, view intermediate results and select best model from saved checkpoints
-6  `SAVE_AT_EPOCH` , this argument creates a checkpoint at every `SAVE_AT_EPOCH` iteration. For example if `EPOCHS`=1000 and `SAVE_AT_EPOCH`=10, a checkpoint will be created at every 10th epoch (a total of 100 checkpoints will be created)
+5. Train for `EPOCHS`=1000, view intermediate results and select best model from saved checkpoints
+6.  `SAVE_AT_EPOCH` , this argument creates a checkpoint at every `SAVE_AT_EPOCH` iteration. For example, if `EPOCHS`=1000 and `SAVE_AT_EPOCH`=10, a checkpoint will be created at every 10th epoch (a total of 100 checkpoints will be created)
 
 
 The command format used for training a model:
 
 Command Format for Training:
+
 `bash run_train.sh DATASET_PATH BATCH_SIZE POINT_NUM CKPT_PATH CKPT_LOAD RESULT_PATH EPOCHS SAVE_AT_EPOCH`
 
 A command example for training from scratch could be:
+
 `bash run_train.sh /storage/Church/TreeGAN/Point 15 4096 /storage/Church/TreeGAN/Checkpoint None /storage/Church/TreeGAN/Result 1000 10`
 
 A command example for training to resume training could be:
+
 `bash run_train.sh /storage/Church/TreeGAN/Point 15 4096 /storage/Church/TreeGAN/Checkpoint tree_ckpt_Airplane.pt /storage/Church/TreeGAN/Result 1000 10`
 
 
@@ -433,18 +436,20 @@ A command example for training to resume training could be:
 
 ### Testing Tree-GAN
 
-####Instructions before testing 
-1.  `CKPT_PATH` should contain the full path to the checkpoint folder,  `CKPT_LOAD` should contain the name of the checkpoint file present in `CKPT_PATH`
+#### Instructions before testing 
+1.  `CKPT_PATH` should contain the full path to the checkpoint folder, `CKPT_LOAD` should contain the name of the checkpoint file present in `CKPT_PATH`
 2.  Create a folder in storage or artifacts in which the images generated will be saved. These 3D images are for your reference to have a quick check on how the model is performing.The full path for these images should be provided in `SAVE_IMAGES`
-3.  Create a folder in storage to  save the .pts files generated. This folder can be zipped and downloaded on to your local system. The full path for these images should be provided in  `SAVE_PTS_FILES`
+3.  Create a folder in storage to  save the .pts files generated. This folder can be zipped and downloaded onto your local system. The full path for these images should be provided in  `SAVE_PTS_FILES`
 4.  `SEED` Random integer number, keep changing this number to get different results from the trained model
 
 
 Once you have trained your Tree-GAN model, to use it to generate pointclouds use the follwing command:
 
 Command Format for Testing:
+
 `bash run_test.sh POINT_NUM CKPT_PATH CKPT_LOAD SAVE_IMAGES SAVE_PTS_FILES SEED`
 
 Example of a Command used for Testing:
+
 `bash run_test.sh 4096 /storage/TreeGAN_dataset/Paper_checkpoints/model/checkpoints tree_ckpt_Airplane.pt /storage/TreeGAN_dataset/Testing_images /storage/TreeGAN_dataset/Testing_Pts_files 52`
 
